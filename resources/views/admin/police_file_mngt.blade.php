@@ -13,12 +13,12 @@
 
     <title>Admin | Police File Mngt.</title>
 </head>
-<body style="background-color: #D9D9D9">
+<body class="w3-light-grey">
   @include('includes.navbar')
 
-  <div class="row">
+  <div class="row" style="width: 75%; margin: 0rem auto 0rem auto">
     <div class="col-12" style="margin-top: 5rem">
-      <a class="link-buttons" href="{{ route('add_police_form') }}">Add Police</a>
+      <a class="link-buttons" href="{{ route('add_police_form') }}" style="font-size: medium">Add Police Personnel</a>
     </div>
 
     <div class="col-12" >
@@ -26,29 +26,29 @@
         <table id="harvTbl" class="display" >
           <thead>
             <tr>
-              <th>Harvest Date</th>
-              <th>Species</th>
-              <th>Percentage of survived fish</th>
-              <th>Location of stocking</th>
-              <th>Name of Client</th>
-              <th>Birthday of Client</th>
-              <th>Cultured period</th>
+              <th>Image</th>
+              <th>Name</th>
+              <th>Rank</th>
+              <th>Unit/Station</th>
+              <th>Home Address (House No. / Street / City / Province)</th>
+              <th>Sex</th>
               <th style="width: 8rem;">Action</th>
             </tr>
           </thead>
           <tbody> 
+            @foreach ($police as $pol) 
               <tr>
-                <td>csd </td>
-                <td>cds </td>
-                <td> csd</td>
-                <td> csd</td>
-                <td>csd </td>
-                <td> cds</td>
-                <td> csd</td>
-                <td>
-                  csdvds
+                <td style="text-align: center">{{ $pol->per_image }}</td>
+                <td style="text-align: center">{{ $pol->per_firstname }} {{ $pol->per_middlename }} {{ $pol->per_lastname }}</td>
+                <td style="text-align: center">{{ $pol->per_rank }}</td>
+                <td style="text-align: center">{{ $pol->per_unit_station }}</td>
+                <td style="text-align: center">{{ $pol->per_house_no }}, {{ $pol->per_street }}, {{ $pol->per_city }}, {{ $pol->per_province }}</td>
+                <td style="text-align: center">{{ $pol->per_sex }}</td> 
+                <td style="text-align: center">
+                  <a class="link-buttons" href="{{ route('view_police', [$pol->id]) }}">View</a>
                 </td>
-              </tr> 
+              </tr>
+            @endforeach 
             </form>
           </tbody>
         </table>

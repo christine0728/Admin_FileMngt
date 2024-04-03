@@ -127,9 +127,7 @@
             <form action="{{ route('adding_police') }}" class="employee-form" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="" style="margin-bottom: 2rem">  
-                          
-
+                    <div class="" style="margin-bottom: 2rem">   
                         <div class="row">
                             <div class="col-4">
                                 <div class="form-group">

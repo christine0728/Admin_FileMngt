@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Anhskohbo\NoCaptcha\Facades\NoCaptcha;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\Police;
 use Carbon\Carbon;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
@@ -77,6 +78,13 @@ class HomeController extends Controller
 
     public function police_file_mngt()
     {
-        return view('admin.police_file_mngt');
+        $police = Police::get();
+        return view('admin.police_file_mngt', ['police' => $police]);
+    }
+
+    public function pds_folder($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.folder_pds', ['police' => $police]);
     }
 }
