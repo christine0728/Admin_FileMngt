@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PersonnelController;
+use App\Http\Controllers\PoliceController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,5 +26,9 @@ Route::get('/add_admin', [HomeController::class, 'add_admin'])->name('add_admin_
 Route::post('/add_admin_acc', [HomeController::class, 'add_admin_acc'])->name('add_admin_acc');
 
 Route::prefix('admin')->group(function(){
-    Route::get('/personnel_file_mngt', [HomeController::class, 'personnel_file_mngt'])->name('personnel_file_mngt');
+    Route::get('/police_file_mngt', [HomeController::class, 'police_file_mngt'])->name('police_file_mngt');
+    Route::get('/add_police_form', [PoliceController::class, 'add_police_form'])->name('add_police_form');
+    Route::post('/adding_police', [PoliceController::class, 'adding_police'])->name('adding_police');
+
+    Route::get('/navbar', [HomeController::class, 'navbar'])->name('navbar');
 });
