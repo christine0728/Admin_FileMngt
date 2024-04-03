@@ -10,6 +10,12 @@ use Illuminate\Http\Request;
 
 class PoliceController extends Controller
 {
+    public function view_police($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.view_police', ['police' => $police]);
+    }
+
     public function add_police_form()
     {
         return view('admin.add_police_form');
