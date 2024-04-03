@@ -13,6 +13,11 @@ use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
+    public function navbar()
+    {
+        return view('admin.navbar');
+    }
+
     public function login_view()
     {
         return view('login_view');
@@ -60,7 +65,7 @@ class HomeController extends Controller
                 //     dd('hindeh');
                 // } 
 
-                return redirect()->route('personnel_file_mngt')->with('error', 'investigator account logged in successfully');
+                return redirect()->route('police_file_mngt')->with('error', 'investigator account logged in successfully');
             } else {
                 dd('User not authenticated');
             }
@@ -70,8 +75,8 @@ class HomeController extends Controller
         }
     }
 
-    public function personnel_file_mngt()
+    public function police_file_mngt()
     {
-        return view('admin.personnel_file_mngt');
+        return view('admin.police_file_mngt');
     }
 }
