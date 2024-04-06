@@ -12,7 +12,7 @@
     <script src="https://kit.fontawesome.com/7528702e77.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version=6">
 
-    <title>Admin | PDS Folder</title>
+    <title>Admin | Suspension/Demolition Orders Folder</title>
 
     <style>
         .folder:hover { 
@@ -43,10 +43,6 @@
 
                 <div class="col-12">
                     <hr style="margin-top: -1.5rem; border-top: 1px solid #1D0A68">
-                </div>
-
-                <div class="col-12">
-                  <a class="link-buttons" href="{{ route('add_police_form') }}" style="font-size: medium">Add Police Personnel</a>
                 </div>
                 
 

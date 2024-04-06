@@ -87,4 +87,94 @@ class HomeController extends Controller
         $police = Police::where('id', '=', $pid)->first();
         return view('admin.folder_pds', ['police' => $police]);
     }
+
+    public function appt_orders_folder($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.folder_appt_orders', ['police' => $police]);
+    }
+
+    public function promotion_orders_folder($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.folder_promotion_orders', ['police' => $police]);
+    }
+
+    public function sus_dem_orders_folder($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.folder_sus_dem_orders', ['police' => $police]);
+    }
+
+    public function attested_orders_folder($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.folder_attested_orders', ['police' => $police]);
+    }
+
+    public function cert_eli_orders_folder($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.folder_cert_eli_orders', ['police' => $police]);
+    }
+
+    public function scholastic_rec_orders_folder($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.folder_scholastic_rec_orders', ['police' => $police]);
+    }
+
+    public function trainings_folder($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.folder_trainings', ['police' => $police]);
+    }
+
+    public function rca_longpay_folder($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.folder_rca_longpay_orders', ['police' => $police]);
+    }
+
+    public function assign_des_orders_folder($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.folder_assign_des_orders', ['police' => $police]);
+    }
+
+    public function cases_offenses_folder($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.folder_cases_offenses', ['police' => $police]);
+    }
+
+    public function firearms_records_folder($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.folder_firearms_records', ['police' => $police]);
+    }
+
+    public function leave_orders_folder($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.folder_leave_orders', ['police' => $police]);
+    }
+
+    public function awards_folder($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.folder_awards', ['police' => $police]);
+    }
+
+    public function saln_folder($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.folder_saln', ['police' => $police]);
+    }
+
+    public function others_folder($pid)
+    {
+        $police = Police::where('id', '=', $pid)->first();
+        return view('admin.folder_others', ['police' => $police]);
+    }
 }
