@@ -118,10 +118,10 @@ class HomeController extends Controller
         return view('admin.folder_cert_eli_orders', ['police' => $police]);
     }
 
-    public function scholastic_rec_orders_folder($pid)
+    public function scholastic_rec_folder($pid)
     {
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_scholastic_rec_orders', ['police' => $police]);
+        return view('admin.folder_scholastic_rec', ['police' => $police]);
     }
 
     public function trainings_folder($pid)
