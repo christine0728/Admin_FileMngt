@@ -35,7 +35,7 @@ body, html {
   <div class="w3-bar w3-card" id="myNavbar" style="background-color: #1D0A68; color: white">
     <a href="#home" class="w3-bar-item w3-button w3-wide hoverrr">LOGO</a> 
     <div class="w3-right w3-hide-small">
-    <a href="#about" class="w3-bar-item w3-button hoverrr">Personal File Management</a>
+    <a href="{{ route('police_file_mngt') }}" class="w3-bar-item w3-button hoverrr">Personnel File Management</a>
     <a href="#team" class="w3-bar-item w3-button hoverrr">Admin Accounts Management</a>
     <a href="#work" class="w3-bar-item w3-button hoverrr"><i class="fa fa-user"></i>&nbsp;&nbsp;User Profile</a> 
   </div> 

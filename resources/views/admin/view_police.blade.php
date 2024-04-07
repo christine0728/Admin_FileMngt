@@ -50,131 +50,96 @@
                     </div>
 
                     <div class="col-12" style="margin-top: -1.5rem; padding: 2rem 3rem 1rem 3rem">
-                        <div class="row" style=""> 
-                            {{-- <a href="{{ route('pds_folder', $police->id) }}" >  --}}
-                                <div onclick="window.location.href='{{ route('pds_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0rem; height: 13rem;">
-                                    <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
-                                    <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">PDS</span>
-                                </div> 
-                            {{-- </a> --}}
-                            {{-- <a href="{{ route('appt_orders_folder', $police->id) }}">  --}}
-                                    <div onclick="window.location.href='{{ route('appt_orders_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem; height: 13rem">
-                                        <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
-                                        <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Appointment Orders</span>
-                                    </div> 
-                            {{-- </a> --}}
-                            {{-- <a href="{{ route('promotion_orders_folder', $police->id) }}"> --}}
-                                {{-- <div class="col-2 "> --}}
-                                    <div onclick="window.location.href='{{ route('promotion_orders_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem; height: 13rem">
-                                        <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
-                                        <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Promotion Orders</span>
-                                    </div>
-                                {{-- </div>  --}}
-                            {{-- </a> --}}
-                            {{-- <a href="{{ route('sus_dem_orders_folder', $police->id) }}">
-                                <div > --}}
-                                    <div onclick="window.location.href='{{ route('sus_dem_orders_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem;  height: 13rem">
-                                        <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
-                                        <span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1; margin-top: 0.5rem">Suspension/<br>Demolition Orders</span>
-                                    </div>
-                                {{-- </div> 
-                            </a> --}}
-                            {{-- <a href="{{ route('attested_orders_folder', $police->id) }}">
-                                <div > --}}
-                                    <div onclick="window.location.href='{{ route('attested_orders_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 0rem 1.8rem 0.5rem; height: 13rem">
-                                        <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
-                                        <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Attested Appointments</span>
-                                    </div>
-                                {{-- </div> 
-                            </a> --}}
-                            {{-- <a href="{{ route('cert_eli_orders_folder', $police->id) }}" >
-                                <div> --}}
-                                    <div onclick="window.location.href='{{ route('cert_eli_orders_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0rem; height: 13rem;">
-                                        <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
-                                        <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Certificate of Eligibility</span>
-                                    </div>
-                                {{-- </div> 
-                            </a> --}}
-                            {{-- <a href="">
-                                <div > --}}
-                                    <div onclick="window.location.href='{{ route('scholastic_rec_orders_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem;  height: 13rem">
-                                        <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
-                                        <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Scholastic Records</span>
-                                    </div>
-                                {{-- </div> 
-                            </a> --}}
-                            {{-- <a href="">
-                                <div > --}}
-                                    <div onclick="window.location.href='{{ route('trainings_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem; height: 13rem">
-                                        <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
-                                        <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Trainings</span>
-                                    </div>
-                                {{-- </div> 
-                            </a> --}}
-                            {{-- <a href="">
-                                <div > --}}
-                                    <div onclick="window.location.href='{{ route('rca_longpay_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem;  height: 13rem">
-                                        <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
-                                        <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">RCA and Long Pay Orders</span>
-                                    </div>
-                                {{-- </div> 
-                            </a> --}}
-                            {{-- <a href="">
-                                <div > --}}
-                                    <div onclick="window.location.href='{{ route('assign_des_orders_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 0rem 1.8rem 0.5rem;  height: 13rem">
-                                        <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
-                                        <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Assignment and<br>Designation Orders</span>
-                                    </div>
-                                {{-- </div> 
-                            </a> --}}
-                            {{-- <a href="" >
-                                <div > --}}
-                                    <div onclick="window.location.href='{{ route('cases_offenses_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0rem; height: 13rem;">
-                                        <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
-                                        <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Cases and Offenses</span>
-                                    </div>
-                                {{-- </div> 
-                            </a> --}}
-                            {{-- <a href="">
-                                <div > --}}
-                                    <div onclick="window.location.href='{{ route('firearms_records_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem;  height: 13rem">
-                                        <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
-                                        <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Firearms Records</span>
-                                    </div>
-                                {{-- </div> 
-                            </a> --}}
-                            {{-- <a href="">
-                                <div > --}}
-                                    <div onclick="window.location.href='{{ route('leave_orders_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem;  height: 13rem">
-                                        <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
-                                        <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Leave Orders</span>
-                                    </div>
-                                {{-- </div> 
-                            </a> --}}
-                            {{-- <a href="">
-                                <div > --}}
-                                    <div onclick="window.location.href='{{ route('awards_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem;  height: 13rem">
-                                        <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
-                                        <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Awards</span>
-                                    </div>
-                                {{-- </div> 
-                            </a> --}}
-                            {{-- <a href="">
-                                <div > --}}
-                                    <div onclick="window.location.href='{{ route('saln_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 0rem 1.8rem 0.5rem;  height: 13rem">
-                                        <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
-                                        <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">SALN</span>
-                                    </div>
-                                {{-- </div> 
-                            </a> --}}
-                            {{-- <a href="" > --}}
-                                {{-- <div > --}}
-                                    <div onclick="window.location.href=''" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 1.9rem 1.8rem 0rem; height: 13rem;">
-                                        <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
-                                        <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Other PNP Documents</span>
-                                    </div>
-                                {{-- </div> 
-                            </a> --}} 
+                        <div class="row" style="">  
+                            <div onclick="window.location.href='{{ route('pds_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0rem; height: 13rem;">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">PDS</span>
+                            </div> 
+                            
+                            <div onclick="window.location.href=''" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem; height: 13rem">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">PSA Birth Certificates</span>
+                            </div> 
+                            
+                            <div onclick="window.location.href='{{ route('appt_orders_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem; height: 13rem">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Appointment Orders</span>
+                            </div>
+                        
+                            <div onclick="window.location.href='{{ route('promotion_orders_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem;  height: 13rem">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1; margin-top: 0.5rem">Promotion Orders</span>
+                            </div>
+                        
+                            <div onclick="window.location.href='{{ route('sus_dem_orders_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 0rem 1.8rem 0.5rem; height: 13rem">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Suspension/<br>Demolition Orders</span>
+                            </div> 
+                            <div onclick="window.location.href='{{ route('attested_orders_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0rem; height: 13rem;">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Attested Appointments</span>
+                            </div>
+                        
+                    
+                            <div onclick="window.location.href='{{ route('cert_eli_orders_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem;  height: 13rem">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Certificate of Eligibility</span>
+                            </div>
+                         
+                            <div onclick="window.location.href='{{ route('scholastic_rec_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem; height: 13rem">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Scholastic Records</span>
+                            </div>
+                         
+                            <div onclick="window.location.href='{{ route('trainings_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem;  height: 13rem">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Trainings</span>
+                            </div>
+                         
+                            <div onclick="window.location.href='{{ route('rca_longpay_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 0rem 1.8rem 0.5rem;  height: 13rem">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">RCA and Long Pay Orders</span>
+                            </div>
+                         
+                            <div onclick="window.location.href='{{ route('assign_des_orders_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0rem; height: 13rem;">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Assignment and<br>Designation Orders</span>
+                            </div>
+                        
+                    
+                            <div onclick="window.location.href='{{ route('cases_offenses_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem;  height: 13rem">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Cases and Offenses</span>
+                            </div>
+                        
+                    
+                            <div onclick="window.location.href='{{ route('firearms_records_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem;  height: 13rem">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Firearms Records</span>
+                            </div>
+                        
+                    
+                            <div onclick="window.location.href='{{ route('leave_orders_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem;  height: 13rem">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Leave Orders</span>
+                            </div>
+                        
+                    
+                            <div onclick="window.location.href='{{ route('awards_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 0rem 1.8rem 0.5rem;  height: 13rem">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Awards</span>
+                            </div> 
+
+                            <div onclick="window.location.href='{{ route('saln_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 1.9rem 1.8rem 0rem; height: 13rem;">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">SALN</span>
+                            </div>
+
+                            <div onclick="window.location.href='{{ route('others_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem; height: 13rem">
+                                <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
+                                <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">Other PNP Documents</span>
+                            </div>
+                                 
                         </div>
                     </div>
                     

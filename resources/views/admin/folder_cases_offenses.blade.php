@@ -9,13 +9,13 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
     <script src="https://kit.fontawesome.com/7528702e77.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version=10">
 
-    <title>Admin | Promotion Orders Folder</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <title>Admin | Cases and Offenses Folder</title>
 
     <style>
         .folder:hover { 
@@ -47,10 +47,10 @@
                 <div class="col-12">
                     <hr style="margin-top: -1.5rem; border-top: 1px solid #1D0A68">
                 </div>
-
+                
                 <div class="col-12" style="margin-top: -2rem">
                   <i class="fa-regular fa-folder-closed" style="font-size: 1rem;  color: #1D0A68; padding: 0.29rem; border-radius: 0.2rem"></i>
-                  <span style="font-size: medium; font-weight: bold; color: #1D0A68;">Appointment Orders Folder</span>
+                  <span style="font-size: medium; font-weight: bold; color: #1D0A68;">Cases and Offenses Folder</span>
                 </div>
 
                 <div class="col-12" style="padding: 1rem; margin-top: -1rem">
@@ -61,19 +61,19 @@
                   @endif 
                 </div>
                  
-                <form method="post" action="{{ route('add_file_promotion_orders') }}" enctype="multipart/form-data">
+                <form method="post" action="{{ route('add_file_cases_offenses') }}" enctype="multipart/form-data">
                   @csrf
                   <input type="hidden" name="pid" value="{{ $police->id }}">
                   <input type="hidden" name="pol_fullname" value="{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}"> 
                   <div class="col-6" style="margin-top: -1rem"> 
-                    <label for="image">Add File in Promotion Orders folder:</label>
+                    <label for="image">Add File in Cases and Offenses folder:</label>
                     <input type="file" class="form-control" id="file" name="file" accept="application/pdf"> 
                   </div>   
   
                   <div class="col-12" style="margin-top: -1rem">
                     <button type="submit" class="form-buttons" style="float: left; width: 7rem">Submit <i class="fa-solid fa-check icons"></i></button>
                   </div>
-                </form>
+                </form> 
                 
             </div> 
              

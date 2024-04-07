@@ -58,6 +58,24 @@
     color: white !important;
   }
 
+  .form-buttons{
+    background-color: #1D0A68 !important;
+    color: white !important;
+    border: none;
+    padding: .5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;   
+    border-radius: 0.5rem;
+  }
+
+  .form-buttons:hover{
+    background-color: #6F79AA !important; 
+    border: none !important;
+    color: white !important;
+  }
+
   .back-btn {
     background-color: #1D0A68 !important;
     color: white !important;
