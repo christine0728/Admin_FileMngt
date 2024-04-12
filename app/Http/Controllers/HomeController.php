@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Anhskohbo\NoCaptcha\Facades\NoCaptcha;
 use App\Http\Controllers\Controller;
 use App\Models\Admin;
+use App\Models\File;
 use App\Models\Police;
 use Carbon\Carbon;
 use Illuminate\Contracts\Session\Session;
@@ -23,22 +24,7 @@ class HomeController extends Controller
     {
         return view('login_view');
     }
-
-    public function add_admin()
-    {
-        return view('add_admin_form');
-    }
-
-    public function add_admin_acc(Request $request){  
-        $user = Admin::create([ 
-            'username' => $request->input('username'),
-            'password' => Hash::make($request->password), 
-            'created_at' => Carbon::now(),
-        ]);
-
-        return redirect()->back()->with('message', 'The record has been added successfully!');
-    }
-
+  
     public function login(Request $request){  
 
         $username = $request->input('username');
@@ -83,15 +69,22 @@ class HomeController extends Controller
     }
 
     public function pds_folder($pid)
-    {
+    { 
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'pds')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'pds')->get();
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_pds', ['police' => $police]);
+
+        $fid = $file->id ?? 0;
+
+        return view('admin.folder_pds', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
     public function appt_orders_folder($pid)
     {
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'appointment_orders')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'appointment_orders')->get();
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_appt_orders', ['police' => $police]);
+        return view('admin.folder_appt_orders', ['police' => $police, 'file'=>$file, 'files'=>$files]);
     }
 
     public function promotion_orders_folder($pid)
@@ -177,4 +170,12 @@ class HomeController extends Controller
         $police = Police::where('id', '=', $pid)->first();
         return view('admin.folder_others', ['police' => $police]);
     }
+
+    public function admin_acc_mngt()
+    {
+        $admin = Admin::orderByDesc('id')->get();
+        return view('admin.admin_acc_mngt', ['admin' => $admin]);
+    }
+
+    
 }
