@@ -33,10 +33,10 @@ body, html {
  
 <div class="w3-top">
   <div class="w3-bar w3-card" id="myNavbar" style="background-color: #1D0A68; color: white">
-    <a href="#home" class="w3-bar-item w3-button w3-wide hoverrr">LOGO</a> 
+    <a href="#home" class="w3-bar-item w3-button w3-wide hoverrr">A D M I N</a> 
     <div class="w3-right w3-hide-small">
     <a href="{{ route('police_file_mngt') }}" class="w3-bar-item w3-button hoverrr">Personnel File Management</a>
-    <a href="#team" class="w3-bar-item w3-button hoverrr">Admin Accounts Management</a>
+    <a href="{{ route('admin_acc_mngt') }}" class="w3-bar-item w3-button hoverrr">Admin Accounts Management</a>
     <a href="#work" class="w3-bar-item w3-button hoverrr"><i class="fa fa-user"></i>&nbsp;&nbsp;User Profile</a> 
   </div> 
 
@@ -48,11 +48,9 @@ body, html {
  
 <nav class="w3-sidebar w3-bar-block w3-black w3-card w3-animate-left w3-hide-medium w3-hide-large" style="display:none" id="mySidebar">
     <a href="javascript:void(0)" onclick="w3_close()" class="w3-bar-item w3-button w3-large w3-padding-16">Close ×</a>
-    <a href="#about" onclick="w3_close()" class="w3-bar-item w3-button">ABOUT</a>
-    <a href="#team" onclick="w3_close()" class="w3-bar-item w3-button">TEAM</a>
-    <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button">WORK</a>
-    <a href="#pricing" onclick="w3_close()" class="w3-bar-item w3-button">PRICING</a>
-    <a href="#contact" onclick="w3_close()" class="w3-bar-item w3-button">CONTACT</a>
+    <a href="{{ route('police_file_mngt') }}" onclick="w3_close()" class="w3-bar-item w3-button">Personnel File Management</a>
+    <a href="{{ route('admin_acc_mngt') }}" onclick="w3_close()" class="w3-bar-item w3-button">Admin Accounts Management</a>
+    <a href="#work" onclick="w3_close()" class="w3-bar-item w3-button"><i class="fa fa-user"></i>&nbsp;&nbsp;User Profile</a> 
 </nav>
  
  

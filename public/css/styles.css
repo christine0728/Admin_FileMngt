@@ -93,5 +93,39 @@
     color: white !important;
   }
  
-    
+  .edit-btn {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 0.5rem !important;
+    width: auto;
+    background-color: darkgreen !important;
+    color: white !important;
+  }
+
+  .delete-btn {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 0.5rem !important;
+    width: auto;
+    background-color: darkred !important;
+    color: white !important;
+  }
+
+  .view-btn {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 0.5rem !important;
+    width: auto;
+    background-color: #1D0A68 !important;
+    color: white !important;
+  }
+ 
+  .edit-btn:hover, .delete-btn:hover, .view-btn:hover, .case-btn:hover{
+    background-color: #6F79AA !important;
+    color: white !important;
+    cursor: pointer !important;
+  }
 

@@ -19,8 +19,9 @@
 
     <style>
         .folder:hover { 
-            background-color: #6F79AA !important;
-            color: white !important;
+          background-color: #6F79AA !important;
+          color: white !important;
+          cursor: pointer !important;
         } 
         
     </style>
@@ -40,40 +41,68 @@
     <div class="col-12" style="margin-top: -1rem;">
         <div style=" background-color: white; border-radius: 0.5rem; padding: 1rem">
             <div class="row" style="margin-top: 0.5rem;">
-                <div class="col-6" style="margin-top: -1rem; margin-left: 0.5rem">
-                    <p style="font-size: large"><i class="fa-solid fa-user" style="color: #1D0A68"></i>&nbsp;&nbsp;&nbsp;{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a class=" " href="{{ route('add_police_form') }}">View Police Personal File</a></p>  
-                </div> 
+              <div class="col-6" style="margin-top: -1rem; margin-left: 0.5rem">
+                  <p style="font-size: large"><i class="fa-solid fa-user" style="color: #1D0A68"></i>&nbsp;&nbsp;&nbsp;{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a class=" " href="{{ route('add_police_form') }}">View Police Personal File</a></p>  
+              </div> 
 
-                <div class="col-12">
-                    <hr style="margin-top: -1.5rem; border-top: 1px solid #1D0A68">
-                </div>
+              <div class="col-12">
+                  <hr style="margin-top: -1.5rem; border-top: 1px solid #1D0A68">
+              </div>
 
-                <div class="col-12" style="margin-top: -2rem">
-                  <i class="fa-regular fa-folder-closed" style="font-size: 1rem;  color: #1D0A68; padding: 0.29rem; border-radius: 0.2rem"></i>
-                  <span style="font-size: medium; font-weight: bold; color: #1D0A68;">PDS Folder</span>
-                </div>
+              <div class="col-12" style="margin-top: -2rem">
+                <i class="fa-regular fa-folder-closed" style="font-size: 1rem;  color: #1D0A68; padding: 0.29rem; border-radius: 0.2rem"></i>
+                <span style="font-size: medium; font-weight: bold; color: #1D0A68;">PDS Folder</span>
+              </div>
 
-                <div class="col-12" style="padding: 1rem; margin-top: -1rem">
-                  @if(Session::has('message')) 
-                    <div class="alert alert-success col-12" role="alert">
-                      <b>{{ session::get('message') }}</b>
-                    </div>
-                  @endif 
-                </div>
-                 
-                <form method="post" action="{{ route('add_file_pds') }}" enctype="multipart/form-data">
-                  @csrf
-                  <input type="hidden" name="pid" value="{{ $police->id }}">
-                  <input type="hidden" name="pol_fullname" value="{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}"> 
-                  <div class="col-6" style="margin-top: -1rem"> 
-                    <label for="image">Add File in PDS folder:</label>
-                    <input type="file" class="form-control" id="file" name="file" accept="application/pdf"> 
-                  </div>   
-  
-                  <div class="col-12" style="margin-top: -1rem">
-                    <button type="submit" class="form-buttons" style="float: left; width: 7rem">Submit <i class="fa-solid fa-check icons"></i></button>
+              <div class="col-12" style="padding: 1rem; margin-top: -1rem">
+                @if(Session::has('message')) 
+                  <div class="alert alert-success col-12" role="alert">
+                    <b>{{ session::get('message') }}</b>
                   </div>
-                </form> 
+                @endif 
+              </div>
+                
+              @if($fid == 0)
+                  <form method="post" action="{{ route('add_file_pds') }}" enctype="multipart/form-data">
+                    @csrf
+                    <input type="hidden" name="pid" value="{{ $police->id }}">
+                    <input type="hidden" name="pol_fullname" value="{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}"> 
+                    <div class="col-6" style="margin-top: -1rem"> 
+                      <label for="image">Add File in PDS folder:</label>
+                      <input type="file" class="form-control" id="file" name="file" accept="application/pdf"> 
+                    </div>   
+    
+                    <div class="col-12" style="margin-top: -1rem">
+                      <button type="submit" class="form-buttons" style="float: left; width: 7rem">Submit <i class="fa-solid fa-check icons"></i></button>
+                    </div>
+                  </form>  
+                  @else    
+                    <div class="col-12" >
+                      <div style="padding: 1rem; border-radius: 0.5rem; margin-top: -2rem">
+                        <table id="harvTbl" class="display" >
+                          <thead>
+                            <tr style="text-align: center">
+                              <th>Filename</th>
+                              <th>Upload date</th> 
+                              <th style="width: 8rem;">Action</th>
+                            </tr>
+                          </thead>
+                          <tbody> 
+                            @foreach ($files as $f) 
+                              <tr> 
+                                <td style="text-align: center">{{ $f->complete_filename}} </td>
+                                <td style="text-align: center">{{ $f->created_at }}</td> 
+                                <td style="text-align: center">
+                                  <a class="link-buttons" href="{{ route('view_pds', $f->id) }}">View</a>
+                                </td>
+                              </tr>
+                            @endforeach 
+                            </form>
+                          </tbody>
+                        </table>
+                      </div> 
+                    </div> 
+                  @endif  
             </div> 
              
         </div> 

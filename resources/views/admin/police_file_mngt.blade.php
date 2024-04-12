@@ -11,13 +11,24 @@
 
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
 
+    <script src="https://kit.fontawesome.com/7528702e77.js" crossorigin="anonymous"></script>
+
     <title>Admin | Police File Mngt.</title>
 </head>
 <body class="w3-light-grey">
   @include('includes.navbar')
 
+  <div class="col-12" style="margin-top: 4rem">
+    <a class="back-btn" href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left" ></i>&nbsp;&nbsp;Back</a>
+  </div>
+
   <div class="row" style="width: 75%; margin: 0rem auto 0rem auto">
-    <div class="col-12" style="margin-top: 5rem">
+
+    <div class="col-12" style="margin-top: -3rem">
+      <h1><b>Personnel File Management</b></h1>
+    </div>
+
+    <div class="col-12" style="margin-top: -2rem">
       <a class="link-buttons" href="{{ route('add_police_form') }}" style="font-size: medium">Add Police Personnel</a>
     </div>
 
@@ -52,8 +63,7 @@
             </form>
           </tbody>
         </table>
-      </div>
-      
+      </div> 
     </div>
   </div> 
     

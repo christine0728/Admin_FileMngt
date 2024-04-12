@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PersonnelController;
 use App\Http\Controllers\PoliceController;
+use App\Models\Admin;
+use App\Models\File;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,8 +26,7 @@ Route::get('/', function () {
 
 Route::get('/login', [HomeController::class, 'login_view'])->name('login_form');
 Route::post('/login_account', [HomeController::class, 'login'])->name('logging_in');
-Route::get('/add_admin', [HomeController::class, 'add_admin'])->name('add_admin_form');
-Route::post('/add_admin_acc', [HomeController::class, 'add_admin_acc'])->name('add_admin_acc');
+
 
 Route::prefix('admin')->group(function(){
     Route::get('/police_file_mngt', [HomeController::class, 'police_file_mngt'])->name('police_file_mngt');
@@ -32,9 +34,11 @@ Route::prefix('admin')->group(function(){
 
     Route::get('/pds/{pid}', [HomeController::class, 'pds_folder'])->name('pds_folder');
     Route::post('/add_file_pds', [FileController::class, 'add_file_pds'])->name('add_file_pds');
+    Route::get('/view_pds/{fid}', [FileController::class, 'view_pds'])->name('view_pds');
 
     Route::get('/appt_orders/{pid}', [HomeController::class, 'appt_orders_folder'])->name('appt_orders_folder');
     Route::post('/add_file_appt_orders', [FileController::class, 'add_file_appt_orders'])->name('add_file_appt_orders');
+    Route::get('/view_appt_orders/{fid}', [FileController::class, 'view_appt_orders'])->name('view_appt_orders');
 
     Route::get('/promotion_orders/{pid}', [HomeController::class, 'promotion_orders_folder'])->name('promotion_orders_folder');
     Route::post('/add_file_promotion_orders', [FileController::class, 'add_file_promotion_orders'])->name('add_file_promotion_orders');
@@ -76,10 +80,16 @@ Route::prefix('admin')->group(function(){
     Route::post('/add_file_saln', [FileController::class, 'add_file_saln'])->name('add_file_saln');
 
     Route::get('/others/{pid}', [HomeController::class, 'others_folder'])->name('others_folder');
-
+    Route::post('/add_file_others', [FileController::class, 'add_file_others'])->name('add_file_others');
 
     Route::get('/add_police_form', [PoliceController::class, 'add_police_form'])->name('add_police_form');
     Route::post('/adding_police', [PoliceController::class, 'adding_police'])->name('adding_police');
+
+    Route::get('/admin_acc_mngt', [HomeController::class, 'admin_acc_mngt'])->name('admin_acc_mngt');
+    Route::get('/add_admin', [AdminController::class, 'add_admin'])->name('add_admin_form');
+    Route::post('/add_admin_acc', [AdminController::class, 'add_admin_acc'])->name('add_admin_acc'); 
+    Route::get('/edit_admin/{aid}', [AdminController::class, 'edit_admin'])->name('edit_admin_form');
+    Route::post('/edit_admin_acc/{aid}', [AdminController::class, 'edit_admin_acc'])->name('edit_admin_acc');
 
     Route::get('/navbar', [HomeController::class, 'navbar'])->name('navbar');
 });

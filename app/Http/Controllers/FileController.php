@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\File;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
@@ -36,6 +37,22 @@ class FileController extends Controller
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
+    public function view_pds($fid)
+    {
+        $file = File::find($fid);
+
+        if ($file) {
+            $filePath = public_path('files\\files_pds\\' . $file->complete_filename);
+            // dd($filePath);
+            if (file_exists($filePath)) {
+                return response()->file($filePath, [
+                    'Content-Type' => 'application/pdf',
+                ]);
+            }
+        } 
+        abort(404);
+    }
+
     public function add_file_appt_orders(Request $request)
     {
         $now = Carbon::now();
@@ -61,6 +78,22 @@ class FileController extends Controller
         ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
+    }
+
+    public function view_appt_orders($fid)
+    {
+        $file = File::find($fid);
+
+        if ($file) {
+            $filePath = public_path('files\\files_appt_orders\\' . $file->complete_filename);
+            // dd($filePath);
+            if (file_exists($filePath)) {
+                return response()->file($filePath, [
+                    'Content-Type' => 'application/pdf',
+                ]);
+            }
+        } 
+        abort(404);
     }
 
     public function add_file_promotion_orders(Request $request)
@@ -407,6 +440,33 @@ class FileController extends Controller
             'filename' => $filename,
             'complete_filename' => $file,
             'folder' => 'saln', 
+            'created_at' => $now,
+            'updated_at' => $now,
+        ]);
+
+        return redirect()->back()->with('message', 'The file has been added successfully!');
+    }
+
+    public function add_file_others(Request $request)
+    {
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+
+        $filename = $request->input('pol_fullname');
+
+        if ($request->hasFile('file')) {
+            $filee = $request->file('file'); 
+            $file = $filename . '-' . 'others-' . time() . '.' . $filee->getClientOriginalExtension();
+            $filee->move('files/files_others/', $file);  
+        }else {
+            return redirect()->back();
+        }
+
+        $files = File::create([ 
+            'police_id' => $request->input('pid'),
+            'filename' => $filename,
+            'complete_filename' => $file,
+            'folder' => 'others', 
             'created_at' => $now,
             'updated_at' => $now,
         ]);
