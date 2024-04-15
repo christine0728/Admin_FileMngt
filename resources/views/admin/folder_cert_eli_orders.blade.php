@@ -76,11 +76,26 @@
                   </div>
                 </form>  
                 @else    
-                  <div class="col-12" >
+                  <div class="col-12" style="margin-top: -1rem;">
+                    <form method="post" action="{{ route('update_file_cert_eli') }}" enctype="multipart/form-data">
+                      @csrf
+                      <input type="hidden" name="pid" value="{{ $police->id }}">
+                      <input type="hidden" name="pol_fullname" value="{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}"> 
+                      <div class="col-6" style="margin-top: -1rem"> 
+                        <label for="image"><b>Update File in Certificate of Eligibility folder:</b></label>
+                        <input type="file" class="form-control" id="file" name="file" accept="application/pdf"> 
+                      </div>   
+      
+                      <div class="col-12" style="margin-top: -1rem; margin-bottom: 1.5rem">
+                        <button type="submit" class="form-buttons" style="float: left; width: 11rem">Submit Changes <i class="fa-solid fa-check icons"></i></button>
+                      </div>
+                    </form>
+
                     <div style="padding: 1rem; border-radius: 0.5rem; margin-top: -2rem">
                       <table id="harvTbl" class="display" >
                         <thead>
                           <tr style="text-align: center">
+                            <th>Preview</th>
                             <th>Filename</th>
                             <th>Upload date</th> 
                             <th style="width: 8rem;">Action</th>
@@ -89,6 +104,7 @@
                         <tbody> 
                           @foreach ($files as $f) 
                             <tr> 
+                              <td><embed src="{{ route('view_cert_eli', $f->id) }}" type="application/pdf" width="100%" height="200px" /></td>
                               <td style="text-align: center">{{ $f->complete_filename}} </td>
                               <td style="text-align: center">{{ $f->created_at }}</td> 
                               <td style="text-align: center">

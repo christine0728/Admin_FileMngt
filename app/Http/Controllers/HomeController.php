@@ -97,7 +97,9 @@ class HomeController extends Controller
     public function appt_orders_folder($pid)
     {
         $file = File::where('police_id', '=', $pid)->where('folder', '=', 'appointment_orders')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'appointment_orders')->get();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'appointment_orders')            
+            ->orderByDesc('created_at')
+            ->get();
 
         $fid = $file->id ?? 0;
 
@@ -108,7 +110,9 @@ class HomeController extends Controller
     public function promotion_orders_folder($pid)
     {
         $file = File::where('police_id', '=', $pid)->where('folder', '=', 'promotion_orders')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'promotion_orders')->get();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'promotion_orders')
+        ->orderByDesc('created_at')
+        ->get();
 
         $fid = $file->id ?? 0;
 
@@ -119,7 +123,9 @@ class HomeController extends Controller
     public function sus_dem_orders_folder($pid)
     {
         $file = File::where('police_id', '=', $pid)->where('folder', '=', 'susdem_orders')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'susdem_orders')->get();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'susdem_orders')        
+        ->orderByDesc('created_at')
+        ->get();
 
         $fid = $file->id ?? 0;
 
@@ -130,7 +136,9 @@ class HomeController extends Controller
     public function attested_orders_folder($pid)
     {
         $file = File::where('police_id', '=', $pid)->where('folder', '=', 'attested_appts')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'attested_appts')->get();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'attested_appts')        
+        ->orderByDesc('created_at')
+        ->get();
 
         $fid = $file->id ?? 0;
 
@@ -140,8 +148,10 @@ class HomeController extends Controller
 
     public function cert_eli_orders_folder($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'cert_eli')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'cert_eli')->get();
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'cert_eligibility')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'cert_eligibility')
+        ->orderByDesc('created_at')
+        ->get();
 
         $fid = $file->id ?? 0;
 
@@ -151,8 +161,10 @@ class HomeController extends Controller
 
     public function scholastic_rec_folder($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'scholastic_rec')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'scholastic_rec')->get();
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'scholastic_records')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'scholastic_records')        
+        ->orderByDesc('created_at')
+        ->get();
 
         $fid = $file->id ?? 0;
 
@@ -163,7 +175,9 @@ class HomeController extends Controller
     public function trainings_folder($pid)
     {
         $file = File::where('police_id', '=', $pid)->where('folder', '=', 'trainings')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'trainings')->get();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'trainings')
+        ->orderByDesc('created_at')
+        ->get();
 
         $fid = $file->id ?? 0;
 
@@ -174,7 +188,9 @@ class HomeController extends Controller
     public function rca_longpay_folder($pid)
     {
         $file = File::where('police_id', '=', $pid)->where('folder', '=', 'rca_longpay_orders')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'rca_longpay_orders')->get();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'rca_longpay_orders')
+        ->orderByDesc('created_at')
+        ->get();
 
         $fid = $file->id ?? 0;
 
@@ -185,7 +201,9 @@ class HomeController extends Controller
     public function assign_des_orders_folder($pid)
     {
         $file = File::where('police_id', '=', $pid)->where('folder', '=', 'assign_des_orders')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'assign_des_orders')->get();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'assign_des_orders')
+        ->orderByDesc('created_at')
+        ->get();
 
         $fid = $file->id ?? 0;
 
@@ -196,7 +214,9 @@ class HomeController extends Controller
     public function cases_offenses_folder($pid)
     {
         $file = File::where('police_id', '=', $pid)->where('folder', '=', 'cases_offenses')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'cases_offenses')->get();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'cases_offenses')
+        ->orderByDesc('created_at')
+        ->get();
 
         $fid = $file->id ?? 0;
 
@@ -207,7 +227,9 @@ class HomeController extends Controller
     public function firearms_records_folder($pid)
     {
         $file = File::where('police_id', '=', $pid)->where('folder', '=', 'firearms_records')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'firearms_records')->get();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'firearms_records')
+        ->orderByDesc('created_at')
+        ->get();
 
         $fid = $file->id ?? 0;
 
@@ -218,7 +240,9 @@ class HomeController extends Controller
     public function leave_orders_folder($pid)
     {
         $file = File::where('police_id', '=', $pid)->where('folder', '=', 'leave_orders')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'leave_orders')->get();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'leave_orders')
+        ->orderByDesc('created_at')
+        ->get();
 
         $fid = $file->id ?? 0;
 
@@ -229,7 +253,9 @@ class HomeController extends Controller
     public function awards_folder($pid)
     {
         $file = File::where('police_id', '=', $pid)->where('folder', '=', 'awards')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'awards')->get();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'awards')
+        ->orderByDesc('created_at')
+        ->get();
 
         $fid = $file->id ?? 0;
 
@@ -240,7 +266,9 @@ class HomeController extends Controller
     public function saln_folder($pid)
     {
         $file = File::where('police_id', '=', $pid)->where('folder', '=', 'saln')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'saln')->get();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'saln')
+        ->orderByDesc('created_at')
+        ->get();
 
         $fid = $file->id ?? 0;
 
@@ -251,7 +279,9 @@ class HomeController extends Controller
     public function others_folder($pid)
     {
         $file = File::where('police_id', '=', $pid)->where('folder', '=', 'others')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'others')->get();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'others')
+        ->orderByDesc('created_at')
+        ->get();
 
         $fid = $file->id ?? 0;
 

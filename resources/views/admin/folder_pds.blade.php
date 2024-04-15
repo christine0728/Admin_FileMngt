@@ -79,7 +79,7 @@
 
                 @else    
                   <div class="col-12" style="margin-top: -1rem;">
-                    <form method="post" action="{{ route('update_file_psa') }}" enctype="multipart/form-data">
+                    <form method="post" action="{{ route('update_file_pds') }}" enctype="multipart/form-data">
                       @csrf
                       <input type="hidden" name="pid" value="{{ $police->id }}">
                       <input type="hidden" name="pol_fullname" value="{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}"> 
@@ -97,7 +97,7 @@
                       <table id="harvTbl" class="display" >
                         <thead>
                           <tr style="text-align: center">
-                            <td>Preview</td>
+                            <th>Preview</th>
                             <th>Filename</th>
                             <th>Upload date</th> 
                             <th style="width: 8rem;">Action</th>
