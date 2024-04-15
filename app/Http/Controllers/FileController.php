@@ -85,7 +85,7 @@ class FileController extends Controller
             'updated_at' => $formatted_now,
         ]);
 
-        return redirect()->back()->with('message', 'The file has been added successfully!');
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
     public function add_file_psa(Request $request)
@@ -163,7 +163,7 @@ class FileController extends Controller
             'updated_at' => $formatted_now,
         ]);
 
-        return redirect()->back()->with('message', 'The file has been added successfully!');
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
     public function add_file_appt_orders(Request $request)
@@ -211,6 +211,37 @@ class FileController extends Controller
         abort(404);
     }
 
+    public function update_file_appt_orders(Request $request)
+    {
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+        $formatted_now = $now->format('Y-m-d, g:i a');
+        $filename_time = $now->format('Y-m-d_gia');
+
+        // dd($now);
+
+        $filename = $request->input('pol_fullname');
+
+        if ($request->hasFile('file')) {
+            $filee = $request->file('file'); 
+            $file = $filename . '-' . 'appt_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+            $filee->move('files/files_appt_orders/', $file);  
+        }else {
+            return redirect()->back();
+        }
+
+        $files = File::create([ 
+            'police_id' => $request->input('pid'),
+            'filename' => $filename,
+            'complete_filename' => $file,
+            'folder' => 'appointment_orders', 
+            'created_at' => $formatted_now,
+            'updated_at' => $formatted_now,
+        ]);
+
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
+    }
+
     public function add_file_promotion_orders(Request $request)
     {
         $now = Carbon::now();
@@ -254,6 +285,37 @@ class FileController extends Controller
             }
         } 
         abort(404);
+    }
+
+    public function update_file_promotion_orders(Request $request)
+    {
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+        $formatted_now = $now->format('Y-m-d, g:i a');
+        $filename_time = $now->format('Y-m-d_gia');
+
+        // dd($now);
+
+        $filename = $request->input('pol_fullname');
+
+        if ($request->hasFile('file')) {
+            $filee = $request->file('file'); 
+            $file = $filename . '-' . 'promotion_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+            $filee->move('files/files_promotion_orders/', $file);  
+        }else {
+            return redirect()->back();
+        }
+
+        $files = File::create([ 
+            'police_id' => $request->input('pid'),
+            'filename' => $filename,
+            'complete_filename' => $file,
+            'folder' => 'promotion_orders', 
+            'created_at' => $formatted_now,
+            'updated_at' => $formatted_now,
+        ]);
+
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
     
     public function add_file_susdem_orders(Request $request)
@@ -301,6 +363,37 @@ class FileController extends Controller
         abort(404);
     }
 
+    public function update_file_susdem_orders(Request $request)
+    {
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+        $formatted_now = $now->format('Y-m-d, g:i a');
+        $filename_time = $now->format('Y-m-d_gia');
+
+        // dd($now);
+
+        $filename = $request->input('pol_fullname');
+
+        if ($request->hasFile('file')) {
+            $filee = $request->file('file'); 
+            $file = $filename . '-' . 'susdem_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+            $filee->move('files/files_susdem_orders/', $file);  
+        }else {
+            return redirect()->back();
+        }
+
+        $files = File::create([ 
+            'police_id' => $request->input('pid'),
+            'filename' => $filename,
+            'complete_filename' => $file,
+            'folder' => 'susdem_orders', 
+            'created_at' => $formatted_now,
+            'updated_at' => $formatted_now,
+        ]);
+
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
+    }
+
     public function add_file_attested_appts(Request $request)
     {
         $now = Carbon::now();
@@ -346,6 +439,37 @@ class FileController extends Controller
         abort(404);
     }
 
+    public function update_file_attested_appts(Request $request)
+    {
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+        $formatted_now = $now->format('Y-m-d, g:i a');
+        $filename_time = $now->format('Y-m-d_gia');
+
+        // dd($now);
+
+        $filename = $request->input('pol_fullname');
+
+        if ($request->hasFile('file')) {
+            $filee = $request->file('file'); 
+            $file = $filename . '-' . 'attested_appts-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+            $filee->move('files/files_attested_appts/', $file);  
+        }else {
+            return redirect()->back();
+        }
+
+        $files = File::create([ 
+            'police_id' => $request->input('pid'),
+            'filename' => $filename,
+            'complete_filename' => $file,
+            'folder' => 'attested_appts', 
+            'created_at' => $formatted_now,
+            'updated_at' => $formatted_now,
+        ]);
+
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
+    }
+
     public function add_file_cert_eli(Request $request)
     {
         $now = Carbon::now();
@@ -367,7 +491,7 @@ class FileController extends Controller
             'police_id' => $request->input('pid'),
             'filename' => $filename,
             'complete_filename' => $file,
-            'folder' => 'cert_eli', 
+            'folder' => 'cert_eligibility', 
             'created_at' => $formatted_now,
             'updated_at' => $formatted_now,
         ]);
@@ -389,6 +513,37 @@ class FileController extends Controller
             }
         } 
         abort(404);
+    }
+
+    public function update_file_cert_eli(Request $request)
+    {
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+        $formatted_now = $now->format('Y-m-d, g:i a');
+        $filename_time = $now->format('Y-m-d_gia');
+
+        // dd($now);
+
+        $filename = $request->input('pol_fullname');
+
+        if ($request->hasFile('file')) {
+            $filee = $request->file('file'); 
+            $file = $filename . '-' . 'cert_eli-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+            $filee->move('files/files_cert_eli/', $file);  
+        }else {
+            return redirect()->back();
+        }
+
+        $files = File::create([ 
+            'police_id' => $request->input('pid'),
+            'filename' => $filename,
+            'complete_filename' => $file,
+            'folder' => 'cert_eligibility', 
+            'created_at' => $formatted_now,
+            'updated_at' => $formatted_now,
+        ]);
+
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
     public function add_file_scholastic_rec(Request $request)
@@ -436,6 +591,37 @@ class FileController extends Controller
         abort(404);
     }
 
+    public function update_file_scholastic_rec(Request $request)
+    {
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+        $formatted_now = $now->format('Y-m-d, g:i a');
+        $filename_time = $now->format('Y-m-d_gia');
+
+        // dd($now);
+
+        $filename = $request->input('pol_fullname');
+
+        if ($request->hasFile('file')) {
+            $filee = $request->file('file'); 
+            $file = $filename . '-' . 'scholastic_rec-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+            $filee->move('files/files_scholastic_rec/', $file);  
+        }else {
+            return redirect()->back();
+        }
+
+        $files = File::create([ 
+            'police_id' => $request->input('pid'),
+            'filename' => $filename,
+            'complete_filename' => $file,
+            'folder' => 'scholastic_records', 
+            'created_at' => $formatted_now,
+            'updated_at' => $formatted_now,
+        ]);
+
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
+    }
+
     public function add_file_trainings(Request $request)
     {
         $now = Carbon::now();
@@ -479,6 +665,37 @@ class FileController extends Controller
             }
         } 
         abort(404);
+    }
+
+    public function update_file_trainings(Request $request)
+    {
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+        $formatted_now = $now->format('Y-m-d, g:i a');
+        $filename_time = $now->format('Y-m-d_gia');
+
+        // dd($now);
+
+        $filename = $request->input('pol_fullname');
+
+        if ($request->hasFile('file')) {
+            $filee = $request->file('file'); 
+            $file = $filename . '-' . 'trainings-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+            $filee->move('files/files_trainings/', $file);  
+        }else {
+            return redirect()->back();
+        }
+
+        $files = File::create([ 
+            'police_id' => $request->input('pid'),
+            'filename' => $filename,
+            'complete_filename' => $file,
+            'folder' => 'trainings', 
+            'created_at' => $formatted_now,
+            'updated_at' => $formatted_now,
+        ]);
+
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
     public function add_file_rca_longpay(Request $request)
@@ -526,6 +743,37 @@ class FileController extends Controller
         abort(404);
     }
 
+    public function update_file_rca_longpay(Request $request)
+    {
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+        $formatted_now = $now->format('Y-m-d, g:i a');
+        $filename_time = $now->format('Y-m-d_gia');
+
+        // dd($now);
+
+        $filename = $request->input('pol_fullname');
+
+        if ($request->hasFile('file')) {
+            $filee = $request->file('file'); 
+            $file = $filename . '-' . 'rca_longpay_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+            $filee->move('files/files_rca_longpay/', $file);  
+        }else {
+            return redirect()->back();
+        }
+
+        $files = File::create([ 
+            'police_id' => $request->input('pid'),
+            'filename' => $filename,
+            'complete_filename' => $file,
+            'folder' => 'rca_longpay_orders', 
+            'created_at' => $formatted_now,
+            'updated_at' => $formatted_now,
+        ]);
+
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
+    }
+
     public function add_file_assign_des(Request $request)
     {
         $now = Carbon::now();
@@ -570,6 +818,37 @@ class FileController extends Controller
         } 
         abort(404);
     } 
+
+    public function update_file_assign_des(Request $request)
+    {
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+        $formatted_now = $now->format('Y-m-d, g:i a');
+        $filename_time = $now->format('Y-m-d_gia');
+
+        // dd($now);
+
+        $filename = $request->input('pol_fullname');
+
+        if ($request->hasFile('file')) {
+            $filee = $request->file('file'); 
+            $file = $filename . '-' . 'assign_des-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+            $filee->move('files/files_assign_des/', $file);  
+        }else {
+            return redirect()->back();
+        }
+
+        $files = File::create([ 
+            'police_id' => $request->input('pid'),
+            'filename' => $filename,
+            'complete_filename' => $file,
+            'folder' => 'assign_des_orders', 
+            'created_at' => $formatted_now,
+            'updated_at' => $formatted_now,
+        ]);
+
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
+    }
 
     public function add_file_cases_offenses(Request $request)
     {
@@ -616,6 +895,37 @@ class FileController extends Controller
         abort(404);
     } 
 
+    public function update_file_cases_offenses(Request $request)
+    {
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+        $formatted_now = $now->format('Y-m-d, g:i a');
+        $filename_time = $now->format('Y-m-d_gia');
+
+        // dd($now);
+
+        $filename = $request->input('pol_fullname');
+
+        if ($request->hasFile('file')) {
+            $filee = $request->file('file'); 
+            $file = $filename . '-' . 'cases_offenses-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+            $filee->move('files/files_cases_offenses/', $file);  
+        }else {
+            return redirect()->back();
+        }
+
+        $files = File::create([ 
+            'police_id' => $request->input('pid'),
+            'filename' => $filename,
+            'complete_filename' => $file,
+            'folder' => 'cases_offenses', 
+            'created_at' => $formatted_now,
+            'updated_at' => $formatted_now,
+        ]);
+
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
+    }
+
     public function add_file_firearms_rec(Request $request)
     {
         $now = Carbon::now();
@@ -661,6 +971,37 @@ class FileController extends Controller
         abort(404);
     } 
 
+    public function update_file_firearms_rec(Request $request)
+    {
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+        $formatted_now = $now->format('Y-m-d, g:i a');
+        $filename_time = $now->format('Y-m-d_gia');
+
+        // dd($now);
+
+        $filename = $request->input('pol_fullname');
+
+        if ($request->hasFile('file')) {
+            $filee = $request->file('file'); 
+            $file = $filename . '-' . 'firearms_rec-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+            $filee->move('files/files_firearms_rec/', $file);  
+        }else {
+            return redirect()->back();
+        }
+
+        $files = File::create([ 
+            'police_id' => $request->input('pid'),
+            'filename' => $filename,
+            'complete_filename' => $file,
+            'folder' => 'firearms_records', 
+            'created_at' => $formatted_now,
+            'updated_at' => $formatted_now,
+        ]);
+
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
+    }
+
     public function add_file_leave_orders(Request $request)
     {
         $now = Carbon::now();
@@ -705,6 +1046,37 @@ class FileController extends Controller
         } 
         abort(404);
     } 
+
+    public function update_file_leave_orders(Request $request)
+    {
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+        $formatted_now = $now->format('Y-m-d, g:i a');
+        $filename_time = $now->format('Y-m-d_gia');
+
+        // dd($now);
+
+        $filename = $request->input('pol_fullname');
+
+        if ($request->hasFile('file')) {
+            $filee = $request->file('file'); 
+            $file = $filename . '-' . 'leave_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+            $filee->move('files/files_leave_orders/', $file);  
+        }else {
+            return redirect()->back();
+        }
+
+        $files = File::create([ 
+            'police_id' => $request->input('pid'),
+            'filename' => $filename,
+            'complete_filename' => $file,
+            'folder' => 'leave_orders', 
+            'created_at' => $formatted_now,
+            'updated_at' => $formatted_now,
+        ]);
+
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
+    }
     
     public function add_file_awards(Request $request)
     {
@@ -751,6 +1123,37 @@ class FileController extends Controller
         abort(404);
     } 
 
+    public function update_file_awards(Request $request)
+    {
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+        $formatted_now = $now->format('Y-m-d, g:i a');
+        $filename_time = $now->format('Y-m-d_gia');
+
+        // dd($now);
+
+        $filename = $request->input('pol_fullname');
+
+        if ($request->hasFile('file')) {
+            $filee = $request->file('file'); 
+            $file = $filename . '-' . 'awards-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+            $filee->move('files/files_awards/', $file);  
+        }else {
+            return redirect()->back();
+        }
+
+        $files = File::create([ 
+            'police_id' => $request->input('pid'),
+            'filename' => $filename,
+            'complete_filename' => $file,
+            'folder' => 'awards', 
+            'created_at' => $formatted_now,
+            'updated_at' => $formatted_now,
+        ]);
+
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
+    }
+
     public function add_file_saln(Request $request)
     {
         $now = Carbon::now();
@@ -796,6 +1199,37 @@ class FileController extends Controller
         abort(404);
     }
 
+    public function update_file_saln(Request $request)
+    {
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+        $formatted_now = $now->format('Y-m-d, g:i a');
+        $filename_time = $now->format('Y-m-d_gia');
+
+        // dd($now);
+
+        $filename = $request->input('pol_fullname');
+
+        if ($request->hasFile('file')) {
+            $filee = $request->file('file'); 
+            $file = $filename . '-' . 'saln-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+            $filee->move('files/files_saln/', $file);  
+        }else {
+            return redirect()->back();
+        }
+
+        $files = File::create([ 
+            'police_id' => $request->input('pid'),
+            'filename' => $filename,
+            'complete_filename' => $file,
+            'folder' => 'saln', 
+            'created_at' => $formatted_now,
+            'updated_at' => $formatted_now,
+        ]);
+
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
+    }
+
     public function add_file_others(Request $request)
     {
         $now = Carbon::now();
@@ -839,6 +1273,37 @@ class FileController extends Controller
             }
         } 
         abort(404);
+    }
+
+    public function update_file_others(Request $request)
+    {
+        $now = Carbon::now();
+        $now->setTimezone('Asia/Manila');
+        $formatted_now = $now->format('Y-m-d, g:i a');
+        $filename_time = $now->format('Y-m-d_gia');
+
+        // dd($now);
+
+        $filename = $request->input('pol_fullname');
+
+        if ($request->hasFile('file')) {
+            $filee = $request->file('file'); 
+            $file = $filename . '-' . 'others-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+            $filee->move('files/files_others/', $file);  
+        }else {
+            return redirect()->back();
+        }
+
+        $files = File::create([ 
+            'police_id' => $request->input('pid'),
+            'filename' => $filename,
+            'complete_filename' => $file,
+            'folder' => 'others', 
+            'created_at' => $formatted_now,
+            'updated_at' => $formatted_now,
+        ]);
+
+        return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
 }
