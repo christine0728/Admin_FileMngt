@@ -56,7 +56,7 @@
                                 <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">PDS</span>
                             </div> 
                             
-                            <div onclick="window.location.href=''" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem; height: 13rem">
+                            <div onclick="window.location.href='{{ route('psa_folder', $police->id) }}'" class="col-2 folder" style="text-align: center; background-color: #1D0A68; border-radius: 0.5rem; margin: 0.5rem 2.1rem 1.8rem 0.5rem; height: 13rem">
                                 <i class="fa-regular fa-folder-closed" style="font-size: 5rem; color: white; margin-bottom: 0.5rem"></i>
                                 <br><span style="font-size: medium; font-weight: bold; color: white; flex-grow: 1;">PSA Birth Certificates</span>
                             </div> 
