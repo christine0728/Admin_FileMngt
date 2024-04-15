@@ -61,7 +61,7 @@
                   @endif 
                 </div> 
 
-                @if($file->id == null)
+                @if($fid == 0)
                   <form method="post" action="{{ route('add_file_appt_orders') }}" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="pid" value="{{ $police->id }}">
@@ -75,33 +75,33 @@
                       <button type="submit" class="form-buttons" style="float: left; width: 7rem">Submit <i class="fa-solid fa-check icons"></i></button>
                     </div>
                   </form>  
-                  @else    
-                    <div class="col-12" >
-                      <div style="padding: 1rem; border-radius: 0.5rem; margin-top: -2rem">
-                        <table id="harvTbl" class="display" >
-                          <thead>
-                            <tr style="text-align: center">
-                              <th>Filename</th>
-                              <th>Upload date</th> 
-                              <th style="width: 8rem;">Action</th>
+                @else    
+                  <div class="col-12" >
+                    <div style="padding: 1rem; border-radius: 0.5rem; margin-top: -2rem">
+                      <table id="harvTbl" class="display" >
+                        <thead>
+                          <tr style="text-align: center">
+                            <th>Filename</th>
+                            <th>Upload date</th> 
+                            <th style="width: 8rem;">Action</th>
+                          </tr>
+                        </thead>
+                        <tbody> 
+                          @foreach ($files as $f) 
+                            <tr> 
+                              <td style="text-align: center">{{ $f->complete_filename}} </td>
+                              <td style="text-align: center">{{ $f->created_at }}</td> 
+                              <td style="text-align: center">
+                                <a class="link-buttons" href="{{ route('view_appt_orders', $f->id) }}">View</a>
+                              </td>
                             </tr>
-                          </thead>
-                          <tbody> 
-                            @foreach ($files as $f) 
-                              <tr> 
-                                <td style="text-align: center">{{ $f->complete_filename}} </td>
-                                <td style="text-align: center">{{ $f->created_at }}</td> 
-                                <td style="text-align: center">
-                                  <a class="link-buttons" href="{{ route('view_appt_orders', $f->id) }}">View</a>
-                                </td>
-                              </tr>
-                            @endforeach 
-                            </form>
-                          </tbody>
-                        </table>
-                      </div> 
+                          @endforeach 
+                          </form>
+                        </tbody>
+                      </table>
                     </div> 
-                  @endif  
+                  </div> 
+                @endif  
             </div> 
              
         </div> 
