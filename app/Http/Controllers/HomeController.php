@@ -62,9 +62,15 @@ class HomeController extends Controller
         }
     }
 
+    public function logout()
+    {
+        Auth::guard('admin')->logout();
+        return redirect()->route('login_form')->with('success', 'Admin logged out successfully');
+    }
+
     public function police_file_mngt()
     {
-        $police = Police::get();
+        $police = Police::orderByDesc('id')->get();
         return view('admin.police_file_mngt', ['police' => $police]);
     }
 
@@ -294,6 +300,5 @@ class HomeController extends Controller
         $admin = Admin::orderByDesc('id')->get();
         return view('admin.admin_acc_mngt', ['admin' => $admin]);
     }
-
-    
+ 
 }

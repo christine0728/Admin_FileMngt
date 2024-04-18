@@ -22,7 +22,7 @@
         
     </style>
 </head>
-<body class=" w3-light-grey">
+<body style="background-color: #d3d3d3">
     @include('includes.navbar')
 
     <div class="col-12" style="margin-top: 4rem">
@@ -34,11 +34,11 @@
             <h1>{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}</h1>
         </div>
 
-        <div class="col-12" style="margin-top: -1rem; background-color: white; border-radius: 0.5rem;  ">
+        <div class="col-12" style="margin-top: 0rem; background-color: white; border-radius: 0.5rem;  ">
             {{-- <div style="background-color: white; border-radius: 0.5rem; "> --}}
                 <div class="row" style="margin-top: -1rem; ">
                     <div class="col-6" style="margin-top: 0.5rem; margin-left: 0.5rem;  ">
-                        <p style="font-size: large"><i class="fa-solid fa-user" style="color: #1D0A68"></i>&nbsp;&nbsp;&nbsp;{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a class=" " href="{{ route('add_police_form') }}">View Police Personal File</a></p>  
+                        <p style="font-size: large"><i class="fa-solid fa-user" style="color: #1D0A68"></i>&nbsp;&nbsp;&nbsp;{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a class=" " href="{{ route('view_police_file', $police->id) }}">View Police Personal File</a></p>  
                     </div> 
 
                     <div class="col-12" style="padding: 1rem 1.5rem 1rem 1.5rem">

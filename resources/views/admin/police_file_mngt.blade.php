@@ -13,9 +13,12 @@
 
     <script src="https://kit.fontawesome.com/7528702e77.js" crossorigin="anonymous"></script>
 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
     <title>Admin | Police File Mngt.</title>
 </head>
-<body class="w3-light-grey">
+<body style="background-color: #d3d3d3">
   @include('includes.navbar')
 
   <div class="col-12" style="margin-top: 4rem">
@@ -33,6 +36,14 @@
     </div>
 
     <div class="col-12" >
+      <div class="col-12" style="padding: 1rem; margin-top: 0.5rem">
+        @if(Session::has('message')) 
+          <div class="alert alert-success col-12" role="alert">
+            <b>{{ session::get('message') }}</b>
+          </div>
+        @endif 
+      </div>
+
       <div style="padding: 1rem; background-color: white; border-radius: 0.5rem">
         <table id="harvTbl" class="display" >
           <thead>

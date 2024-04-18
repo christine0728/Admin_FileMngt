@@ -18,7 +18,7 @@
 
     <title>Admin | Add Admin Form</title>
 </head>
-<body class="w3-light-grey">
+<body style="background-color: #d3d3d3">
   @include('includes.navbar')
 
   <div class="col-12" style="margin-top: 4rem">
