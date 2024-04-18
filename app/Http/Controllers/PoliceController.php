@@ -29,6 +29,18 @@ class PoliceController extends Controller
     public function adding_police(Request $request){  
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
+        $formatted_now = $now->format('Y-m-d, g:i a');
+        $filename_time = $now->format('Y-m-d_gia');
+        $filename = $request->input('per_firstname') . ' ' . $request->input('per_lastname');
+
+        if ($request->hasFile('per_image')) {
+            $per_file = $request->file('per_image');
+            $per_extension = $per_file->getClientOriginalExtension();
+            $per_filename = $filename . '-' . $filename_time . '.' . $per_extension;
+            $per_file->move('images/police/', $per_filename);
+        } else {
+            $per_filename = 'no image';
+        }
  
         $rules = [
             'per_lastname' => 'required|regex:/^[a-zA-Z -]+$/',
@@ -41,15 +53,12 @@ class PoliceController extends Controller
             'per_city' => 'required|regex:/^[a-zA-Z ]+$/',
             'per_province' => 'required|regex:/^[a-zA-Z ]+$/',
             'per_place_birth' => 'required|regex:/^[a-zA-Z -]+$/',
-            'per_date_birth' => 'required|date|before_or_equal:-21 years',
-            'per_sex' => 'required|in:Male,Female',
-            'per_civil_status' => 'required',
+            'per_date_birth' => 'required|date|before_or_equal:-21 years',  
             'per_religion' => 'required|regex:/^[a-zA-Z ]+$/',
             'per_color_hair' => 'required|regex:/^[a-zA-Z -]+$/',
             'per_color_eyes' => 'required|regex:/^[a-zA-Z ]+$/',
             'per_height' => 'required|numeric',
-            'per_weight' => 'required|numeric',
-            'per_bloodtype' => 'required',
+            'per_weight' => 'required|numeric', 
             'per_build' => 'required|regex:/^[a-zA-Z -]+$/',
             'per_complexion' => 'required|regex:/^[a-zA-Z -]+$/',
             'per_languages' => 'required',
@@ -59,7 +68,7 @@ class PoliceController extends Controller
             'per_spouse_kin_occupation' => 'required|regex:/^[a-zA-Z -]+$/',
             // Add more validation rules as needed
         ];
-
+ 
         // Custom error messages
         $messages = [
             'required' => 'The field is required.',
@@ -72,11 +81,11 @@ class PoliceController extends Controller
 
         // Validate the request data
         $validatedData = $request->validate($rules, $messages);
-
-        // If validation passes, create the Police record
-        $now = Carbon::now()->setTimezone('Asia/Manila');
+ 
+        // dd('backkk');
 
         $police = Police::create([
+            'per_image' => $per_filename,
             'per_lastname' => $validatedData['per_lastname'],
             'per_firstname' => $validatedData['per_firstname'],
             'per_middlename' => $validatedData['per_middlename'],
@@ -88,14 +97,14 @@ class PoliceController extends Controller
             'per_province' => $validatedData['per_province'],
             'per_place_birth' => $validatedData['per_place_birth'],
             'per_date_birth' => $validatedData['per_date_birth'],
-            'per_sex' => $validatedData['per_sex'],
-            'per_civil_status' => $validatedData['per_civil_status'],
+            'per_sex' => $request->input('per_sex'),
+            'per_civil_status' => $request->input('per_civil_status'),
             'per_religion' => $validatedData['per_religion'],
             'per_color_hair' => $validatedData['per_color_hair'],
             'per_color_eyes' => $validatedData['per_color_eyes'],
             'per_height' => $validatedData['per_height'],
             'per_weight' => $validatedData['per_weight'],
-            'per_bloodtype' => $validatedData['per_bloodtype'],
+            'per_bloodtype' => $request->input('per_bloodtype'),
             'per_build' => $validatedData['per_build'],
             'per_complexion' => $validatedData['per_complexion'],
             'per_languages' => $validatedData['per_languages'],
@@ -137,5 +146,15 @@ class PoliceController extends Controller
         ]);
 
         return redirect()->route('police_file_mngt')->with('message', 'The record has been added successfully!');
+    }
+
+    public function change_status_pol(Request $request, $pid)
+    { 
+        Police::where('id', $pid)
+        ->update([
+            'per_status' => $request->input('per_status'),  
+        ]);
+
+        return redirect()->route('police_file_mngt')->with('edited', 'Admin Account edited successfully!');
     }
 }

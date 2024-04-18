@@ -107,7 +107,7 @@
     <div class="container">
         <div class="header" style="background-color: #1D0A68; padding: 1rem;">
             <img src="{{ asset('images/pnp - logo.png') }}" alt="">
-            <b style="color: white;">Women and Children Protection Center</b>
+            <b style="color: white;">Admin Department</b>
         </div> 
     </div>  
 

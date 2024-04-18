@@ -37,8 +37,15 @@
         <div class="col-12" style="margin-top: 0rem; background-color: white; border-radius: 0.5rem;  ">
             {{-- <div style="background-color: white; border-radius: 0.5rem; "> --}}
                 <div class="row" style="margin-top: -1rem; ">
-                    <div class="col-6" style="margin-top: 0.5rem; margin-left: 0.5rem;  ">
-                        <p style="font-size: large"><i class="fa-solid fa-user" style="color: #1D0A68"></i>&nbsp;&nbsp;&nbsp;{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a class=" " href="{{ route('view_police_file', $police->id) }}">View Police Personal File</a></p>  
+                    <div class="col-12" style="margin-top: 0.5rem; margin-left: 0.5rem;  ">
+                        <p style="font-size: large"> 
+                            @if($police->per_image)
+                                <img src="{{ asset('images/police/' . $police->per_image) }}" alt="{{ $police->per_firstname }}" class="img-thumbnail" style="max-width: 50px; max-height: 50px;">
+                            @else
+                            <i class="fa-solid fa-user" style="color: #1D0A68"></i>
+                            @endif
+
+                            &nbsp;&nbsp;&nbsp;{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a class=" " href="{{ route('view_police_file', $police->id) }}">View Police Personal File</a></p>  
                     </div> 
 
                     <div class="col-12" style="padding: 1rem 1.5rem 1rem 1.5rem">

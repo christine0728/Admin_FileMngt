@@ -238,19 +238,28 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">7. SEX:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_sex" value="{{ old('per_sex') }}">
-                                    @if ($errors->has('per_sex')) 
-                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_sex') }}</span>
-                                    @endif 
+                                    {{-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_sex" value="{{ old('per_sex') }}">  --}}
+
+                                    <select class="form-control" name="per_sex" >
+                                        <option value="">Select:</option>
+                                        <option value="FEMALE">FEMALE</option>
+                                        <option value="MALE">MALE</option>
+                                    </select>
                                 </div> 
                             </div> 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">8. CIVIL STATUS:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_civil_status" value="{{ old('per_civil_status') }}">
-                                    @if ($errors->has('per_civil_status')) 
-                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_civil_status') }}</span>
-                                    @endif 
+                                    {{-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_civil_status" value="{{ old('per_civil_status') }}">  --}}
+
+                                    <select class="form-control" name="per_civil_status" >
+                                        <option value="">Select:</option>
+                                        <option value="SINGLE">SINGLE</option>
+                                        <option value="MARRIED">MARRIED</option>
+                                        <option value="SEPARATED">SEPARATED</option>
+                                        <option value="WIDOW/ER">WIDOW/ER</option>
+                                        <option value="LIVE_IN_PARTNER">LIVE IN PARTNER</option>
+                                    </select>
                                 </div> 
                             </div> 
                             <div class="col-4">
@@ -308,10 +317,19 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">14. BLOOD TYPE:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_bloodtype" value="{{ old('per_bloodtype') }}">
-                                    @if ($errors->has('per_bloodtype')) 
-                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_bloodtype') }}</span>
-                                    @endif 
+                                    {{-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_bloodtype" value="{{ old('per_bloodtype') }}"> --}}
+                                    
+                                    <select class="form-control" name="per_bloodtype" >
+                                        <option value="">Select:</option>
+                                        <option value="A+">A+</option>
+                                        <option value="O+">O+</option>
+                                        <option value="B+">B+</option>
+                                        <option value="AB+">AB+</option>
+                                        <option value="A-">A-</option>
+                                        <option value="O-">O-</option>
+                                        <option value="B-">B-</option>
+                                        <option value="AB-">AB-</option>
+                                    </select>
                                 </div> 
                             </div> 
                             <div class="col-4">
@@ -365,7 +383,7 @@
                         </div>
 
                         <div class="row">
-                            <div class="col-9">
+                            <div class="col-8">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">20. NAME OF SPOUSE OR NEAREST KIN/ADDRESS:</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_name_spouse_near_kin" value="{{ old('per_name_spouse_near_kin') }}">
@@ -374,7 +392,7 @@
                                     @endif 
                                 </div> 
                             </div> 
-                            <div class="col-3">
+                            <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">21. OCCUPATION:</label>
                                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_spouse_kin_occupation" value="{{ old('per_spouse_kin_occupation') }}">
@@ -383,6 +401,15 @@
                                     @endif 
                                 </div> 
                             </div>  
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="image">Upload Police's Image:</label>
+                                    <input type="file" class="form-control" id="file" name="per_image" accept="image/*" onchange="previewImage(this)">
+                                </div>
+
+                                <div id="imagePreview"></div>
+                            </div>
                         </div>
                     </div>  
   
@@ -398,84 +425,7 @@
             </form>
         </div> 
     </div>
-
-    <script> 
-        $(function(){
-    var $sections = $('.'); 
-    var $navLinks = $('.nav-link');
-    
-    function navigateTo(index){ 
-        $sections.removeClass('current').eq(index).addClass('current'); 
-        
-        $navLinks.removeClass('active');
-        $navLinks.eq(index).addClass('active');
-        
-        $('.form-navigation .previous').toggle(index > 0);
-        var atTheEnd = index >= $sections.length - 1;
-        $('.form-navigation .next').toggle(!atTheEnd);
-        $('.form-navigation [type=submit]').toggle(atTheEnd); 
-
-        $('html, body').scrollTop(0);
-    }
-
-    function curIndex(){ 
-        return $sections.index($sections.filter('.current'));
-    }
-
-    // Function to handle navigation when nav-link is clicked
-    // $navLinks.click(function() {
-    //     var index = $(this).index(); // Get the index of the clicked nav-link
-    //     navigateTo(index);
-    // });
-
-    $('.form-navigation .previous').click(function(){
-        var currentIndex = curIndex();
-        if (currentIndex > 0) {
-            navigateTo(currentIndex - 1);
-        }
-    });
-
-    $('.form-navigation .next').click(function(){
-        var currentIndex = curIndex();
-        $('.employee-form').parsley().whenValidate({
-            group:'block-'+currentIndex
-        }).done(function(){
-            navigateTo(currentIndex + 1);
-        });
-    });
-
-    $sections.each(function(index, section){
-        $(section).find(':input').attr('data-parsley-group', 'block-'+index);
-    });
-
-    navigateTo(0); 
-});
-
-        
-        function showfield(name){
-            if(name=='Others')document.getElementById('div1').innerHTML='Pls. specify: <input type="text" name="others" class="form-control" />';
-            else document.getElementById('div1').innerHTML='';
-
-            if(name=='Others2')document.getElementById('div2').innerHTML='Pls. specify: <input type="text" name="others2" class="form-control" />';
-            else document.getElementById('div2').innerHTML='';
-
-            if(name=='Others3')document.getElementById('div3').innerHTML='Pls. specify: <input type="text" name="others3" class="form-control" />';
-            else document.getElementById('div3').innerHTML='';
-
-            if(name=='Others4')document.getElementById('div4').innerHTML='Pls. specify: <input type="text" name="others4" class="form-control" />';
-            else document.getElementById('div4').innerHTML='';  
-        }
-
-        function showfield2(name){   
-            if(name=='Others5')document.getElementById('div5').innerHTML='Pls. specify: <input type="text" name="others5" class="form-control" />';
-            else document.getElementById('div5').innerHTML='';
-        } 
-
-        mobiscroll.select('#multiple-select', {
-        inputElement: document.getElementById('my-input'),
-        touchUi: false
-    });
-    </script>
+  
     <script>
         function toUpper(input) { 
             let value = input.value; 
@@ -491,7 +441,7 @@
                 var reader = new FileReader();
 
                 reader.onload = function (e) {
-                    previewContainer.innerHTML = '<img src="' + e.target.result + '" class="img-thumbnail" style="max-width:25%; max-height:25%;">';
+                    previewContainer.innerHTML = '<img src="' + e.target.result + '" class="img-thumbnail" style="max-width:40%; max-height:40%;">';
                 };
 
                 reader.readAsDataURL(file);
