@@ -16,7 +16,7 @@
 
     <script src="https://kit.fontawesome.com/7528702e77.js" crossorigin="anonymous"></script>
 
-    <title>Admin | Edit Admin Form</title>
+    <title>Admin | View Admin Form</title>
 </head>
 <body style="background-color: #d3d3d3">
   @include('includes.navbar')
@@ -28,11 +28,18 @@
   <div class="row" style="width: 75%; margin: 0rem auto 0rem auto">
 
     <div class="col-12" style="margin-top: -3rem">
-      <h1><b>Edit Admin Account</b></h1>
+      <h1><b>View Admin Account</b></h1>
     </div> 
 
-    <div class="col-12" style="margin-top: -1rem">
+    <div class="col-12" style="margin-top: -1rem"> 
       <div class="row col-12" style="padding: 1rem; background-color: white; border-radius: 0.5rem; margin: 0rem auto 0rem auto">
+
+        @if(Session::has('error')) 
+          <div class="alert alert-success col-12" role="alert">
+            <b>{{ session::get('error') }}</b> 
+          </div> 
+        @endif
+
         @foreach ($admin as $ad) 
           <form action="{{ route('edit_admin_acc', [$ad->id]) }}" method="post">
             @csrf
@@ -76,18 +83,23 @@
               </div> 
             </div>  
             <div class="col-4"> 
-                <div class="form-group" style=" align-items: flex-end;">
-                  <label for="teamSelect" >CHANGE STATUS:</label>
-                  <select class="form-control" id="teamSelect" name="status">
-                    <option value="{{ $ad->status }}">Select here:</option>
-                    <option value="active">ACTIVE</option>
-                    <option value="inactive">INACTIVE</option> 
-                  </select> 
+              <div class="form-group" style=" align-items: flex-end;">
+                <div class="form-group">
+                  <label for="exampleInputEmail1">STATUS:</label>
+                  @if ($ad->status == 'active')
+                    <input name="" type="text" class="form-control" id="inputFname" aria-describedby="emailHelp" value="ACTIVE" style="background-color: palegreen; font-weight: bold; color: darkgreen; width: 5.5rem; border: none; font-size: medium" readonly>
+                  @elseif ($ad->status == 'inactive')
+                    <input name="" type="text" class="form-control" id="inputFname" aria-describedby="emailHelp" value="INACTIVE" style="background-color: pink; font-weight: bold; color: darkred; width: 7rem; border: none; font-size: medium" readonly>
+                  @endif   
                 </div> 
+              </div> 
             </div>
 
             <div class="col-12">
-              <button type="submit" class="form-buttons" style="float: right; width: 10rem">Save Changes&nbsp;&nbsp;<i class="fa-solid fa-check icons"></i></button>
+              {{-- <button type="submit" class="form-buttons" style="float: right; width: 10rem">Save Changes&nbsp;&nbsp;<i class="fa-solid fa-check icons"></i></button> --}} 
+              <a class="link-buttons" href="{{ route('edit_admin_form', Auth::guard('admin')->user()->id) }}" style="float: right">&nbsp;&nbsp;&nbsp;Edit Account<i class="fa fa-edit" style="font-size: large; padding: 0.5rem"></i></a>
+
+              <a class="link-buttons" href="{{ route('change_password_form') }}" style="float: right; margin-right: 0.5rem">&nbsp;&nbsp;&nbsp;Change Password<i class="fa-solid fa-key" style="font-size: large; padding: 0.5rem"></i></a>
             </div>
           </form>
         @endforeach

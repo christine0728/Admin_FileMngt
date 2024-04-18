@@ -103,27 +103,17 @@
     } 
     </style>
 </head>
-<body>
+<body style="background-color: #d3d3d3">
 
     <div class="container">
         <div class="header" style="background-color: #1D0A68; padding: 1rem;">
-            <img src="{{ asset('images/pnp - logo.png') }}" alt="">
-            <b style="color: white;">Women and Children Protection Center</b>
+            <center><img src="{{ asset('images/pnp - logo.png') }}" alt="">
+            <b style="color: white;">Admin Department</b></center> 
         </div> 
-    </div> 
-  
-    <div class="container" style="margin-top: -2rem;">
-        <div class="nav nav-fill" style="background-color: white;">
-            {{-- <label class="nav-link shadow-sm step0 border ml-2 active">Offense Data</label> --}}
-            {{-- <label class="nav-link shadow-sm step1 border ml-2 ">Section B<br>Victim's Data</label>
-            <label class="nav-link shadow-sm step2 border ml-2 ">Section C<br>Offender's Data</label> --}}
-            {{-- <label class="nav-link shadow-sm step3 border ml-2 ">Evidence Data</label>
-            <label class="nav-link shadow-sm step4 border ml-2 ">Case Disposition</label> --}}
-        </div>
-    </div> 
+    </div>  
 
-    <div class="container row" style="margin-top: -1rem">
-        <div class="col-12">
+    <div class="container row" style="margin-top: -2rem">
+        <div class="col-12" style="background-color: white; border-radius: 0.5rem; padding: 1.5rem">
             <form action="{{ route('adding_police') }}" class="employee-form" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
@@ -397,12 +387,12 @@
                     </div>  
   
                     <div class="col-12 form-navigation">
-                        <a class="link-buttons" href=" " style="float: left;">Cancel <i class="fa-solid fa-xmark icons"></i> </a> 
+                        <a class="link-buttons" href="{{ route('police_file_mngt') }}" style="float: left;">Cancel <i class="fa-solid fa-xmark icons"></i> </a> 
                         {{-- <a class="link-buttons" href=" " style="float: right;">Next</a>  --}}
 
                        {{-- <button type="button" class="next form-buttons" style="float: right; width: 5rem">Next <i class="fa-solid fa-arrow-right icons"></i></button>  --}}
                        <button type="submit" class="form-buttons" style="float: right;">Submit <i class="fa-solid fa-check icons"></i></button>
-                       <button type="button" class="previous form-buttons" style="float: right; margin-right: 0.5rem; width: 5rem"><i class="fa-solid fa-arrow-left icons"></i> Back</button> 
+                       {{-- <button type="button" class="previous form-buttons" style="float: right; margin-right: 0.5rem; width: 5rem"><i class="fa-solid fa-arrow-left icons"></i> Back</button>  --}}
                     </div>
                 </div>
             </form>

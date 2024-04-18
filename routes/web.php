@@ -29,8 +29,11 @@ Route::post('/login_account', [HomeController::class, 'login'])->name('logging_i
 
 
 Route::prefix('admin')->group(function(){
+    Route::get('/logout', [HomeController::class, 'logout'])->name('admin.logout');
+
     Route::get('/police_file_mngt', [HomeController::class, 'police_file_mngt'])->name('police_file_mngt');
     Route::get('/view_police/{pid}', [PoliceController::class, 'view_police'])->name('view_police');
+    Route::get('/view_police_file/{pid}', [PoliceController::class, 'view_police_file'])->name('view_police_file');
 
     Route::get('/pds/{pid}', [HomeController::class, 'pds_folder'])->name('pds_folder');
     Route::post('/add_file_pds', [FileController::class, 'add_file_pds'])->name('add_file_pds');
@@ -123,8 +126,13 @@ Route::prefix('admin')->group(function(){
     Route::get('/admin_acc_mngt', [HomeController::class, 'admin_acc_mngt'])->name('admin_acc_mngt');
     Route::get('/add_admin', [AdminController::class, 'add_admin'])->name('add_admin_form');
     Route::post('/add_admin_acc', [AdminController::class, 'add_admin_acc'])->name('add_admin_acc'); 
+    Route::get('/view_admin/{aid}', [AdminController::class, 'view_admin'])->name('view_admin_form');
     Route::get('/edit_admin/{aid}', [AdminController::class, 'edit_admin'])->name('edit_admin_form');
     Route::post('/edit_admin_acc/{aid}', [AdminController::class, 'edit_admin_acc'])->name('edit_admin_acc');
+    Route::post('/update_admin_acc/{aid}', [AdminController::class, 'update_admin_acc'])->name('update_admin_acc');
+
+    Route::get('/change_password_form', [AdminController::class, 'change_password_form'])->name('change_password_form');
+    Route::post('/changing_password', [AdminController::class, 'changing_password'])->name('changing_password');
 
     Route::get('/navbar', [HomeController::class, 'navbar'])->name('navbar');
 });
