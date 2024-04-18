@@ -20,7 +20,7 @@ class AdminController extends Controller
     public function add_admin_acc(Request $request){  
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
-
+ 
         $user = Admin::create([ 
             'firstname' => $request->input('firstname'),
             'middle_initial' => $request->input('middle_initial'),

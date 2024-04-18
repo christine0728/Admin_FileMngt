@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version=12">
 
     <script src="https://kit.fontawesome.com/7528702e77.js" crossorigin="anonymous"></script>
 
@@ -32,7 +32,7 @@
     </div>
 
     <div class="col-12" style="margin-top: -2rem">
-      <a class="link-buttons" href="{{ route('add_police_form') }}" style="font-size: medium">Add Police Personnel</a>
+      <a class="link-buttons" href="{{ route('add_police_form') }}" style="font-size: medium">Add Police Personnel&nbsp;&nbsp;<i class="fa-solid fa-plus"></i></a>
     </div>
 
     <div class="col-12" >
@@ -47,27 +47,56 @@
       <div style="padding: 1rem; background-color: white; border-radius: 0.5rem">
         <table id="harvTbl" class="display" >
           <thead>
-            <tr>
+            <tr style="text-align: center">
               <th>Image</th>
-              <th>Name</th>
+              <th style="min-width: 10rem">Name</th>
               <th>Rank</th>
-              <th>Unit/Station</th>
-              <th>Home Address (House No. / Street / City / Province)</th>
+              <th>Unit/Station</th> 
               <th>Sex</th>
+              <th>Status</th>
+              <th>Change Status</th>
               <th style="width: 8rem;">Action</th>
             </tr>
           </thead>
           <tbody> 
             @foreach ($police as $pol) 
               <tr>
-                <td style="text-align: center">{{ $pol->per_image }}</td>
+                <td style="text-align: center"> 
+                  @if($pol->per_image)
+                    <img src="{{ asset('images/police/' . $pol->per_image) }}" alt="{{ $pol->per_firstname }}" class="img-thumbnail" style="max-width: 110px; max-height: 110px;">
+                    @else
+                      No Image
+                    @endif
+                </td>
                 <td style="text-align: center">{{ $pol->per_firstname }} {{ $pol->per_middlename }} {{ $pol->per_lastname }}</td>
                 <td style="text-align: center">{{ $pol->per_rank }}</td>
-                <td style="text-align: center">{{ $pol->per_unit_station }}</td>
-                <td style="text-align: center">{{ $pol->per_house_no }}, {{ $pol->per_street }}, {{ $pol->per_city }}, {{ $pol->per_province }}</td>
-                <td style="text-align: center">{{ $pol->per_sex }}</td> 
+                <td style="text-align: center">{{ $pol->per_unit_station }}</td> 
+                <td style="text-align: center">{{ $pol->per_sex }}</td>  
+                <td>  
+                  <center>
+                    @if ($pol->per_status == 'active')
+                      <input name="" type="text" class="form-control" id="inputFname" aria-describedby="emailHelp" value="ACTIVE" style="background-color: palegreen; font-weight: bold; color: darkgreen; width: 4rem; border: none; font-size: medium" readonly>
+                    @elseif ($pol->per_status == 'inactive')
+                      <input name="" type="text" class="form-control" id="inputFname" aria-describedby="emailHelp" value="INACTIVE" style="background-color: pink; font-weight: bold; color: darkred; width: 5rem; border: none; font-size: medium" readonly>
+                    @endif  
+                  </center> 
+                </td> 
+                <td>
+                  <form action="{{ route('change_status_pol', $pol->id) }}" method="post">
+                    @csrf
+                    <select class="form-control" name="per_status" style="border-radius: 0.3125rem; width: 8rem; padding: 0.4rem; font-size: medium; margin-bottom: 0.5rem">
+                        <option>Select status:</option>
+                        <option value="active">ACTIVE</option>
+                        <option value="inactive">INACTIVE</option> 
+                        <option value="schooling">SCHOOLING</option> 
+                    </select>
+                    <button type="submit" class="form-buttons" > Change status </button>
+                  </form>
+                </td>
                 <td style="text-align: center">
-                  <a class="link-buttons" href="{{ route('view_police', [$pol->id]) }}">View</a>
+                  <a class="link-buttons" href="{{ route('view_police', [$pol->id]) }}">View&nbsp;&nbsp;<i class="fa-regular fa-eye"></i></a>
+
+                  <br><a class="edit-btn" href="{{ route('view_police', [$pol->id]) }}" style="margin-top: 0.5rem">Edit&nbsp;&nbsp;<i class="fa fa-edit"></i></a>
                 </td>
               </tr>
             @endforeach 
@@ -76,18 +105,16 @@
         </table>
       </div> 
     </div>
-  </div> 
-    
+  </div>  
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
-
-    <script>
-        $(document).ready(function() {
-          $('#harvTbl').DataTable({
-            "order": [[0, "desc"]]
-          });
-        });
-    </script>
+  <script>
+    $(document).ready(function() {
+      $('#harvTbl').DataTable({
+        "order": [[0, "desc"]]
+      });
+    });
+  </script>
 </body>
 </html>

@@ -46,7 +46,7 @@
       text-decoration: none;
       display: inline-block;
       border-radius: 0.5rem !important;
-      padding: 0.5rem 1rem 0.5rem 1rem !important; 
+      padding: 0.4rem 0.7rem 0.4rem 0.7rem !important; 
       width: auto;
       border: none !important;
       background-color: #1D0A68 !important;
@@ -99,6 +99,7 @@
     display: inline-block;
     border-radius: 0.5rem !important;
     width: auto;
+    padding: 0.3rem 0.7rem 0.3rem 0.7rem !important;
     background-color: darkgreen !important;
     color: white !important;
   }

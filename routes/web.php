@@ -122,6 +122,7 @@ Route::prefix('admin')->group(function(){
 
     Route::get('/add_police_form', [PoliceController::class, 'add_police_form'])->name('add_police_form');
     Route::post('/adding_police', [PoliceController::class, 'adding_police'])->name('adding_police');
+    Route::post('/change_status_pol/{pid}', [PoliceController::class, 'change_status_pol'])->name('change_status_pol');
 
     Route::get('/admin_acc_mngt', [HomeController::class, 'admin_acc_mngt'])->name('admin_acc_mngt');
     Route::get('/add_admin', [AdminController::class, 'add_admin'])->name('add_admin_form');
