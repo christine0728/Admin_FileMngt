@@ -46,7 +46,7 @@
       text-decoration: none;
       display: inline-block;
       border-radius: 0.5rem !important;
-      padding: 0.4rem 0.7rem 0.4rem 0.7rem !important; 
+      padding: 0.3rem 0.7rem 0.3rem 0.7rem !important; 
       width: auto;
       border: none !important;
       background-color: #1D0A68 !important;
@@ -62,7 +62,7 @@
     background-color: #1D0A68 !important;
     color: white !important;
     border: none;
-    padding: .5rem;
+    padding: 0.3rem 0.7rem 0.3rem 0.7rem !important;
     text-align: center;
     text-decoration: none;
     display: inline-block;
@@ -99,7 +99,7 @@
     display: inline-block;
     border-radius: 0.5rem !important;
     width: auto;
-    padding: 0.3rem 0.7rem 0.3rem 0.7rem !important;
+    padding: 0.2rem 0.7rem 0.2rem 0.7rem !important;
     background-color: darkgreen !important;
     color: white !important;
   }
@@ -120,8 +120,9 @@
     display: inline-block;
     border-radius: 0.5rem !important;
     width: auto;
-    background-color: #1D0A68 !important;
-    color: white !important;
+    padding: 0.2rem 0.7rem 0.2rem 0.7rem !important;
+    background-color: #727272 !important;
+    color: white !important; 
   }
  
   .edit-btn:hover, .delete-btn:hover, .view-btn:hover, .case-btn:hover{

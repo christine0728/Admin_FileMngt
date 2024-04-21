@@ -58,7 +58,7 @@
               <th>Username</th>
               <th>Status</th>
               <th>Created At</th> 
-              <th style="width: 8rem;">Action</th>
+              <th style="width: 10rem;">Action</th>
             </tr>
           </thead>
           <tbody> 

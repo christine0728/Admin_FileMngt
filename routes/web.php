@@ -34,6 +34,8 @@ Route::prefix('admin')->group(function(){
     Route::get('/police_file_mngt', [HomeController::class, 'police_file_mngt'])->name('police_file_mngt');
     Route::get('/view_police/{pid}', [PoliceController::class, 'view_police'])->name('view_police');
     Route::get('/view_police_file/{pid}', [PoliceController::class, 'view_police_file'])->name('view_police_file');
+    Route::get('/edit_police_file/{pid}', [PoliceController::class, 'edit_police_file'])->name('edit_police_file');
+    Route::post('/update_police_file/{pid}', [PoliceController::class, 'update_police_file'])->name('update_police_file');
 
     Route::get('/pds/{pid}', [HomeController::class, 'pds_folder'])->name('pds_folder');
     Route::post('/add_file_pds', [FileController::class, 'add_file_pds'])->name('add_file_pds');

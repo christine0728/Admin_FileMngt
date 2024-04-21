@@ -31,26 +31,24 @@
         }
 
         .header {
-            /* background-color: #9947B6; */
+            background-color: #1D0A68;
             border-radius: 0.5rem;
-            /* padding: 1rem; */
+            padding: 1rem; 
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
+            justify-content: center; 
         }
 
         .header img {
             width: 80%;
             max-width: 100px;
             margin-right: 1rem;
-            margin-left: 6rem;
-            
         }
 
         .header b {
-            /* color: white; */
-            /* font-size: clamp(1rem, 2.304rem + 3.4783vw, 2rem); */
-            font-size:clamp(1rem, 2.304rem + 3.4783vw, 2rem);
+            color: white;
+            font-size: clamp(1rem, 2.304rem + 3.4783vw, 2rem);
         }
 
         @media only screen and (max-width: 768px) {

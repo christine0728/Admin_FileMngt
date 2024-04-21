@@ -70,8 +70,10 @@ class HomeController extends Controller
 
     public function police_file_mngt()
     {
-        $police = Police::orderByDesc('id')->get();
-        return view('admin.police_file_mngt', ['police' => $police]);
+        $police = Police::where('per_status', '=', 'active')->orderByDesc('id')->get();
+        $in_police = Police::where('per_status', '=', 'inactive')->orderByDesc('id')->get();
+        $sch_police = Police::where('per_status', '=', 'schooling')->orderByDesc('id')->get();
+        return view('admin.police_file_mngt', ['police' => $police, 'in_police' => $in_police, 'sch_police' => $sch_police]);
     }
 
     public function pds_folder($pid)

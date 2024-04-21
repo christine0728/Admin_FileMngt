@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version=20">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version=14">
     <script src="https://kit.fontawesome.com/7528702e77.js" crossorigin="anonymous"></script>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -16,7 +16,7 @@
  
     <link rel="stylesheet" href="https://cdn.mobiscroll.com/4.9.0/css/mobiscroll.jquery.min.css">
 
-    <title>Admin | View Police File</title>
+    <title>Admin | Edit Police Form</title>
     <style>
         body { 
             font-family: Arial, sans-serif;
@@ -30,24 +30,26 @@
         }
 
         .header {
-            background-color: #1D0A68;
+            /* background-color: #9947B6; */
             border-radius: 0.5rem;
-            padding: 1rem; 
+            /* padding: 1rem; */
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
-            justify-content: center; 
         }
 
         .header img {
             width: 80%;
             max-width: 100px;
             margin-right: 1rem;
+            margin-left: 6rem;
+            
         }
 
         .header b {
-            color: white;
-            font-size: clamp(1rem, 2.304rem + 3.4783vw, 2rem);
+            /* color: white; */
+            /* font-size: clamp(1rem, 2.304rem + 3.4783vw, 2rem); */
+            font-size:clamp(1rem, 2.304rem + 3.4783vw, 2rem);
         }
 
         @media only screen and (max-width: 768px) {
@@ -66,8 +68,38 @@
                 margin-right: 1rem;
                 margin-left: 1rem;
             }
-        } 
- 
+        }
+
+        .form-section{
+            display: none;
+        }
+
+        .form-section.current{
+            display: inline;
+        }
+
+        .parsley-errors-list{
+            color:red;
+        }
+
+        /* Added style for active navigation link */
+        .nav-link.active {
+            background-color: #1D0A68;
+            color: white !important;
+            font-weight: bold !important;
+        }
+
+        .form-navigation {
+        text-align: right;
+    }
+
+    .form-navigation .previous {
+        float: left;
+    }
+
+    .form-navigation .next {
+        float: right;
+    } 
     </style>
 </head>
 <body style="background-color: #d3d3d3">
@@ -80,27 +112,31 @@
     </div>  
 
     <div class="container row" style="margin-top: -2rem;">
+
         <div class="col-12" style="background-color: white; border-radius: 0.5rem; margin-bottom: 1rem">
             <div class="col-8" style="padding: 0%">
                 <b style="font-size: x-large">POLICE PERSONNEL FILE</b> 
             </div>
-            
-            <div class="col-4" style="padding: 0%;">  
-                <a class="edit-btn" href="{{ route('edit_police_file', [$police->id]) }}" target="_blank" style="float: right;">Edit File&nbsp;&nbsp;<i class="fa fa-edit"></i></a> 
-
-                {{-- <a class="view-btn" href="{{ route('view_police_file', [$police->id]) }}" target="_blank" style="float: right; margin-right: 0.5rem">View File&nbsp;&nbsp;<i class="fa-regular fa-eye"></i></a> --}}
-            </div> 
+             
         </div>
-
+        
         <div class="col-12" style="background-color: white; border-radius: 0.5rem; padding: 1.5rem">
-            <form action="{{ route('adding_police') }}" class="employee-form" method="post" enctype="multipart/form-data">
+            {{-- <div class="col-12" style="padding: 1rem; margin-top: -1rem">
+                @if(Session::has('message')) 
+                  <div class="alert alert-success" role="alert">
+                    <b>{{ session::get('message') }}</b>
+                  </div>
+                @endif 
+            </div>  --}}
+
+            <form action="{{ route('update_police_file', $police->id) }}" class="employee-form" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
-                    <div class="" style="margin-bottom: 2rem"> 
+                    <div class="" style="margin-bottom: 2rem">   
                         <div class="row">
                             <div class="col-3">
                                 <div class="form-group"> 
-                                    {{-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_lastname" value="{{ $police->per_lastname }}">  --}}
+                                    <input type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_image_inp" value="{{ $police->per_image_inp }}"> 
                                     <center><img src="{{ asset('images/police/' . $police->per_image) }}" alt="{{ $police->per_firstname }}" class="img-thumbnail" style="max-width: 170px; max-height: 170px;"></center>
                                 </div>
                             </div>  
@@ -145,7 +181,6 @@
                             </div>
                         </div>
 
-                         
                         <div class="row">  
                             <div class="col-3">
                                 <div class="form-group">
@@ -296,15 +331,24 @@
                                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_spouse_kin_occupation" value="{{ $police->per_spouse_kin_occupation }}"> 
                                 </div> 
                             </div>  
+
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="image">Update Police's Image:</label>
+                                    <input type="file" class="form-control" id="file" name="per_image" accept="image/*" onchange="previewImage(this)">
+                                </div>
+
+                                <div id="imagePreview"></div>
+                            </div>
                         </div>
                     </div>  
   
                     <div class="col-12 form-navigation">
-                        <a class="link-buttons" href="{{ url()->previous() }}" style="float: left;"><i class="fa-solid fa-arrow-left icons"></i>&nbsp;&nbsp;Back</a> 
+                        <a class="link-buttons" href="{{ route('view_police', $police->id) }}" style="float: left;"><i class="fa-solid fa-arrow-left icons"></i>&nbsp;&nbsp;Back</a> 
                         {{-- <a class="link-buttons" href=" " style="float: right;">Next</a>  --}}
 
                        {{-- <button type="button" class="next form-buttons" style="float: right; width: 5rem">Next <i class="fa-solid fa-arrow-right icons"></i></button>  --}}
-                       {{-- <button type="submit" class="form-buttons" style="float: right;">Submit <i class="fa-solid fa-check icons"></i></button> --}}
+                       <button type="submit" class="form-buttons" style="float: right;">Save Changes&nbsp;&nbsp;<i class="fa-solid fa-check icons"></i></button>
                        {{-- <button type="button" class="previous form-buttons" style="float: right; margin-right: 0.5rem; width: 5rem"><i class="fa-solid fa-arrow-left icons"></i> Back</button>  --}}
                     </div>
                 </div>

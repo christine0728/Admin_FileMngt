@@ -9,7 +9,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 
     <script src="https://kit.fontawesome.com/7528702e77.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version=8">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version=18">
 
     <title>Admin | View Police Personnel</title>
 
@@ -45,7 +45,9 @@
                             <i class="fa-solid fa-user" style="color: #1D0A68"></i>
                             @endif
 
-                            &nbsp;&nbsp;&nbsp;{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;<a class=" " href="{{ route('view_police_file', $police->id) }}">View Police Personal File</a></p>  
+                            &nbsp;&nbsp;&nbsp;{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+                            {{-- <a class=" " href="{{ route('view_police_file', $police->id) }}">View Police Personal File</a></p>   --}}
+                            <a class="view-btn" href="{{ route('view_police_file', [$police->id]) }}" style="margin-top: 0.5rem">View File&nbsp;&nbsp;<i class="fa fa-edit"></i></a>
                     </div> 
 
                     <div class="col-12" style="padding: 1rem 1.5rem 1rem 1.5rem">
