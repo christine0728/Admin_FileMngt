@@ -423,7 +423,7 @@
             </form>
         </div> 
     </div>
-  
+    @include('includes.footer')
     <script>
         function toUpper(input) { 
             let value = input.value; 

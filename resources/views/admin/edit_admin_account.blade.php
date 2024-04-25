@@ -94,7 +94,7 @@
       </div> 
     </div>
   </div> 
-    
+  @include('includes.footer')
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
