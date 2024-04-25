@@ -14,5 +14,6 @@
 
         <br><br><input type="submit" value="Submit">
     </form>
+    @include('includes.footer')
 </body>
 </html>

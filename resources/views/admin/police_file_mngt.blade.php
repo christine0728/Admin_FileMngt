@@ -283,10 +283,25 @@
       </div>
 
 
+<<<<<<< Updated upstream
 
        
+=======
+                  <br><a class="edit-btn" href="{{ route('view_police', [$pol->id]) }}" style="margin-top: 0.5rem">Edit&nbsp;&nbsp;<i class="fa fa-edit"></i></a>
+                </td>
+              </tr>
+            @endforeach 
+            </form>
+          </tbody>
+        </table>
+
+      </div> 
+      <br> <br>
+>>>>>>> Stashed changes
     </div>
   </div>  
+  @include('includes.footer')
+
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 
@@ -323,5 +338,7 @@
       evt.currentTarget.className += " active";
     }
   </script>
+  <br> <br>
+
 </body>
 </html>
