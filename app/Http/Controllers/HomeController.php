@@ -299,8 +299,9 @@ class HomeController extends Controller
 
     public function admin_acc_mngt()
     {
-        $admin = Admin::orderByDesc('id')->get();
-        return view('admin.admin_acc_mngt', ['admin' => $admin]);
+        $admin = Admin::where('status', '=', 'active')->orderByDesc('id')->get();
+        $inadmin = Admin::where('status', '=', 'inactive')->orderByDesc('id')->get();
+        return view('admin.admin_acc_mngt', ['admin' => $admin, 'inadmin' => $inadmin]);
     }
  
 }
