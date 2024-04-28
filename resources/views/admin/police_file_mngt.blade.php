@@ -60,7 +60,7 @@
   @include('includes.navbar')
 
   <div class="col-12" style="margin-top: 4rem">
-    <a class="back-btn" href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left" ></i>&nbsp;&nbsp;Back</a>
+    <!-- <a class="back-btn" href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left" ></i>&nbsp;&nbsp;Back</a> -->
   </div>
 
   <div class="row" style="width: 75%; margin: 0rem auto 0rem auto">
@@ -139,13 +139,13 @@
                       <button type="submit" class="form-buttons" > Change status </button>
                     </form>
                   </td>
-                  <td style="text-align: center">
-                    <a class="link-buttons" href="{{ route('view_police', [$pol->id]) }}" style="width: 8rem">View Folders&nbsp;&nbsp;<i class="fa-regular fa-eye"></i></a>
-  
-                    <br><a class="view-btn" href="{{ route('view_police_file', [$pol->id]) }}" style="margin-top: 0.5rem" target="_blank">View File&nbsp;&nbsp;<i class="fa-regular fa-eye"></i></a>
-  
-                    <br><a class="edit-btn" href="{{ route('edit_police_file', [$pol->id]) }}" style="margin-top: 0.5rem" target="_blank">Edit File&nbsp;&nbsp;<i class="fa fa-edit"></i></a>
-                  </td>
+                  <td style="text-align: center;">
+                  <div class="d-inline-block" style="width: 150px;"> <!-- Adjust the width as needed -->
+                      <a href="{{ route('view_police', [$pol->id]) }}" class="btn btn-primary" style="font-size: 15px;"><i class="fas fa-folder" style="color: white"></i></a>
+                      <a href="{{ route('view_police_file', [$pol->id]) }}" class="btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem;"><i class="fas fa-eye" style="color: white"></i></a>
+                      <a href="{{ route('edit_police_file', [$pol->id]) }}" class="btn btn-success" style="font-size: 15px;"><i class="fas fa-edit" style="color: white"></i></a>
+                  </div>
+                </td>
                 </tr>
               @endforeach 
               </form>
@@ -203,12 +203,12 @@
                     </form>
                   </td>
                   <td style="text-align: center">
-                    <a class="link-buttons" href="{{ route('view_police', [$inp->id]) }}" style="width: 8rem">View Folders&nbsp;&nbsp;<i class="fa-regular fa-eye"></i></a>
-  
-                    <br><a class="view-btn" href="{{ route('view_police_file', [$inp->id]) }}" style="margin-top: 0.5rem" target="_blank">View File&nbsp;&nbsp;<i class="fa-regular fa-eye"></i></a>
-  
-                    <br><a class="edit-btn" href="{{ route('edit_police_file', [$inp->id]) }}" style="margin-top: 0.5rem" target="_blank">Edit File&nbsp;&nbsp;<i class="fa fa-edit"></i></a>
-                  </td>
+                  <div class="d-inline-block" style="width: 150px;"> <!-- Adjust the width as needed -->
+                      <a href="{{ route('view_police', [$inp->id]) }}" class="btn btn-primary" style="font-size: 15px;"><i class="fas fa-folder" style="color: white"></i></a>
+                      <a href="{{ route('view_police_file', [$inp->id]) }}" class="btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem;"><i class="fas fa-eye" style="color: white"></i></a>
+                      <a href="{{ route('edit_police_file', [$inp->id]) }}" class="btn btn-success" style="font-size: 15px;"><i class="fas fa-edit" style="color: white"></i></a>
+                  </div>
+
                 </tr>
               @endforeach 
               </form>
@@ -268,12 +268,13 @@
                     </form>
                   </td>
                   <td style="text-align: center">
-                    <a class="link-buttons" href="{{ route('view_police', [$sch->id]) }}" style="width: 8rem">View Folders&nbsp;&nbsp;<i class="fa-regular fa-eye"></i></a>
-  
-                    <br><a class="view-btn" href="{{ route('view_police_file', [$sch->id]) }}" style="margin-top: 0.5rem" target="_blank">View File&nbsp;&nbsp;<i class="fa-regular fa-eye"></i></a>
-  
-                    <br><a class="edit-btn" href="{{ route('edit_police_file', [$sch->id]) }}" style="margin-top: 0.5rem" target="_blank">Edit File&nbsp;&nbsp;<i class="fa fa-edit"></i></a>
-                  </td>
+                  <div class="d-inline-block" style="width: 150px;"> <!-- Adjust the width as needed -->
+                      <a href="{{ route('view_police', [$sch->id]) }}" class="btn btn-primary" style="font-size: 15px;"><i class="fas fa-folder" style="color: white"></i></a>
+                      <a href="{{ route('view_police_file', [$sch->id]) }}" class="btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem;"><i class="fas fa-eye" style="color: white"></i></a>
+                      <a href="{{ route('edit_police_file', [$sch->id]) }}" class="btn btn-success" style="font-size: 15px;"><i class="fas fa-edit" style="color: white"></i></a>
+                  </div>
+
+                </td>
                 </tr>
               @endforeach 
               </form>
@@ -283,21 +284,16 @@
       </div>
 
 
-<<<<<<< Updated upstream
-
-       
-=======
                   <br><a class="edit-btn" href="{{ route('view_police', [$pol->id]) }}" style="margin-top: 0.5rem">Edit&nbsp;&nbsp;<i class="fa fa-edit"></i></a>
                 </td>
               </tr>
-            @endforeach 
+         
             </form>
           </tbody>
         </table>
 
       </div> 
       <br> <br>
->>>>>>> Stashed changes
     </div>
   </div>  
   @include('includes.footer')
