@@ -127,13 +127,17 @@
           </div>
           <div class="mb-3">
             <label for="password" class="form-label"><i class="fa fa-lock"></i> Password</label>
-            <input type="password" class="form-control" name="password" placeholder="Enter your password" required>
-            <div class="error-message">
-              @error('password')
-                {{ $message }}
-              @enderror
+            <div class="input-group">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+                <button class="btn btn-outline-secondary" type="button" id="password-toggle-btn"><i class="fa fa-eye"></i></button>
             </div>
-          </div>
+            <div class="error-message">
+                @error('password')
+                    {{ $message }}
+                @enderror
+            </div>
+        </div>
+
 
           {{-- {!! NoCaptcha::renderJs() !!}
           {!! NoCaptcha::display() !!} --}}
@@ -176,3 +180,19 @@
   </script>
 </body>
 </html>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const passwordInput = document.getElementById('password');
+        const toggleButton = document.getElementById('password-toggle-btn');
+        
+        toggleButton.addEventListener('click', function() {
+            if (passwordInput.type === 'password') {
+                passwordInput.type = 'text';
+                toggleButton.innerHTML = '<i class="fa fa-eye-slash"></i>';
+            } else {
+                passwordInput.type = 'password';
+                toggleButton.innerHTML = '<i class="fa fa-eye"></i>';
+            }
+        });
+    });
+</script>

@@ -60,11 +60,11 @@
               <label for="exampleInputEmail1">LAST NAME:</label>
               <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="lastname" value="{{ old('lastname') }}">
               @if ($errors->has('lastname')) 
-                <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('lastname') }}</span>
+                <span class="text-red text-sm" style="color:red; font-size: small;">{{ $errors->first('lastname') }}</span>
               @endif 
             </div> 
           </div>
-
+<br>
           <div class="col-4">
             <div class="form-group">
               <label for="exampleInputEmail1">USERNAME:</label>
@@ -77,23 +77,29 @@
 
           <div class="col-4">
             <div class="form-group">
-              <label for="exampleInputEmail1">PASSWORD:</label>
-              <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="password" value="{{ old('password') }}">
-              @if ($errors->has('password')) 
-                <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('password') }}</span>
-              @endif 
+                <label for="password">PASSWORD:</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="password" name="password" value="{{ old('password') }}">
+                    <button class="btn btn-outline-secondary" type="button" id="togglePassword"><i class="fa fa-eye"></i></button>
+                </div>
+                @if ($errors->has('password')) 
+                    <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('password') }}</span>
+                @endif 
             </div> 
-          </div>
+        </div>
 
-          <div class="col-4">
+        <div class="col-4">
             <div class="form-group">
-              <label for="exampleInputEmail1">CONFIRM PASSWORD:</label>
-              <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="conf_password" value="{{ old('conf_password') }}">
-              @if ($errors->has('conf_password')) 
-                <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('conf_password') }}</span>
-              @endif 
+                <label for="conf_password">CONFIRM PASSWORD:</label>
+                <div class="input-group">
+                    <input type="password" class="form-control" id="conf_password" name="conf_password" value="{{ old('conf_password') }}">
+                    <button class="btn btn-outline-secondary" type="button" id="toggleConfPassword"><i class="fa fa-eye"></i></button>
+                </div>
+                @if ($errors->has('conf_password')) 
+                    <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('conf_password') }}</span>
+                @endif 
             </div> 
-          </div>
+        </div>
 
           <div class="col-12">
             <button type="submit" class="form-buttons" style="float: right; width: 7rem">Submit&nbsp;&nbsp;<i class="fa-solid fa-check icons"></i></button>
@@ -116,3 +122,32 @@
     </script>
 </body>
 </html>
+<script>
+    // Toggle password visibility
+    $('#togglePassword').click(function() {
+        var passwordInput = $('#password');
+        var icon = $(this).find('i');
+
+        if (passwordInput.attr('type') === 'password') {
+            passwordInput.attr('type', 'text');
+            icon.removeClass('fa-eye').addClass('fa-eye-slash');
+        } else {
+            passwordInput.attr('type', 'password');
+            icon.removeClass('fa-eye-slash').addClass('fa-eye');
+        }
+    });
+
+    // Toggle confirm password visibility
+    $('#toggleConfPassword').click(function() {
+        var confPasswordInput = $('#conf_password');
+        var icon = $(this).find('i');
+
+        if (confPasswordInput.attr('type') === 'password') {
+            confPasswordInput.attr('type', 'text');
+            icon.removeClass('fa-eye').addClass('fa-eye-slash');
+        } else {
+            confPasswordInput.attr('type', 'password');
+            icon.removeClass('fa-eye-slash').addClass('fa-eye');
+        }
+    });
+</script>
