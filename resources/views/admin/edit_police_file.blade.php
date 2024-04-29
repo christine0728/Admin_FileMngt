@@ -136,9 +136,17 @@
                         <div class="row">
                             <div class="col-3">
                                 <div class="form-group"> 
-                                    <input type="hidden" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_image_inp" value="{{ $police->per_image_inp }}"> 
-                                    <center><img src="{{ asset('images/police/' . $police->per_image) }}" alt="{{ $police->per_firstname }}" class="img-thumbnail" style="max-width: 170px; max-height: 170px;"></center>
-                                </div>
+                                @if($police->per_image != 'no image')
+                                    <center>
+                                        <img src="{{ asset('images/police/' . $police->per_image) }}" id="previewImage" alt="{{ $police->per_firstname }}" class="img-thumbnail" style="max-width: 170px; max-height: 170px;">
+                                    </center>
+                                @else
+                                    <img src="{{ asset('images/default.png') }}" id="previewImage" alt="{{ $police->per_firstname }}" class="img-thumbnail" style="max-width: 100%; max-height: 100%;">
+                                    <p>No Image</p>
+                                @endif
+
+                                <input type="file" name="image" id="image" accept="image/*">
+                                    </div>
                             </div>  
 
                             <div class="col-9">
@@ -333,10 +341,7 @@
                             </div>  
 
                             <div class="col-6">
-                                <div class="form-group">
-                                    <label for="image">Update Police's Image:</label>
-                                    <input type="file" class="form-control" id="file" name="per_image" accept="image/*" onchange="previewImage(this)">
-                                </div>
+                          
 
                                 <div id="imagePreview"></div>
                             </div>
@@ -439,40 +444,19 @@
             value = value.toUpperCase(); 
             input.value = value;
         }
-
-        function previewImage(input) {
-            var previewContainer = document.getElementById('imagePreview');
-            var file = input.files[0];
-
-            if (file) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    previewContainer.innerHTML = '<img src="' + e.target.result + '" class="img-thumbnail" style="max-width:25%; max-height:25%;">';
-                };
-
-                reader.readAsDataURL(file);
-            } else {
-                previewContainer.innerHTML = '';
-            }
+     
+    document.getElementById('image').addEventListener('change', function(event) {
+        var preview = document.getElementById('previewImage');
+        var file = event.target.files[0];
+        var reader = new FileReader();
+        
+        reader.onload = function(e) {
+            preview.src = e.target.result;
         }
+        
+        reader.readAsDataURL(file);
+    });
 
-        function previewImage2(input) {
-            var previewContainer = document.getElementById('imagePreview2');
-            var file = input.files[0];
-
-            if (file) {
-                var reader = new FileReader();
-
-                reader.onload = function (e) {
-                    previewContainer.innerHTML = '<img src="' + e.target.result + '" class="img-thumbnail" style="max-width:25%; max-height:25%;">';
-                };
-
-                reader.readAsDataURL(file);
-            } else {
-                previewContainer.innerHTML = '';
-            }
-        }
     </script>
     
 </body>
