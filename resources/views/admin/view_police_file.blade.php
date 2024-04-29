@@ -311,7 +311,7 @@
             </form>
         </div> 
     </div>
-
+<br> <br> <br>
     <script> 
         $(function(){
     var $sections = $('.'); 

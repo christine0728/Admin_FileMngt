@@ -18,6 +18,8 @@
 
     <title>Admin | Edit Police Form</title>
     <style>
+
+
         body { 
             font-family: Arial, sans-serif;
             color: black !important;
@@ -139,13 +141,14 @@
                                 @if($police->per_image != 'no image')
                                     <center>
                                         <img src="{{ asset('images/police/' . $police->per_image) }}" id="previewImage" alt="{{ $police->per_firstname }}" class="img-thumbnail" style="max-width: 170px; max-height: 170px;">
-                                    </center>
+                                        </center>
                                 @else
                                     <img src="{{ asset('images/default.png') }}" id="previewImage" alt="{{ $police->per_firstname }}" class="img-thumbnail" style="max-width: 100%; max-height: 100%;">
+                                 
                                     <p>No Image</p>
                                 @endif
 
-                                <input type="file" name="image" id="image" accept="image/*">
+                                <input type="file" value="{{ $police->per_image}}" name="image" id="image" accept="image/*">
                                     </div>
                             </div>  
 
@@ -154,19 +157,28 @@
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">1. LAST NAME:</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_lastname" value="{{ $police->per_lastname }}"> 
+                                            <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_lastname" value="{{ $police->per_lastname }}"> 
+                                            @if ($errors->has('per_lastname')) 
+                                                <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_lastname') }}</span>
+                                            @endif 
                                         </div> 
                                     </div> 
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">FIRST NAME:</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_firstname" value="{{ $police->per_firstname }}"> 
+                                            <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_firstname" value="{{ $police->per_firstname }}"> 
+                                            @if ($errors->has('per_firstname')) 
+                                                <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_firstname') }}</span>
+                                            @endif 
                                         </div> 
                                     </div> 
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">MIDDLE NAME:</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_middlename" value="{{ $police->per_middlename }}"> 
+                                            <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_middlename" value="{{ $police->per_middlename }}"> 
+                                            @if ($errors->has('per_middlename')) 
+                                                <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_middlename') }}</span>
+                                            @endif 
                                         </div> 
                                     </div> 
                                 </div>
@@ -175,14 +187,20 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">2. RANK:</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_rank" value="{{ $police->per_rank }}"> 
+                                            <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_rank" value="{{ $police->per_rank }}"> 
+                                            @if ($errors->has('per_rank')) 
+                                                <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_rank') }}</span>
+                                            @endif 
                                         </div> 
                                     </div>
         
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">3. UNIT/STATION - NSU / PRO / NHQ</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_unit_station" value="{{ $police->per_unit_station }}"> 
+                                            <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_unit_station" value="{{ $police->per_unit_station }}"> 
+                                            @if ($errors->has('per_unit_station')) 
+                                                <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_unit_station') }}</span>
+                                            @endif 
                                         </div> 
                                     </div>
                                 </div>
@@ -193,28 +211,40 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">4. HOUSE NO. </label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_house_no" value="{{ $police->per_house_no }}"> 
+                                    <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_house_no" value="{{ $police->per_house_no }}"> 
+                                    @if ($errors->has('per_house_no')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_house_no') }}</span>
+                                    @endif 
                                 </div> 
                             </div> 
 
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">STREET:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_street" value="{{ $police->per_street }}}"> 
+                                    <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_street" value="{{ $police->per_street }}"> 
+                                    @if ($errors->has('per_street')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_street') }}</span>
+                                    @endif 
                                 </div> 
                             </div> 
 
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">CITY:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_city" value="{{ $police->per_city }}"> 
+                                    <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_city" value="{{ $police->per_city }}"> 
+                                    @if ($errors->has('per_city')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_city') }}</span>
+                                    @endif 
                                 </div> 
                             </div> 
 
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">PROVINCE:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_province" value="{{ $police->per_province }}"> 
+                                    <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_province" value="{{ $police->per_province }}"> 
+                                    @if ($errors->has('per_province')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_province') }}</span>
+                                    @endif 
                                 </div> 
                             </div> 
                         </div>
@@ -223,14 +253,20 @@
                             <div class="col-8">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">5. PLACE OF BIRTH:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_place_birth" value="{{ $police->per_place_birth }}"> 
+                                    <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_place_birth" value="{{ $police->per_place_birth }}"> 
+                                    @if ($errors->has('per_place_birth')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_place_birth') }}</span>
+                                    @endif 
                                 </div> 
                             </div>
 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">6. DATE OF BIRTH:</label>
-                                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_date_birth" value="{{ $police->per_date_birth }}"> 
+                                    <input type="date" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_date_birth" value="{{ $police->per_date_birth }}"> 
+                                    @if ($errors->has('per_place_birth')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_place_birth') }}</span>
+                                    @endif 
                                 </div> 
                             </div>
                         </div>
@@ -239,19 +275,41 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">7. SEX:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_sex" value="{{ $police->per_sex }}"> 
+                                    <select class="form-control" name="per_sex">
+                                        <option value="">Select:</option>
+                                        <option value="FEMALE" {{ $police->per_sex == 'FEMALE' ? 'selected' : '' }}>FEMALE</option>
+                                        <option value="MALE" {{ $police->per_sex == 'MALE' ? 'selected' : '' }}>MALE</option>
+                                    </select>
+
+                                    @if ($errors->has('per_sex')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_sex') }}</span>
+                                    @endif 
                                 </div> 
                             </div> 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">8. CIVIL STATUS:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_civil_status" value="{{ $police->per_civil_status }}"> 
+                                    
+                                    <select class="form-control" name="per_civil_status">
+                                        <option value="">Select:</option>
+                                        <option value="SINGLE" {{ $police->per_civil_status == 'SINGLE' ? 'selected' : '' }}>SINGLE</option>
+                                        <option value="MARRIED" {{ $police->per_civil_status == 'MARRIED' ? 'selected' : '' }}>MARRIED</option>
+                                        <option value="SEPARATED" {{ $police->per_civil_status == 'SEPARATED' ? 'selected' : '' }}>SEPARATED</option>
+                                        <option value="WIDOW/ER" {{ $police->per_civil_status == 'WIDOW/ER' ? 'selected' : '' }}>WIDOW/ER</option>
+                                        <option value="LIVE_IN_PARTNER" {{ $police->per_civil_status == 'LIVE_IN_PARTNER' ? 'selected' : '' }}>LIVE IN PARTNER</option>
+                                    </select>
+                                    @if ($errors->has('per_civil_status')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_civil_status') }}</span>
+                                    @endif 
                                 </div> 
                             </div> 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">9. RELIGION:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_religion" value="{{ $police->per_religion }}"> 
+                                    <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_religion" value="{{ $police->per_religion }}"> 
+                                    @if ($errors->has('per_religion')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_religion') }}</span>
+                                    @endif 
                                 </div> 
                             </div> 
                         </div>
@@ -260,26 +318,38 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">10. COLOR OF HAIR:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_color_hair" value="{{ $police->per_color_hair }}"> 
+                                    <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_color_hair" value="{{ $police->per_color_hair }}"> 
+                                    @if ($errors->has('per_color_hair')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_color_hair') }}</span>
+                                    @endif
                                 </div> 
                             </div> 
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">11. COLOR OF EYES:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_color_eyes" value="{{ $police->per_color_eyes }}"> 
+                                    <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_color_eyes" value="{{ $police->per_color_eyes }}"> 
+                                    @if ($errors->has('per_color_eyes')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_color_eyes') }}</span>
+                                    @endif 
                                 </div> 
                             </div> 
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">12. HEIGHT (cm):</label>
-                                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_height" value="{{ $police->per_height }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_height" value="{{ $police->per_height }}"> 
+                                    @if ($errors->has('per_height')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_height') }}</span>
+                                    @endif 
                                 </div> 
                             </div>
 
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">13. WEIGHT (kg):</label>
-                                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_weight" value="{{ $police->per_weight }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_weight" value="{{ $police->per_weight }}"> 
+                                    @if ($errors->has('per_weight')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_weight') }}</span>
+                                    @endif 
                                 </div> 
                             </div>
                         </div>
@@ -288,19 +358,39 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">14. BLOOD TYPE:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_bloodtype" value="{{ $police->per_bloodtype }}"> 
+                                    <select class="form-control" name="per_bloodtype">
+                                        <option value="">Select:</option>
+                                        <option value="A+" {{ $police->per_bloodtype == 'A+' ? 'selected' : '' }}>A+</option>
+                                        <option value="O+" {{ $police->per_bloodtype == 'O+' ? 'selected' : '' }}>O+</option>
+                                        <option value="B+" {{ $police->per_bloodtype == 'B+' ? 'selected' : '' }}>B+</option>
+                                        <option value="AB+" {{ $police->per_bloodtype == 'AB+' ? 'selected' : '' }}>AB+</option>
+                                        <option value="A-" {{ $police->per_bloodtype == 'A-' ? 'selected' : '' }}>A-</option>
+                                        <option value="O-" {{ $police->per_bloodtype == 'O-' ? 'selected' : '' }}>O-</option>
+                                        <option value="B-" {{ $police->per_bloodtype == 'B-' ? 'selected' : '' }}>B-</option>
+                                        <option value="AB-" {{ $police->per_bloodtype == 'AB-' ? 'selected' : '' }}>AB-</option>
+                                    </select>
+
+                                            @if ($errors->has('per_bloodtype')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_bloodtype') }}</span>
+                                    @endif
                                 </div> 
                             </div> 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">15. BUILD:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_build" value="{{ $police->per_build }}"> 
+                                    <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_build" value="{{ $police->per_build }}"> 
+                                    @if ($errors->has('per_build')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_build') }}</span>
+                                    @endif 
                                 </div> 
                             </div> 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">16. COMPLEXION:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_complexion" value="{{ $police->per_complexion }}"> 
+                                    <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_complexion" value="{{ $police->per_complexion }}"> 
+                                    @if ($errors->has('per_complexion')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_complexion') }}</span>
+                                    @endif 
                                 </div> 
                             </div> 
                         </div>
@@ -309,19 +399,28 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">17. LANGUAGES:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_languages" value="{{ $police->per_languages }}"> 
+                                    <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_languages" value="{{ $police->per_languages }}"> 
+                                    @if ($errors->has('per_languages')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_languages') }}</span>
+                                    @endif 
                                 </div> 
                             </div> 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">18. IDENTIFYING MARKS:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_identifying_marks" value="{{ $police->per_identifying_marks }}"> 
+                                    <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_identifying_marks" value="{{ $police->per_identifying_marks }}"> 
+                                    @if ($errors->has('per_identifying_marks')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_identifying_marks') }}</span>
+                                    @endif 
                                 </div> 
                             </div> 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">19. ETHNIC GROUP:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_ethnicgroup" value="{{ $police->per_ethnicgroup }}"> 
+                                    <input type="text"oninput="toUpper(this)"  class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_ethnicgroup" value="{{ $police->per_ethnicgroup }}"> 
+                                    @if ($errors->has('per_ethnicgroup')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_ethnicgroup') }}</span>
+                                    @endif 
                                 </div> 
                             </div> 
                         </div>
@@ -330,19 +429,23 @@
                             <div class="col-9">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">20. NAME OF SPOUSE OR NEAREST KIN/ADDRESS:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_name_spouse_near_kin" value="{{ $police->per_name_spouse_near_kin }}"> 
+                                    <input type="text" oninput="toUpper(this)" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_name_spouse_near_kin" value="{{ $police->per_name_spouse_near_kin }}"> 
+                                    @if ($errors->has('per_name_spouse_near_kin')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_name_spouse_near_kin') }}</span>
+                                    @endif 
                                 </div> 
                             </div> 
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">21. OCCUPATION:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_spouse_kin_occupation" value="{{ $police->per_spouse_kin_occupation }}"> 
+                                    <input type="text" class="form-control" oninput="toUpper(this)" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_spouse_kin_occupation" value="{{ $police->per_spouse_kin_occupation }}"> 
+                                    @if ($errors->has('per_spouse_kin_occupation')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_spouse_kin_occupation') }}</span>
+                                    @endif 
                                 </div> 
                             </div>  
 
                             <div class="col-6">
-                          
-
                                 <div id="imagePreview"></div>
                             </div>
                         </div>
@@ -353,7 +456,7 @@
                         {{-- <a class="link-buttons" href=" " style="float: right;">Next</a>  --}}
 
                        {{-- <button type="button" class="next form-buttons" style="float: right; width: 5rem">Next <i class="fa-solid fa-arrow-right icons"></i></button>  --}}
-                       <button type="submit" class="form-buttons" style="float: right;">Save Changes&nbsp;&nbsp;<i class="fa-solid fa-check icons"></i></button>
+                       <button type="submit" class="form-buttons" style="float: right;">Save Changes&nbsp;&nbsp;<i class="fas fa-save"></i></button>
                        {{-- <button type="button" class="previous form-buttons" style="float: right; margin-right: 0.5rem; width: 5rem"><i class="fa-solid fa-arrow-left icons"></i> Back</button>  --}}
                     </div>
                 </div>
@@ -457,7 +560,7 @@
         reader.readAsDataURL(file);
     });
 
+
     </script>
-    
 </body>
 </html>
