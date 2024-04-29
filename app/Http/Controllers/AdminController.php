@@ -24,7 +24,7 @@ class AdminController extends Controller
         $validator = Validator::make($request->all(), [
             'firstname' =>  'required|regex:/^[a-zA-Z -]+$/',
             'lastname' =>  'required|regex:/^[a-zA-Z -]+$/',
-            'middle_initial' => 'required|regex:/^[a-zA-Z -]+$/',
+            'middle_initial' => 'required|regex:/^[a-zA-Z \-.]+$/',
             'username' => 'required',
             'password' => [
                 'required',
@@ -40,7 +40,7 @@ class AdminController extends Controller
             'lastname.required' => 'The lastname field is required.',
             'lastname.regex' => 'The lastname field should only contain letters and spaces.',
             'middle_initial.required' => 'The middle initial field is required.',
-            'middle_initial.regex' => 'The middle initial field should only contain letter.',
+            'middle_initial.regex' => 'The middle initial field should only contain letter and period.',
             'username.required' => 'The username field is required.',
             'password.min' => 'The new password must be at least :min characters long.',
             'password.max' => 'The new password may not be greater than :max characters.',
@@ -85,28 +85,19 @@ if ($validator->fails()) {
         $validator = Validator::make($request->all(), [
             'firstname' =>  'required|regex:/^[a-zA-Z -]+$/',
             'lastname' =>  'required|regex:/^[a-zA-Z -]+$/',
-            'middle_initial' => 'required|regex:/^[a-zA-Z -]+$/',
+            'middle_initial' => 'required|regex:/^[a-zA-Z \-.]+$/',
+
             'username' => 'required',
-            'password' => [
-                'required',
-                'string',
-                'min:8', // Minimum length
-                'max:12', // Maximum length
-                'regex:/^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*()\-_=+\\\|\[\]{};:\'",.<>?]).+$/',
-            ],
-            'conf_password' => 'required|string|same:password',
+      
         ], [
             'firstname.required' => 'The firstname field is required.',
             'firstname.regex' => 'The firstname field should only contain letters and spaces.',
             'lastname.required' => 'The lastname field is required.',
             'lastname.regex' => 'The lastname field should only contain letters and spaces.',
             'middle_initial.required' => 'The middle initial field is required.',
-            'middle_initial.regex' => 'The middle initial field should only contain letter.',
+            'middle_initial.regex' => 'The middle initial field should only contain letter and period.',
             'username.required' => 'The username field is required.',
-            'password.min' => 'The new password must be at least :min characters long.',
-            'password.max' => 'The new password may not be greater than :max characters.',
-            'password.regex' => 'The new password must contain at least one letter, one number, and one special character.',
-            'conf_password.same' => 'The confirm password must match the password.',
+
         ]);
         
         if ($validator->fails()) {

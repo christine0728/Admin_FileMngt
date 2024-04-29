@@ -22,7 +22,7 @@
   @include('includes.navbar')
 
   <div class="col-12" style="margin-top: 4rem">
-    <a class="back-btn" href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left" ></i>&nbsp;&nbsp;Back</a>
+    <a class="back-btn" href="/admin/admin_acc_mngt"><i class="fa-solid fa-arrow-left" ></i>&nbsp;&nbsp;Back</a>
   </div>
 
   <div class="row" style="width: 75%; margin: 0rem auto 0rem auto">
@@ -36,6 +36,7 @@
         @foreach ($admin as $ad) 
           <form action="{{ route('edit_admin_acc', [$ad->id]) }}" method="post">
             @csrf
+            <div class="row">
             <div class="col-4">
               <div class="form-group">
                 <label for="exampleInputEmail1">FIRST NAME:</label>
@@ -65,7 +66,7 @@
                 @endif 
               </div> 
             </div>
-
+<br> <br>
             <div class="col-4">
               <div class="form-group">
                 <label for="exampleInputEmail1">USERNAME:</label>
@@ -85,7 +86,7 @@
                   </select> 
                 </div> 
             </div>
-
+            </div>
             <div class="col-12">
               <button type="submit" class="form-buttons" style="float: right; width: 10rem">Save Changes&nbsp;&nbsp;<i class="fas fa-save"></i></button>
             </div>
