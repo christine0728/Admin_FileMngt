@@ -70,7 +70,7 @@
     </div>
 
     <div class="col-12" style="margin-top: -2rem">
-      <a class="link-buttons" href="{{ route('add_police_form') }}" style="font-size: medium">Add Police Personnel&nbsp;&nbsp;<i class="fa-solid fa-plus"></i></a>
+      <a class="link-buttons" href="{{ route('add_police_form') }}" style="font-size: medium">Add Police Personnel&nbsp;&nbsp;<i class="fas fa-user-plus"></i> </a>
     </div>
 
     <div class="col-12" >
@@ -108,10 +108,10 @@
               @foreach ($police as $pol) 
                 <tr>
                   <td style="text-align: center"> 
-                    @if($pol->per_image)
+                    @if($pol->per_image != 'no image')
                       <img src="{{ asset('images/police/' . $pol->per_image) }}" alt="{{ $pol->per_firstname }}" class="img-thumbnail" style="max-width: 100px; max-height: 100px;">
                       @else
-                        No Image
+                      <img src="{{ asset('images/default.png') }}" id="previewImage" alt="{{ $pol->per_firstname }}" class="img-thumbnail"  style="max-width: 30%; max-height: 30%;">      
                       @endif
                   </td>
                   <td style="text-align: center">{{ $pol->per_firstname }} {{ $pol->per_middlename }} {{ $pol->per_lastname }}</td>
@@ -130,8 +130,8 @@
                   <td>
                     <form action="{{ route('change_status_pol', $pol->id) }}" method="post">
                       @csrf
-                      <select class="form-control" name="per_status" style="border-radius: 0.3125rem; width: 8rem; padding: 0.4rem; font-size: medium; margin-bottom: 0.5rem">
-                          <option>Select status:</option>
+                      <select class="form-control" name="per_status" style="border-radius: 0.3125rem; width: 8rem; padding: 0.4rem; font-size: medium; margin-bottom: 0.5rem" required>
+                          <option value="">Select status:</option>
                           <option value="active">ACTIVE</option>
                           <option value="inactive">INACTIVE</option> 
                           <option value="schooling">SCHOOLING</option> 
@@ -157,7 +157,7 @@
           <table id="tbl2" class="display" >
             <thead>
               <tr style="text-align: center">
-                <th>Image</th>
+              <th>Image</th>
                 <th style="min-width: 10rem">Name</th>
                 <th>Rank</th>
                 <th>Unit/Station</th> 
@@ -171,10 +171,10 @@
               @foreach ($in_police as $inp) 
                 <tr>
                   <td style="text-align: center"> 
-                    @if($inp->per_image)
-                      <img src="{{ asset('images/police/' . $inp->per_image) }}" alt="{{ $inp->per_firstname }}" class="img-thumbnail" style="max-width: 100px; max-height: 100px;">
+                      @if($pol->per_image != 'no image')
+                        <img src="{{ asset('images/police/' . $pol->per_image) }}" alt="{{ $pol->per_firstname }}" class="img-thumbnail" style="max-width: 100px; max-height: 100px;">
                       @else
-                        No Image
+                      <img src="{{ asset('images/default.png') }}" id="previewImage" alt="{{ $pol->per_firstname }}" class="img-thumbnail"  style="max-width: 60%; max-height: 60%;">      
                       @endif
                   </td>
                   <td style="text-align: center">{{ $inp->per_firstname }} {{ $inp->per_middlename }} {{ $inp->per_lastname }}</td>
@@ -193,8 +193,8 @@
                   <td>
                     <form action="{{ route('change_status_pol', $inp->id) }}" method="post">
                       @csrf
-                      <select class="form-control" name="per_status" style="border-radius: 0.3125rem; width: 8rem; padding: 0.4rem; font-size: medium; margin-bottom: 0.5rem">
-                          <option>Select status:</option>
+                      <select required class="form-control" name="per_status" style="border-radius: 0.3125rem; width: 8rem; padding: 0.4rem; font-size: medium; margin-bottom: 0.5rem" required>
+                          <option value="">Select status:</option>
                           <option value="active">ACTIVE</option>
                           <option value="inactive">INACTIVE</option> 
                           <option value="schooling">SCHOOLING</option> 
@@ -234,10 +234,10 @@
               @foreach ($sch_police as $sch) 
                 <tr>
                   <td style="text-align: center"> 
-                    @if($sch->per_image)
-                      <img src="{{ asset('images/police/' . $sch->per_image) }}" alt="{{ $sch->per_firstname }}" class="img-thumbnail" style="max-width: 100px; max-height: 100px;">
+                      @if($pol->per_image != 'no image')
+                      <img src="{{ asset('images/police/' . $pol->per_image) }}" alt="{{ $pol->per_firstname }}" class="img-thumbnail" style="max-width: 100px; max-height: 100px;">
                       @else
-                        No Image
+                      <img src="{{ asset('images/default.png') }}" id="previewImage" alt="{{ $pol->per_firstname }}" class="img-thumbnail" style="max-width: 60%; max-height: 60%;">      
                       @endif
                   </td>
                   <td style="text-align: center">{{ $sch->per_firstname }} {{ $sch->per_middlename }} {{ $sch->per_lastname }}</td>
@@ -258,8 +258,8 @@
                   <td>
                     <form action="{{ route('change_status_pol', $sch->id) }}" method="post">
                       @csrf
-                      <select class="form-control" name="per_status" style="border-radius: 0.3125rem; width: 8rem; padding: 0.4rem; font-size: medium; margin-bottom: 0.5rem">
-                          <option>Select status:</option>
+                      <select required class="form-control" name="per_status" style="border-radius: 0.3125rem; width: 8rem; padding: 0.4rem; font-size: medium; margin-bottom: 0.5rem" required>
+                          <option value="">Select status:</option>
                           <option value="active">ACTIVE</option>
                           <option value="inactive">INACTIVE</option> 
                           <option value="schooling">SCHOOLING</option> 
@@ -284,8 +284,7 @@
       </div>
 
 
-                  <br><a class="edit-btn" href="{{ route('view_police', [$pol->id]) }}" style="margin-top: 0.5rem">Edit&nbsp;&nbsp;<i class="fa fa-edit"></i></a>
-                </td>
+                              </td>
               </tr>
          
             </form>

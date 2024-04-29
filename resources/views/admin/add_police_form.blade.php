@@ -227,8 +227,8 @@
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">6. DATE OF BIRTH:</label>
                                     <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_date_birth" value="{{ old('per_date_birth') }}" max="{{ date('Y-m-d') }}">
-                                   @if ($errors->has('per_date_birth')) 
-                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_date_birth') }}</span>
+                                    @if ($errors->has('per_place_birth')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_place_birth') }}</span>
                                     @endif 
                                 </div> 
                             </div>
@@ -240,7 +240,7 @@
                                     <label for="exampleInputEmail1">7. SEX:</label>
                                     {{-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_sex" value="{{ old('per_sex') }}" oninput="toUpper(this)">  --}}
 
-                                    <select class="form-control" name="per_sex" >
+                                    <select class="form-control" name="per_sex" value="{{ old('per_sex') }}"  >
                                         <option value="">Select:</option>
                                         <option value="FEMALE">FEMALE</option>
                                         <option value="MALE">MALE</option>
@@ -256,7 +256,7 @@
                                     <label for="exampleInputEmail1">8. CIVIL STATUS:</label>
                                     {{-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_civil_status" value="{{ old('per_civil_status') }}">  --}}
 
-                                    <select class="form-control" name="per_civil_status" >
+                                    <select class="form-control" name="per_civil_status" value="{{ old('per_civil_status') }}">
                                         <option value="">Select:</option>
                                         <option value="SINGLE">SINGLE</option>
                                         <option value="MARRIED">MARRIED</option>
@@ -264,8 +264,8 @@
                                         <option value="WIDOW/ER">WIDOW/ER</option>
                                         <option value="LIVE_IN_PARTNER">LIVE IN PARTNER</option>
                                     </select>
-                                    @if ($errors->has('per_sex')) 
-                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_sex') }}</span>
+                                    @if ($errors->has('per_civil_status')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_civil_status') }}</span>
                                     @endif 
                                 </div> 
                             </div> 
@@ -302,7 +302,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">12. HEIGHT (cm):</label>
-                                    <input oninput="toUpper(this)" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_height" value="{{ old('per_height') }}">
+                                    <input oninput="toUpper(this)" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_height" value="{{ old('per_height') }}">
                                     @if ($errors->has('per_height')) 
                                         <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_height') }}</span>
                                     @endif 
@@ -312,7 +312,7 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">13. WEIGHT (kg):</label>
-                                    <input  oninput="toUpper(this)" type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_weight" value="{{ old('per_weight') }}">
+                                    <input  oninput="toUpper(this)" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_weight" value="{{ old('per_weight') }}">
                                     @if ($errors->has('per_weight')) 
                                         <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_weight') }}</span>
                                     @endif 
@@ -337,6 +337,9 @@
                                         <option value="B-">B-</option>
                                         <option value="AB-">AB-</option>
                                     </select>
+                                         @if ($errors->has('per_bloodtype')) 
+                                        <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_bloodtype') }}</span>
+                                    @endif 
                                 </div> 
                             </div> 
                             <div class="col-4">
@@ -439,8 +442,11 @@
 </body>
 </html>
 <script>
+          function toUpper(input) { 
+            let value = input.value; 
+            value = value.toUpperCase(); 
+            input.value = value;
+        }
     // Function to convert text to uppercase
-    function toUpper(input) {
-        input.value = input.value.toUpperCase();
-    }
+
 </script>

@@ -87,7 +87,7 @@
             </div>
 
             <div class="col-12">
-              <button type="submit" class="form-buttons" style="float: right; width: 10rem">Save Changes&nbsp;&nbsp;<i class="fa-solid fa-check icons"></i></button>
+              <button type="submit" class="form-buttons" style="float: right; width: 10rem">Save Changes&nbsp;&nbsp;<i class="fas fa-save"></i></button>
             </div>
           </form>
         @endforeach
