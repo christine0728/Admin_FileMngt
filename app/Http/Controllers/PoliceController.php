@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Personnel;
+use Illuminate\Support\Facades\Validator;
 use App\Models\Police;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -41,9 +42,9 @@ class PoliceController extends Controller
         } else {
             $per_filename = 'no image';
         }
- 
-        $rules = [
+        $validator = Validator::make($request->all(), [
             'per_lastname' => 'required|regex:/^[a-zA-Z -]+$/',
+            'per_sex' => 'required',
             'per_firstname' => 'required|regex:/^[a-zA-Z -]+$/',
             'per_middlename' => 'required|regex:/^[a-zA-Z -]+$/',
             'per_rank' => 'required|regex:/^[a-zA-Z -]+$/',
@@ -52,7 +53,7 @@ class PoliceController extends Controller
             'per_street' => 'required|regex:/^[a-zA-Z -]+$/',
             'per_city' => 'required|regex:/^[a-zA-Z ]+$/',
             'per_province' => 'required|regex:/^[a-zA-Z ]+$/',
-            'per_place_birth' => 'required|regex:/^[a-zA-Z -]+$/',
+            'per_place_birth' => 'required',
             'per_date_birth' => 'required|date|before_or_equal:-21 years',  
             'per_religion' => 'required|regex:/^[a-zA-Z ]+$/',
             'per_color_hair' => 'required|regex:/^[a-zA-Z -]+$/',
@@ -61,23 +62,100 @@ class PoliceController extends Controller
             'per_weight' => 'required|numeric', 
             'per_build' => 'required|regex:/^[a-zA-Z -]+$/',
             'per_complexion' => 'required|regex:/^[a-zA-Z -]+$/',
-            'per_languages' => 'required',
+            'per_languages' => 'required|regex:/^[a-zA-Z ]+$/',
             'per_identifying_marks' => 'required|regex:/^[a-zA-Z0-9 -]+$/',
             'per_ethnicgroup' => 'required|regex:/^[a-zA-Z -]+$/',
             'per_name_spouse_near_kin' => 'required|regex:/^[a-zA-Z -]+$/',
             'per_spouse_kin_occupation' => 'required|regex:/^[a-zA-Z -]+$/',
             // Add more validation rules as needed
-        ];
+        ], [
+            'per_lastname.required' => 'The Last Name field is required.',
+            'per_lastname.regex' => 'The Last Name field must only contain letters and spaces.',
+            'per_sex.required' => 'The Sex field is required.',
+            'per_firstname.required' => 'The First Name field is required.',
+            'per_firstname.regex' => 'The First Name field must only contain letters and spaces.',
+            'per_middlename.required' => 'The Middle Name field is required.',
+            'per_middlename.regex' => 'The Middle Name field must only contain letters and spaces.',
+            'per_rank.required' => 'The Rank field is required.',
+            'per_rank.regex' => 'The Rank field must only contain letters and spaces.',
+            'per_unit_station.required' => 'The Unit/Station field is required.',
+            'per_unit_station.regex' => 'The Unit/Station field must only contain letters and commas.',
+            'per_house_no.required' => 'The House Number field is required.',
+            'per_house_no.regex' => 'The House Number field must only contain letters, numbers, spaces, and #.',
+            'per_street.required' => 'The Street field is required.',
+            'per_street.regex' => 'The Street field must only contain letters and spaces.',
+            'per_city.required' => 'The City field is required.',
+            'per_city.regex' => 'The City field must only contain letters and spaces.',
+            'per_province.required' => 'The Province field is required.',
+            'per_province.regex' => 'The Province field must only contain letters and spaces.',
+            'per_place_birth.required' => 'The Place of Birth field is required.',
+            'per_date_birth.required' => 'The Date of Birth field is required.',
+            'per_date_birth.date' => 'The Date of Birth must be a valid date.',
+            'per_date_birth.before_or_equal' => 'The Date of Birth must be before or equal to 21 years ago.',
+            'per_religion.required' => 'The Religion field is required.',
+            'per_religion.regex' => 'The Religion field must only contain letters and spaces.',
+            'per_color_hair.required' => 'The Hair Color field is required.',
+            'per_color_hair.regex' => 'The Hair Color field must only contain letters and spaces.',
+            'per_color_eyes.required' => 'The Eye Color field is required.',
+            'per_color_eyes.regex' => 'The Eye Color field must only contain letters and spaces.',
+            'per_height.required' => 'The Height field is required.',
+            'per_height.numeric' => 'The Height field must be a number.',
+            'per_weight.required' => 'The Weight field is required.',
+            'per_weight.numeric' => 'The Weight field must be a number.',
+            'per_build.required' => 'The Build field is required.',
+            'per_build.regex' => 'The Build field must only contain letters and spaces.',
+            'per_complexion.required' => 'The Complexion field is required.',
+            'per_complexion.regex' => 'The Complexion field must only contain letters and spaces.',
+            'per_languages.required' => 'The Languages field is required.',
+            'per_languages.regex' => 'The Languages field must only contain letters and spaces.',
+            'per_identifying_marks.required' => 'The Identifying Marks field is required.',
+            'per_identifying_marks.regex' => 'The Identifying Marks field must only contain letters, numbers, spaces, and dashes.',
+            'per_ethnicgroup.required' => 'The Ethnic Group field is required.',
+            'per_ethnicgroup.regex' => 'The Ethnic Group field must only contain letters and spaces.',
+            'per_name_spouse_near_kin.required' => 'The Name of Spouse or Near Kin field is required.',
+            'per_name_spouse_near_kin.regex' => 'The Name of Spouse or Near Kin field must only contain letters and spaces.',
+            'per_spouse_kin_occupation.required' => 'The Spouse or Kin Occupation field is required.',
+            'per_spouse_kin_occupation.regex' => 'The Spouse or Kin Occupation field must only contain letters and spaces.',
+        ]);
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        // $rules = [
+        //     'per_lastname' => 'required|regex:/^[a-zA-Z -]+$/',
+        //     'per_firstname' => 'required|regex:/^[a-zA-Z -]+$/',
+        //     'per_middlename' => 'required|regex:/^[a-zA-Z -]+$/',
+        //     'per_rank' => 'required|regex:/^[a-zA-Z -]+$/',
+        //     'per_unit_station' => 'required|regex:/^[a-zA-Z,]+$/',
+        //     'per_house_no' => 'required|regex:/^[a-zA-Z0-9\s#]+$/',
+        //     'per_street' => 'required|regex:/^[a-zA-Z -]+$/',
+        //     'per_city' => 'required|regex:/^[a-zA-Z ]+$/',
+        //     'per_province' => 'required|regex:/^[a-zA-Z ]+$/',
+        //     'per_place_birth' => 'required|regex:/^[a-zA-Z -]+$/',
+        //     'per_date_birth' => 'required|date|before_or_equal:-21 years',  
+        //     'per_religion' => 'required|regex:/^[a-zA-Z ]+$/',
+        //     'per_color_hair' => 'required|regex:/^[a-zA-Z -]+$/',
+        //     'per_color_eyes' => 'required|regex:/^[a-zA-Z ]+$/',
+        //     'per_height' => 'required|numeric',
+        //     'per_weight' => 'required|numeric', 
+        //     'per_build' => 'required|regex:/^[a-zA-Z -]+$/',
+        //     'per_complexion' => 'required|regex:/^[a-zA-Z -]+$/',
+        //     'per_languages' => 'required',
+        //     'per_identifying_marks' => 'required|regex:/^[a-zA-Z0-9 -]+$/',
+        //     'per_ethnicgroup' => 'required|regex:/^[a-zA-Z -]+$/',
+        //     'per_name_spouse_near_kin' => 'required|regex:/^[a-zA-Z -]+$/',
+        //     'per_spouse_kin_occupation' => 'required|regex:/^[a-zA-Z -]+$/',
+        //     // Add more validation rules as needed
+        // ];
  
-        // Custom error messages
-        $messages = [
-            'required' => 'The field is required.',
-            'regex' => 'The field must only contain letters, spaces, dashes, commas, numbers, hash symbols, or special characters.',
-            'before_or_equal' => 'The must be a date before or equal to 21 years ago.',
-            'in' => 'The selected is invalid.',
-            'numeric' => 'The must be a number.',
-            'date' => 'The must be a valid date.',
-        ];
+        // // Custom error messages
+        // $messages = [
+        //     'required' => 'The field is required.',
+        //     'regex' => 'The field must only contain letters, spaces, dashes, commas, numbers, hash symbols, or special characters.',
+        //     'before_or_equal' => 'The must be a date before or equal to 21 years ago.',
+        //     'in' => 'The selected is invalid.',
+        //     'numeric' => 'The must be a number.',
+        //     'date' => 'The must be a valid date.',
+        // ];
  
         $validatedData = $request->validate($rules, $messages);
  
