@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-
+    <link rel="icon" href="{{ url('images/favicon.ico') }}">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
@@ -54,6 +54,12 @@
           border: 1px solid #ccc;
           border-top: none;
       }
+
+      .icon:hover {
+        background-color: #6F79AA;
+        color: white !important;
+        border-color: #6F79AA !important;
+      }
     </style>
 </head>
 <body style="background-color: #d3d3d3">
@@ -70,7 +76,7 @@
     </div>
 
     <div class="col-12" style="margin-top: -2rem">
-      <a class="link-buttons" href="{{ route('add_police_form') }}" style="font-size: medium">Add Police Personnel&nbsp;&nbsp;<i class="fas fa-user-plus"></i> </a>
+      <a class="link-buttons" href="{{ route('add_police_form') }}" style="font-size: medium; width: 15rem">Add Police Personnel&nbsp;&nbsp;<i class="fas fa-user-plus"></i> </a>
     </div>
 
     <div class="col-12" >
@@ -90,7 +96,7 @@
           @endif 
         </div>
 
-        <div id="active" class="tabcontent">
+        <div id="active" class="tabcontent" style="overflow-x:auto; background-color: white; border-radius: 0.5rem; margin-top: 1rem; margin-bottom: 5rem">
           <table id="harvTbl" class="display" >
             <thead>
               <tr style="text-align: center">
@@ -141,9 +147,9 @@
                   </td>
                   <td style="text-align: center;">
                   <div class="d-inline-block" style="width: 150px;"> <!-- Adjust the width as needed -->
-                      <a href="{{ route('view_police', [$pol->id]) }}" class="btn btn-primary" style="font-size: 15px;"><i class="fas fa-folder" style="color: white"></i></a>
-                      <a href="{{ route('view_police_file', [$pol->id]) }}" class="btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem;"><i class="fas fa-eye" style="color: white"></i></a>
-                      <a href="{{ route('edit_police_file', [$pol->id]) }}" class="btn btn-success" style="font-size: 15px;"><i class="fas fa-edit" style="color: white"></i></a>
+                    <a href="{{ route('view_police', [$pol->id]) }}" class="icon btn btn-primary" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-folder" style="color: white"></i>&nbsp;&nbsp;View Folders</a>
+                    <a href="{{ route('view_police_file', [$pol->id]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View File</span></a>
+                    <a href="{{ route('edit_police_file', [$pol->id]) }}" class="icon btn btn-success" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-edit" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">Edit File</span></a>
                   </div>
                 </td>
                 </tr>
@@ -204,11 +210,10 @@
                   </td>
                   <td style="text-align: center">
                   <div class="d-inline-block" style="width: 150px;"> <!-- Adjust the width as needed -->
-                      <a href="{{ route('view_police', [$inp->id]) }}" class="btn btn-primary" style="font-size: 15px;"><i class="fas fa-folder" style="color: white"></i></a>
-                      <a href="{{ route('view_police_file', [$inp->id]) }}" class="btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem;"><i class="fas fa-eye" style="color: white"></i></a>
-                      <a href="{{ route('edit_police_file', [$inp->id]) }}" class="btn btn-success" style="font-size: 15px;"><i class="fas fa-edit" style="color: white"></i></a>
-                  </div>
-
+                    <a href="{{ route('view_police', [$pol->id]) }}" class="icon btn btn-primary" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-folder" style="color: white"></i>&nbsp;&nbsp;View Folders</a>
+                    <a href="{{ route('view_police_file', [$pol->id]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View File</span></a>
+                    <a href="{{ route('edit_police_file', [$pol->id]) }}" class="icon btn btn-success" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-edit" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">Edit File</span></a>
+                  </div> 
                 </tr>
               @endforeach 
               </form>
@@ -269,9 +274,9 @@
                   </td>
                   <td style="text-align: center">
                   <div class="d-inline-block" style="width: 150px;"> <!-- Adjust the width as needed -->
-                      <a href="{{ route('view_police', [$sch->id]) }}" class="btn btn-primary" style="font-size: 15px;"><i class="fas fa-folder" style="color: white"></i></a>
-                      <a href="{{ route('view_police_file', [$sch->id]) }}" class="btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem;"><i class="fas fa-eye" style="color: white"></i></a>
-                      <a href="{{ route('edit_police_file', [$sch->id]) }}" class="btn btn-success" style="font-size: 15px;"><i class="fas fa-edit" style="color: white"></i></a>
+                    <a href="{{ route('view_police', [$pol->id]) }}" class="icon btn btn-primary" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-folder" style="color: white"></i>&nbsp;&nbsp;View Folders</a>
+                    <a href="{{ route('view_police_file', [$pol->id]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View Data</span></a>
+                    <a href="{{ route('edit_police_file', [$pol->id]) }}" class="icon btn btn-success" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-edit" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">Edit File</span></a>
                   </div>
 
                 </td>

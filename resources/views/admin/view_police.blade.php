@@ -20,6 +20,11 @@
             cursor: pointer !important;
         } 
         
+        .icon:hover {
+            background-color: #6F79AA;
+            color: white !important;
+            border-color: #6F79AA !important;
+        }
     </style>
 </head>
 <body style="background-color: #d3d3d3">
@@ -34,7 +39,7 @@
             <h1>{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}</h1>
         </div>
 
-        <div class="col-12" style="margin-top: 0rem; background-color: white; border-radius: 0.5rem;  ">
+        <div class="col-12" style="margin-top: 0rem; background-color: white; border-radius: 0.5rem; margin-bottom: 5rem">
             {{-- <div style="background-color: white; border-radius: 0.5rem; "> --}}
                 <div class="row" style="margin-top: -1rem; ">
                     <div class="col-12" style="margin-top: 0.5rem; margin-left: 0.5rem;  ">
@@ -47,7 +52,9 @@
 
                             &nbsp;&nbsp;&nbsp;{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
                             {{-- <a class=" " href="{{ route('view_police_file', $police->id) }}">View Police Personal File</a></p>   --}}
-                            <a class="view-btn" href="{{ route('view_police_file', [$police->id]) }}" style="margin-top: 0.5rem">View File&nbsp;&nbsp;<i class="fa fa-edit"></i></a>
+                            {{-- <a class="btn btn-info" href="{{ route('view_police_file', [$police->id]) }}" style="margin-top: 0.5rem">View Data&nbsp;&nbsp;<i class="fa fa-edit"></i></a> --}}
+
+                            <a href="{{ route('view_police_file', [$police->id]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 8rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View Data</span></a>
                     </div> 
 
                     <div class="col-12" style="padding: 1rem 1.5rem 1rem 1.5rem">

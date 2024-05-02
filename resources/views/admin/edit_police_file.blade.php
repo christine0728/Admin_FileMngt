@@ -141,7 +141,7 @@
                                 @if($police->per_image != 'no image')
                                     <center>
                                         <img src="{{ asset('images/police/' . $police->per_image) }}" id="previewImage" alt="{{ $police->per_firstname }}" class="img-thumbnail" style="max-width: 170px; max-height: 170px;">
-                                        </center>
+                                    </center>
                                 @else
                                     <img src="{{ asset('images/default.png') }}" id="previewImage" alt="{{ $police->per_firstname }}" class="img-thumbnail" style="max-width: 100%; max-height: 100%;">
                                  
@@ -452,11 +452,11 @@
                     </div>  
   
                     <div class="col-12 form-navigation">
-                        <a class="link-buttons" href="{{ route('view_police', $police->id) }}" style="float: left;"><i class="fa-solid fa-arrow-left icons"></i>&nbsp;&nbsp;Back</a> 
+                        <a class="link-buttons" href="#"  onclick="window.history.back();" style="float: left; width: 6rem"><i class="fa-solid fa-arrow-left icons"></i>&nbsp;&nbsp;Back</a> 
                         {{-- <a class="link-buttons" href=" " style="float: right;">Next</a>  --}}
 
                        {{-- <button type="button" class="next form-buttons" style="float: right; width: 5rem">Next <i class="fa-solid fa-arrow-right icons"></i></button>  --}}
-                       <button type="submit" class="form-buttons" style="float: right;">Save Changes&nbsp;&nbsp;<i class="fas fa-save"></i></button>
+                       <button type="submit" class="form-buttons" style="float: right; width: 11rem">Save Changes&nbsp;&nbsp;<i class="fas fa-save"></i></button>
                        {{-- <button type="button" class="previous form-buttons" style="float: right; margin-right: 0.5rem; width: 5rem"><i class="fa-solid fa-arrow-left icons"></i> Back</button>  --}}
                     </div>
                 </div>

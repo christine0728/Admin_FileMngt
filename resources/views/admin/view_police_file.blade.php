@@ -86,7 +86,7 @@
             </div>
             
             <div class="col-4" style="padding: 0%;">  
-                <a class="edit-btn" href="{{ route('edit_police_file', [$police->id]) }}" target="_blank" style="float: right;">Edit File&nbsp;&nbsp;<i class="fa fa-edit"></i></a> 
+                <a class="edit-btn" href="{{ route('edit_police_file', [$police->id]) }}" style="float: right;">Edit File&nbsp;&nbsp;<i class="fa fa-edit"></i></a> 
 
                 {{-- <a class="view-btn" href="{{ route('view_police_file', [$police->id]) }}" target="_blank" style="float: right; margin-right: 0.5rem">View File&nbsp;&nbsp;<i class="fa-regular fa-eye"></i></a> --}}
             </div> 

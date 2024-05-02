@@ -69,11 +69,11 @@
     </div>
 
     <div class="col-12" style="margin-top: -2rem">
-      <a class="link-buttons" href="{{ route('add_admin_form') }}" style="font-size: medium">Add Admin Account</a>
+      <a class="link-buttons" href="{{ route('add_admin_form') }}" style="font-size: medium; width: 14rem">Add Admin Account&nbsp;&nbsp;<i class="fas fa-user-plus"></i></a>
     </div>
 
     <div class="col-12">
-      <div class="col-12" style="padding: 1rem; background-color: white; border-radius: 0.5rem">
+      <div class="col-12" style="padding: 1rem; background-color: white; border-radius: 0.5rem; margin-bottom: 4rem">
         <div class="tab" >
           <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'active')">Active Accounts</button>
           <button class="tablinks" onclick="openCity(event, 'inactive')">Inactive Accounts</button>  
@@ -93,7 +93,7 @@
           @endif 
         </div>
 
-        <div id="active" class="tabcontent">
+        <div id="active" class="tabcontent" style="overflow-x:auto;">
           <table id="harvTbl" class="display" >
             <thead>
               <tr>
@@ -131,15 +131,15 @@
           </table>
         </div>
 
-        <div id="inactive" class="tabcontent">
+        <div id="inactive" class="tabcontent" style="overflow-x:auto;">
           <table id="tbl2" class="display" >
             <thead>
               <tr>
-                <th>Fullname</th>
-                <th>Username</th>
-                <th>Status</th>
-                <th>Created At</th> 
-                <th style="width: 10rem;">Action</th>
+                <center><th>Fullname</th></center>
+                <center><th>Username</th></center>
+                <center><th>Status</th></center>
+                <center><th>Created At</th></center> 
+                <center><th style="width: 10rem;">Action</th></center>
               </tr>
             </thead>
             <tbody> 
@@ -169,8 +169,7 @@
           </table>
         </div>
       </div>
-    </div>
- 
+    </div> 
   </div> 
   @include('includes.footer')
 
