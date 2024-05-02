@@ -102,9 +102,9 @@
     </style>
 </head>
 <body style="background-color: #d3d3d3">
-<div class="col-12" >
-    <a class="back-btn" href="/admin/police_file_mngt"><i class="fa-solid fa-arrow-left" ></i>&nbsp;&nbsp;Back</a>
-  </div>
+    <div class="col-12" >
+        <a class="back-btn" href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left" ></i>&nbsp;&nbsp;Back</a>
+    </div>
     <div class="container">
         <div class="header" style="background-color: #1D0A68; padding: 1rem;">
             <center><img src="{{ asset('images/pnp - logo.png') }}" alt="">
@@ -112,7 +112,7 @@
         </div> 
     </div>  
 
-    <div class="container row" style="margin-top: -2rem">
+    <div class="container row" style="margin-top: -2rem; margin-bottom: 3rem">
         <div class="col-12" style="background-color: white; border-radius: 0.5rem; padding: 1.5rem">
             <form action="{{ route('adding_police') }}" class="employee-form" method="post" enctype="multipart/form-data">
                 @csrf
@@ -247,8 +247,7 @@
                                     </select>
                                     @if ($errors->has('per_sex')) 
                                         <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_sex') }}</span>
-                                    @endif 
-                                </div> 
+                                    @endif  
                                 </div> 
                             </div> 
                             <div class="col-4">
@@ -424,29 +423,27 @@
                     </div>  
   
                     <div class="col-12 form-navigation">
-                        <a class="link-buttons" href="{{ route('police_file_mngt') }}" style="float: left;">Cancel <i class="fa-solid fa-xmark icons"></i> </a> 
+                        <a class="link-buttons" href="{{ route('police_file_mngt') }}" style="float: left; width: 7rem">Cancel&nbsp;&nbsp;<i class="fa-solid fa-xmark icons"></i> </a> 
                         {{-- <a class="link-buttons" href=" " style="float: right;">Next</a>  --}}
 
                        {{-- <button type="button" class="next form-buttons" style="float: right; width: 5rem">Next <i class="fa-solid fa-arrow-right icons"></i></button>  --}}
-                       <button type="submit" class="form-buttons" style="float: right;">Submit <i class="fa-solid fa-check icons"></i></button>
+                       <button type="submit" class="form-buttons" style="float: right; width: 7rem">Submit&nbsp;&nbsp;<i class="fa-solid fa-check icons"></i></button>
                        {{-- <button type="button" class="previous form-buttons" style="float: right; margin-right: 0.5rem; width: 5rem"><i class="fa-solid fa-arrow-left icons"></i> Back</button>  --}}
                     </div>
                 </div>
             </form>
         </div> 
     </div>
-    <br> <br>   <br> <br>  <br> <br>
-    @include('includes.footer')
-  
-    
+    <br> <br> 
+    @include('includes.footer')  
 </body>
 </html>
 <script>
-          function toUpper(input) { 
-            let value = input.value; 
-            value = value.toUpperCase(); 
-            input.value = value;
-        }
-    // Function to convert text to uppercase
+    function toUpper(input) { 
+        let value = input.value; 
+        value = value.toUpperCase(); 
+        input.value = value;
+    }
+// Function to convert text to uppercase
 
 </script>
