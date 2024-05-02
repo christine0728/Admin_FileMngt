@@ -159,7 +159,7 @@
           </table>
         </div>
 
-        <div id="inactive" class="tabcontent">
+        <div id="inactive" class="tabcontent" style="overflow-x:auto; background-color: white; border-radius: 0.5rem; margin-top: 1rem; margin-bottom: 5rem">
           <table id="tbl2" class="display" >
             <thead>
               <tr style="text-align: center">
@@ -221,7 +221,7 @@
           </table>
         </div>
 
-        <div id="schooling" class="tabcontent">
+        <div id="schooling" class="tabcontent" style="overflow-x:auto; background-color: white; border-radius: 0.5rem; margin-top: 1rem; margin-bottom: 5rem">
           <table id="tbl3" class="display" >
             <thead>
               <tr style="text-align: center">
