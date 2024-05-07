@@ -8,6 +8,7 @@ use App\Models\Admin;
 use App\Models\File;
 use App\Models\Police;
 use Carbon\Carbon;
+use Dompdf\Options;
 use Illuminate\Contracts\Session\Session;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -24,35 +25,45 @@ class HomeController extends Controller
     {
         return view('login_view');
     }
+
+    public function inactive()
+    {
+        return view('admin.inactive_status_screen');
+    }
   
     public function login(Request $request){  
 
         $username = $request->input('username');
         $check = $request->all();
 
-        // $validatedData = $request->validate([ 
-        //     'g-recaptcha-response' => 'required|captcha',
-        // ]); 
+        $validatedData = $request->validate([ 
+            'g-recaptcha-response' => 'required|captcha',
+        ]); 
 
 
         if(Auth::guard('admin')->attempt(['username' => $check['username'], 'password' => $check['password']])){
             // dd('here');
             if (Auth::guard('admin')->check()) {
-                $pw = $check['password'];
+                $username = $check['username']; 
 
-                // dd('success');
-                // if (NoCaptcha::verifyResponse($request->input('g-recaptcha-response'))) {
-                //     // dd('captcha');
-                //     $accepted = Admin::select('*')->where('username', $username) 
-                //     ->first();
+                if (NoCaptcha::verifyResponse($request->input('g-recaptcha-response'))) {
+                    $active = Admin::select('*')->where('username', $username) 
+                    ->first();
 
-                //     dd('hereeeee');
-                //         // return redirect()->route('investigator.dashboard')->with('error', 'investigator account logged in successfully'); 
-                // } else {
-                //     dd('hindeh');
-                // } 
+                    if ($active->status == 'active')
+                    {
+                        // dd('active');
+                        return redirect()->route('police_file_mngt')->with('error', 'investigator account logged in successfully');
+                    }
 
-                return redirect()->route('police_file_mngt')->with('error', 'investigator account logged in successfully');
+                    else{
+                        // dd('inactive');
+                        return redirect()->route('inactive');
+                    } 
+                } else {
+                    return redirect()->back()->withErrors(['captcha' => 'reCAPTCHA validation failed. Please try again.']); 
+                } 
+
             } else {
                 dd('User not authenticated');
             }
@@ -74,6 +85,37 @@ class HomeController extends Controller
         $in_police = Police::where('per_status', '=', 'inactive')->orderByDesc('id')->get();
         $sch_police = Police::where('per_status', '=', 'schooling')->orderByDesc('id')->get();
         return view('admin.police_file_mngt', ['police' => $police, 'in_police' => $in_police, 'sch_police' => $sch_police]);
+    }
+
+    public function personnelfile_pdf(Request $request, $pid)
+    {
+        $acc_type = Auth::guard('admin')->user()->acc_type;
+
+        $options = new Options(); 
+
+        // Set custom margins (in millimeters)
+        $options->set('defaultPaperSize', 'legal');
+        $options->set('defaultPaperOrientation', 'portrait'); // Set the orientation if needed
+        $options->set('margin-top', 10); // Adjust top margin
+        $options->set('margin-right', 15); // Adjust right margin
+        $options->set('margin-bottom', 10); // Adjust bottom margin
+        $options->set('margin-left', 15); // Adjust left margin
+
+
+        $police = Police::select('*')
+            ->where('id', $pid)
+            ->get(); 
+ 
+        // Create the DOMPDF instance with the custom options
+        $pdf = app('dompdf.wrapper', ['options' => $options]);
+
+        $name = Auth::guard('admin')->user()->firstname;
+        $rundate = Carbon::now();
+  
+        $pdf->loadView('admin.personnelfile_pdf', ['rundate'=>$rundate, 'police'=>$police]);
+ 
+        return $pdf->stream('personnelfile.pdf');  
+        
     }
 
     public function pds_folder($pid)

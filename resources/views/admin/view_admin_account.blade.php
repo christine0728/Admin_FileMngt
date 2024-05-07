@@ -46,7 +46,7 @@
             <div class="col-4">
               <div class="form-group">
                 <label for="exampleInputEmail1">FIRST NAME:</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="firstname" value="{{ $ad->firstname }}">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="firstname" value="{{ $ad->firstname }}" readonly>
                 @if ($errors->has('firstname')) 
                   <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('firstname') }}</span>
                 @endif 
@@ -56,7 +56,7 @@
             <div class="col-4">
               <div class="form-group">
                 <label for="exampleInputEmail1">MIDDLE INITIAL:</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="middle_initial" value="{{ $ad->middle_initial }}">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="middle_initial" value="{{ $ad->middle_initial }}" readonly>
                 @if ($errors->has('middle_initial')) 
                   <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('middle_initial') }}</span>
                 @endif 
@@ -66,7 +66,7 @@
             <div class="col-4">
               <div class="form-group">
                 <label for="exampleInputEmail1">LAST NAME:</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="lastname" value="{{ $ad->lastname }}">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="lastname" value="{{ $ad->lastname }}" readonly>
                 @if ($errors->has('lastname')) 
                   <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('lastname') }}</span>
                 @endif 
@@ -76,7 +76,7 @@
             <div class="col-4">
               <div class="form-group">
                 <label for="exampleInputEmail1">USERNAME:</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" value="{{ $ad->username }}">
+                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="username" value="{{ $ad->username }}" readonly>
                 @if ($errors->has('username')) 
                   <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('username') }}</span>
                 @endif 

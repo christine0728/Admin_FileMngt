@@ -66,7 +66,7 @@
                 @endif 
               </div> 
             </div>
-<br> <br>
+            <br> <br>
             <div class="col-4">
               <div class="form-group">
                 <label for="exampleInputEmail1">USERNAME:</label>
@@ -77,14 +77,14 @@
               </div> 
             </div>  
             <div class="col-4"> 
-                <div class="form-group" style=" align-items: flex-end;">
-                  <label for="teamSelect" >CHANGE STATUS:</label>
-                  <select class="form-control" id="teamSelect" name="status">
-                    <option value="{{ $ad->status }}">Select here:</option>
-                    <option value="active">ACTIVE</option>
-                    <option value="inactive">INACTIVE</option> 
-                  </select> 
-                </div> 
+              <div class="form-group" style=" align-items: flex-end;">
+                <label for="teamSelect" >CHANGE STATUS:</label>
+                <select class="form-control" id="teamSelect" name="status">
+                  <option value="{{ $ad->status }}">Select here:</option>
+                  <option value="active">ACTIVE</option>
+                  <option value="inactive">INACTIVE</option> 
+                </select> 
+              </div> 
             </div>
             </div>
             <div class="col-12">

@@ -20,13 +20,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/login', [HomeController::class, 'login_view'])->name('login_form');
+Route::get('/', [HomeController::class, 'login_view'])->name('login_form');
 Route::post('/login_account', [HomeController::class, 'login'])->name('logging_in');
-
+Route::get('/inactive', [HomeController::class, 'inactive'])->name('inactive');
 
 Route::prefix('admin')->group(function(){
     Route::get('/logout', [HomeController::class, 'logout'])->name('admin.logout');
@@ -36,6 +36,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/view_police_file/{pid}', [PoliceController::class, 'view_police_file'])->name('view_police_file');
     Route::get('/edit_police_file/{pid}', [PoliceController::class, 'edit_police_file'])->name('edit_police_file');
     Route::post('/update_police_file/{pid}', [PoliceController::class, 'update_police_file'])->name('update_police_file');
+    Route::get('/personnelfile_pdf/{pid}', [HomeController::class, 'personnelfile_pdf'])->name('personnelfile_pdf');
 
     Route::get('/pds/{pid}', [HomeController::class, 'pds_folder'])->name('pds_folder');
     Route::post('/add_file_pds', [FileController::class, 'add_file_pds'])->name('add_file_pds');
@@ -133,6 +134,7 @@ Route::prefix('admin')->group(function(){
     Route::get('/edit_admin/{aid}', [AdminController::class, 'edit_admin'])->name('edit_admin_form');
     Route::post('/edit_admin_acc/{aid}', [AdminController::class, 'edit_admin_acc'])->name('edit_admin_acc');
     Route::post('/update_admin_acc/{aid}', [AdminController::class, 'update_admin_acc'])->name('update_admin_acc');
+    Route::post('/change_status/{aid}', [AdminController::class, 'change_status'])->name('change_status');
 
     Route::get('/change_password_form', [AdminController::class, 'change_password_form'])->name('change_password_form');
     Route::post('/changing_password', [AdminController::class, 'changing_password'])->name('changing_password');

@@ -17,9 +17,7 @@
     <link rel="stylesheet" href="https://cdn.mobiscroll.com/4.9.0/css/mobiscroll.jquery.min.css">
 
     <title>Admin | Edit Police Form</title>
-    <style>
-
-
+    <style> 
         body { 
             font-family: Arial, sans-serif;
             color: black !important;
@@ -57,7 +55,7 @@
         @media only screen and (max-width: 768px) {
             /* For mobile phones: */
             [class*="col-"] {
-            width: 100%;
+                width: 100%;
             }
 
             .header b{
@@ -83,8 +81,7 @@
         .parsley-errors-list{
             color:red;
         }
-
-        /* Added style for active navigation link */
+ 
         .nav-link.active {
             background-color: #1D0A68;
             color: white !important;
@@ -92,16 +89,16 @@
         }
 
         .form-navigation {
-        text-align: right;
-    }
+            text-align: right;
+        }
 
-    .form-navigation .previous {
-        float: left;
-    }
+        .form-navigation .previous {
+            float: left;
+        }
 
-    .form-navigation .next {
-        float: right;
-    } 
+        .form-navigation .next {
+            float: right;
+        } 
     </style>
 </head>
 <body style="background-color: #d3d3d3">
@@ -113,13 +110,11 @@
         </div> 
     </div>  
 
-    <div class="container row" style="margin-top: -2rem;">
-
+    <div class="container row" style="margin-top: -2rem;"> 
         <div class="col-12" style="background-color: white; border-radius: 0.5rem; margin-bottom: 1rem">
             <div class="col-8" style="padding: 0%">
                 <b style="font-size: x-large">POLICE PERSONNEL FILE</b> 
-            </div>
-             
+            </div> 
         </div>
         
         <div class="col-12" style="background-color: white; border-radius: 0.5rem; padding: 1.5rem">

@@ -19,24 +19,36 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
-
+        // $filename = $request->input('pol_fullname');
+         
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'pds-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_pds/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'pds-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_pds/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'pds', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'pds', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'pds', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -66,24 +78,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'pds-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_pds/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'pds-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_pds/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'pds', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'pds', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'pds-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_pds/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'pds', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
@@ -97,24 +129,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'psa-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_psa/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'psa-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_psa/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'psa', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'psa', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'psa-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_psa/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'psa', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -144,24 +196,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'psa-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_psa/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'psa-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_psa/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'psa', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'psa', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'psa-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_psa/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'psa', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
@@ -173,24 +245,44 @@ class FileController extends Controller
         $formatted_now = $now->format('Y-m-d, g:i a');
         $filename_time = $now->format('Y-m-d_gia');
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'appt_orders-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_appt_orders/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'appt_orders-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_appt_orders/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'appointment_orders', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'appointment_orders', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'appt_orders-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_appt_orders/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'appointment_orders', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -220,24 +312,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'appt_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_appt_orders/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'appt_orders-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_appt_orders/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'appointment_orders', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'appointment_orders', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'appt_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_appt_orders/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'appointment_orders', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
@@ -249,24 +361,44 @@ class FileController extends Controller
         $formatted_now = $now->format('Y-m-d, g:i a');
         $filename_time = $now->format('Y-m-d_gia');
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'promotion_orders-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_promotion_orders/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'promotion_orders-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_promotion_orders/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'promotion_orders', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'promotion_orders', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'promotion_orders-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_promotion_orders/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'promotion_orders', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -296,24 +428,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'promotion_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_promotion_orders/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'promotion_orders-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_promotion_orders/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'promotion_orders', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'promotion_orders', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'promotion_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_promotion_orders/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'promotion_orders', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
@@ -325,24 +477,44 @@ class FileController extends Controller
         $formatted_now = $now->format('Y-m-d, g:i a');
         $filename_time = $now->format('Y-m-d_gia');
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'susdem_orders-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_susdem_orders/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'susdem_orders-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_susdem_orders/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'susdem_orders', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'susdem_orders', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'susdem_orders-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_susdem_orders/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'susdem_orders', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -372,24 +544,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'susdem_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_susdem_orders/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'susdem_orders-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_susdem_orders/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'susdem_orders', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'susdem_orders', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'susdem_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_susdem_orders/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'susdem_orders', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
@@ -401,24 +593,44 @@ class FileController extends Controller
         $formatted_now = $now->format('Y-m-d, g:i a');
         $filename_time = $now->format('Y-m-d_gia');
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'attested_appts-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_attested_appts/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'attested_appts-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_attested_appts/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'attested_appts', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'attested_appts', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'attested_appts-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_attested_appts/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'attested_appts', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -448,24 +660,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'attested_appts-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_attested_appts/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'attested_appts-updates-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_attested_appts/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'attested_appts', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'attested_appts', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'attested_appts-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_attested_appts/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'attested_appts', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
@@ -477,24 +709,44 @@ class FileController extends Controller
         $formatted_now = $now->format('Y-m-d, g:i a');
         $filename_time = $now->format('Y-m-d_gia');
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'cert_eli-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_cert_eli/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'cert_eli-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_cert_eli/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'cert_eligibility', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'cert_eligibility', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'cert_eli-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_cert_eli/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'cert_eligibility', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -524,24 +776,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'cert_eli-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_cert_eli/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'cert_eli-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_cert_eli/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'cert_eligibility', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'cert_eligibility', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'cert_eli-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_cert_eli/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'cert_eligibility', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
@@ -553,24 +825,44 @@ class FileController extends Controller
         $formatted_now = $now->format('Y-m-d, g:i a');
         $filename_time = $now->format('Y-m-d_gia');
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'scholastic_rec-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_scholastic_rec/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'scholastic_rec-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_scholastic_rec/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'scholastic_records', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'scholastic_records', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'scholastic_rec-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_scholastic_rec/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'scholastic_records', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -600,24 +892,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'scholastic_rec-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_scholastic_rec/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'scholastic_rec-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_scholastic_rec/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'scholastic_records', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'scholastic_records', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'scholastic_rec-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_scholastic_rec/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'scholastic_records', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
@@ -629,24 +941,44 @@ class FileController extends Controller
         $formatted_now = $now->format('Y-m-d, g:i a');
         $filename_time = $now->format('Y-m-d_gia');
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'trainings-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_trainings/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'trainings-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_trainings/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'trainings', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'trainings', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'trainings-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_trainings/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'trainings', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -676,24 +1008,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
-
+        // $filename = $request->input('pol_fullname');
+        
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'trainings-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_trainings/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'trainings-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_trainings/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'trainings', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'trainings', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'trainings-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_trainings/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'trainings', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
@@ -705,24 +1057,44 @@ class FileController extends Controller
         $formatted_now = $now->format('Y-m-d, g:i a');
         $filename_time = $now->format('Y-m-d_gia');
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'rca_longpay-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_rca_longpay/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'rca_longpay-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_rca_longpay/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'rca_longpay_orders', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'rca_longpay_orders', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'rca_longpay-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_rca_longpay/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'rca_longpay_orders', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -752,24 +1124,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'rca_longpay_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_rca_longpay/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'rca_longpay-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_rca_longpay/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'rca_longpay_orders', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'rca_longpay_orders', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'rca_longpay_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_rca_longpay/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'rca_longpay_orders', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
@@ -781,24 +1173,44 @@ class FileController extends Controller
         $formatted_now = $now->format('Y-m-d, g:i a');
         $filename_time = $now->format('Y-m-d_gia');
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'assign_des-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_assign_des/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'assign_des-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_assign_des/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'assign_des_orders', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'assign_des_orders', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'assign_des-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_assign_des/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'assign_des_orders', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -828,24 +1240,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'assign_des-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_assign_des/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'assign_des-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_assign_des/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'assign_des_orders', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'assign_des_orders', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'assign_des-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_assign_des/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'assign_des_orders', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
@@ -857,24 +1289,44 @@ class FileController extends Controller
         $formatted_now = $now->format('Y-m-d, g:i a');
         $filename_time = $now->format('Y-m-d_gia');
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'cases_offenses-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_cases_offenses/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'cases_offenses-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_cases_offenses/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'cases_offenses', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'cases_offenses', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'cases_offenses-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_cases_offenses/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'cases_offenses', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -904,24 +1356,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
-
+        // $filename = $request->input('pol_fullname');
+        
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'cases_offenses-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_cases_offenses/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'cases_offenses-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_cases_offenses/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'cases_offenses', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'cases_offenses', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'cases_offenses-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_cases_offenses/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'cases_offenses', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
@@ -933,24 +1405,44 @@ class FileController extends Controller
         $formatted_now = $now->format('Y-m-d, g:i a');
         $filename_time = $now->format('Y-m-d_gia');
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'firearms_rec-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_firearms_rec/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'firearms_rec-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_firearms_rec/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'firearms_rec', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'firearms_records', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'firearms_rec-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_firearms_rec/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'firearms_records', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -980,24 +1472,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'firearms_rec-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_firearms_rec/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'firearms_rec-update' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_firearms_rec/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'firearms_rec', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'firearms_records', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'firearms_rec-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_firearms_rec/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'firearms_records', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
@@ -1009,24 +1521,44 @@ class FileController extends Controller
         $formatted_now = $now->format('Y-m-d, g:i a');
         $filename_time = $now->format('Y-m-d_gia');
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'leave_orders-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_leave_orders/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'leave_orders-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_leave_orders/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'leave_orders', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'leave_orders', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'leave_orders-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_leave_orders/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'leave_orders', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -1056,24 +1588,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'leave_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_leave_orders/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'leave_orders-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_leave_orders/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'leave_orders', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'leave_orders', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'leave_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_leave_orders/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'leave_orders', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
@@ -1085,24 +1637,44 @@ class FileController extends Controller
         $formatted_now = $now->format('Y-m-d, g:i a');
         $filename_time = $now->format('Y-m-d_gia');
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'awards-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_awards/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'awards-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_awards/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'awards', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'awards', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'awards-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_awards/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'awards', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -1132,24 +1704,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'awards-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_awards/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'awards-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_awards/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'awards', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'awards', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'awards-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_awards/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'awards', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
@@ -1161,24 +1753,44 @@ class FileController extends Controller
         $formatted_now = $now->format('Y-m-d, g:i a');
         $filename_time = $now->format('Y-m-d_gia');
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'saln-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_saln/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'saln-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_saln/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'saln', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'saln', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'saln-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_saln/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'saln', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -1208,24 +1820,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'saln-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_saln/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'saln-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_saln/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'saln', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'saln', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'saln-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_saln/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'saln', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
@@ -1237,24 +1869,44 @@ class FileController extends Controller
         $formatted_now = $now->format('Y-m-d, g:i a');
         $filename_time = $now->format('Y-m-d_gia');
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'others-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_others/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'others-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_others/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'others', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'others', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'others-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_others/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'others', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
@@ -1284,24 +1936,44 @@ class FileController extends Controller
 
         // dd($now);
 
-        $filename = $request->input('pol_fullname');
+        // $filename = $request->input('pol_fullname');
 
         if ($request->hasFile('file')) {
-            $filee = $request->file('file'); 
-            $file = $filename . '-' . 'others-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-            $filee->move('files/files_others/', $file);  
+            foreach ($request->file('file') as $uploadedFile){
+                $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
+                $filee = $request->file('file'); 
+                $file = $filename . '-' . 'others-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_others/', $file);  
+
+                $files = File::create([ 
+                    'police_id' => $request->input('pid'),
+                    'filename' => $filename,
+                    'complete_filename' => $file,
+                    'folder' => 'others', 
+                    'created_at' => $formatted_now,
+                    'updated_at' => $formatted_now,
+                ]);
+            }   
         }else {
             return redirect()->back();
         }
 
-        $files = File::create([ 
-            'police_id' => $request->input('pid'),
-            'filename' => $filename,
-            'complete_filename' => $file,
-            'folder' => 'others', 
-            'created_at' => $formatted_now,
-            'updated_at' => $formatted_now,
-        ]);
+        // if ($request->hasFile('file')) {
+        //     $filee = $request->file('file'); 
+        //     $file = $filename . '-' . 'others-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_others/', $file);  
+        // }else {
+        //     return redirect()->back();
+        // }
+
+        // $files = File::create([ 
+        //     'police_id' => $request->input('pid'),
+        //     'filename' => $filename,
+        //     'complete_filename' => $file,
+        //     'folder' => 'others', 
+        //     'created_at' => $formatted_now,
+        //     'updated_at' => $formatted_now,
+        // ]);
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
