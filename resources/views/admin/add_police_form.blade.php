@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version=10">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version=12">
     <script src="https://kit.fontawesome.com/7528702e77.js" crossorigin="anonymous"></script>
     <link rel="icon" href="{{ url('images/favicon.ico') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -240,8 +240,10 @@
                                     <label for="exampleInputEmail1">7. SEX:</label>
                                     {{-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_sex" value="{{ old('per_sex') }}" oninput="toUpper(this)">  --}}
 
-                                    <select class="form-control" name="per_sex" value="{{ old('per_sex') }}"  >
-                                        <option value="">Select:</option>
+                                    <select class="form-control" name="per_sex" value="{{ old('per_sex') }}">
+                                        <option value="{{ old('per_sex') }}" {{ old('per_sex') ? 'selected' : '' }}>
+                                            {{ old('per_sex') ? 'Selected: ' . old('per_sex') : 'Select:' }}
+                                        </option> 
                                         <option value="FEMALE">FEMALE</option>
                                         <option value="MALE">MALE</option>
                                     </select>
@@ -256,7 +258,11 @@
                                     {{-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_civil_status" value="{{ old('per_civil_status') }}">  --}}
 
                                     <select class="form-control" name="per_civil_status" value="{{ old('per_civil_status') }}">
-                                        <option value="">Select:</option>
+                                        {{-- <option value="">Select:</option> --}}
+                                        <option value="{{ old('per_civil_status') }}" {{ old('per_civil_status') ? 'selected' : '' }}>
+                                            {{ old('per_civil_status') ? 'Selected: ' . old('per_civil_status') : 'Select:' }}
+                                        </option> 
+
                                         <option value="SINGLE">SINGLE</option>
                                         <option value="MARRIED">MARRIED</option>
                                         <option value="SEPARATED">SEPARATED</option>
@@ -326,7 +332,12 @@
                                     {{-- <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_bloodtype" value="{{ old('per_bloodtype') }}"> --}}
                                     
                                     <select class="form-control" name="per_bloodtype" >
-                                        <option value="">Select:</option>
+                                        {{-- <option value="">Select:</option> --}}
+
+                                        <option value="{{ old('per_bloodtype') }}" {{ old('per_bloodtype') ? 'selected' : '' }}>
+                                            {{ old('per_bloodtype') ? 'Selected: ' . old('per_bloodtype') : 'Select:' }}
+                                        </option> 
+
                                         <option value="A+">A+</option>
                                         <option value="O+">O+</option>
                                         <option value="B+">B+</option>

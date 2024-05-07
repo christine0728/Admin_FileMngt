@@ -49,10 +49,10 @@ class AdminController extends Controller
         ]);
 
 
-if ($validator->fails()) {
-    return redirect()->back()->withErrors($validator)->withInput();
-}
-// No need to store 'conf_password' in the database
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        // No need to store 'conf_password' in the database
 
         $user = Admin::create([ 
             'firstname' => $request->input('firstname'),
@@ -158,5 +158,16 @@ if ($validator->fails()) {
         else{
             return redirect()->back()->with('error', 'The username or current password you entered is incorrect.');
         }
+    }
+
+    public function change_status(Request $request, $aid)
+    {
+        $admin = Admin::where('id', '=', $aid)->get();
+        Admin::where('id', $aid)
+        ->update([
+            'status' => $request->input('status'),
+        ]);
+
+        return redirect()->route('admin_acc_mngt')->with('edited', 'Admin Account edited successfully!');
     }
 }

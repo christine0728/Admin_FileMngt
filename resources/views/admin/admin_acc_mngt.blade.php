@@ -14,7 +14,7 @@
 
     <script src="https://kit.fontawesome.com/7528702e77.js" crossorigin="anonymous"></script>
 
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version=10">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version=12">
 
     <title>Admin | Admin Account Mngt.</title>
 
@@ -79,15 +79,15 @@
           <button class="tablinks" onclick="openCity(event, 'inactive')">Inactive Accounts</button>  
         </div>
 
-        <div class="col-12" style="padding: 1rem; margin-top: -1rem">
+        <div class="col-12" style="padding: 1rem; margin-top: -1rem;">
           @if(Session::has('added')) 
-            <div class="alert alert-success col-12" role="alert">
+            <div class="alert alert-success col-12" role="alert" style="margin-top: 1rem">
               <b>{{ session::get('added') }}</b>
             </div>
           @endif 
     
           @if(Session::has('edited')) 
-            <div class="alert alert-warning col-12" role="alert">
+            <div class="alert alert-warning col-12" role="alert" style="margin-top: 1rem">
               <b>{{ session::get('edited') }}</b>
             </div>
           @endif 
@@ -97,11 +97,11 @@
           <table id="harvTbl" class="display" >
             <thead>
               <tr>
-                <th>Fullname</th>
-                <th>Username</th>
-                <th>Status</th>
-                <th>Created At</th> 
-                <th style="width: 10rem;">Action</th>
+                <th style="width: 9rem; text-align: center">Fullname</th>
+                <th style="width: 9rem; text-align: center">Username</th>
+                <th style="width: 6rem; text-align: center">Status</th>
+                <th style="width: 9rem; text-align: center">Created At</th> 
+                <th style="width: 12rem;">Change Status</th>
               </tr>
             </thead>
             <tbody> 
@@ -120,9 +120,24 @@
                   </td>  
                   <td style="text-align: center">{{ $ad->created_at }}</td>
                   <td >
-                    <center>  
+                    {{-- <center>  
                       <a class="edit-btn" href="{{ route('edit_admin_form', [ $ad->id ]) }}">&nbsp;&nbsp;&nbsp;Edit Account<i class="fa fa-edit" style="font-size: large; padding: 0.5rem"></i></a>  
-                  </center>
+                    </center> --}}
+
+                    <div class="col-12"> 
+                      <div class="form-group" style=" align-items: flex-end;">
+                        {{-- <label for="teamSelect" >CHANGE STATUS:</label> --}}
+                        <form action="{{ route('change_status', [$ad->id]) }}" method="post">
+                          @csrf
+                          <select class="form-control" id="teamSelect" name="status" style="width: 80%">
+                            <option value="{{ $ad->status }}">Select here:</option>
+                            <option value="active">ACTIVE</option>
+                            <option value="inactive">INACTIVE</option> 
+                          </select> 
+                          <button type="submit" class="form-buttons" style="float: left; width: 7rem; margin-top:0.5rem">Update status</i></button>
+                        </form>
+                      </div> 
+                    </div>
                   </td>
                 </tr>
               @endforeach 
@@ -135,11 +150,11 @@
           <table id="tbl2" class="display" >
             <thead>
               <tr>
-                <center><th>Fullname</th></center>
-                <center><th>Username</th></center>
-                <center><th>Status</th></center>
-                <center><th>Created At</th></center> 
-                <center><th style="width: 10rem;">Action</th></center>
+                <th style="width: 9rem; text-align: center">Fullname</th>
+                <th style="width: 9rem; text-align: center">Username</th>
+                <th style="width: 6rem; text-align: center">Status</th>
+                <th style="width: 9rem; text-align: center">Created At</th> 
+                <th style="width: 12rem;">Change Status</th>
               </tr>
             </thead>
             <tbody> 
@@ -158,9 +173,24 @@
                   </td>  
                   <td style="text-align: center">{{ $inad->created_at }}</td>
                   <td >
-                    <center>  
+                    {{-- <center>  
                       <a class="edit-btn" href="{{ route('edit_admin_form', [ $inad->id ]) }}">&nbsp;&nbsp;&nbsp;Edit Account<i class="fa fa-edit" style="font-size: large; padding: 0.5rem"></i></a>  
-                  </center>
+                    </center> --}}
+
+                    <div class="col-12"> 
+                      <div class="form-group" style=" align-items: flex-end;">
+                        {{-- <label for="teamSelect" >CHANGE STATUS:</label> --}}
+                        <form action="{{ route('change_status', [$ad->id]) }}" method="post">
+                          @csrf
+                          <select class="form-control" id="teamSelect" name="status" style="width: 80%">
+                            <option value="{{ $ad->status }}">Select here:</option>
+                            <option value="active">ACTIVE</option>
+                            <option value="inactive">INACTIVE</option> 
+                          </select> 
+                          <button type="submit" class="form-buttons" style="float: left; width: 7rem; margin-top:0.5rem">Update status</i></button>
+                        </form>
+                      </div> 
+                    </div>
                   </td>
                 </tr>
               @endforeach 

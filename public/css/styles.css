@@ -99,7 +99,7 @@
     display: inline-block;
     border-radius: 0.5rem !important;
     width: auto;
-    padding: 0.2rem 0.7rem 0.2rem 0.7rem !important;
+    padding: 0.3rem 0.7rem 0.3rem 0.7rem !important; 
     background-color: darkgreen !important;
     color: white !important;
   }
@@ -131,3 +131,8 @@
     cursor: pointer !important;
   }
 
+  .icon:hover {
+    background-color: #6F79AA;
+    color: white !important;
+    border-color: #6F79AA !important;
+}

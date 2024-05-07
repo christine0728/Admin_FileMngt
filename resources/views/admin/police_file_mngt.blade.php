@@ -1,66 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="icon" href="{{ url('images/favicon.ico') }}">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="icon" href="{{ url('images/favicon.ico') }}">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
 
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version=18">
+  <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version=18">
 
-    <script src="https://kit.fontawesome.com/7528702e77.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/7528702e77.js" crossorigin="anonymous"></script>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 
-    <title>Admin | Police File Mngt.</title>
+  <title>Admin | Police File Mngt.</title>
 
-    <style>
-      /* Style the tab */
-      .tab {
-          overflow: hidden;
-          border: 1px solid #ccc;
-          background-color: #f1f1f1;
-      }
+  <style> 
+    .tab {
+      overflow: hidden;
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+ 
+    .tab button {
+      background-color: inherit;
+      float: left;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 14px 16px;
+      transition: 0.3s;
+      font-size: 17px;
+    }
 
-      /* Style the buttons inside the tab */
-      .tab button {
-          background-color: inherit;
-          float: left;
-          border: none;
-          outline: none;
-          cursor: pointer;
-          padding: 14px 16px;
-          transition: 0.3s;
-          font-size: 17px;
-      }
+    .tab button:hover {
+      background-color: #6F79AA;
+      color: white !important;
+    }
 
-      .tab button:hover {
-          background-color: #6F79AA;
-          color: white !important;
-      }
+    .tab button.active {
+      background-color: #1D0A68;
+      color: white !important; 
+    }
 
-      .tab button.active {
-          background-color: #1D0A68;
-          color: white !important; 
-      }
+    .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
 
-      .tabcontent {
-          display: none;
-          padding: 6px 12px;
-          border: 1px solid #ccc;
-          border-top: none;
-      }
-
-      .icon:hover {
-        background-color: #6F79AA;
-        color: white !important;
-        border-color: #6F79AA !important;
-      }
-    </style>
+    .icon:hover {
+      background-color: #6F79AA;
+      color: white !important;
+      border-color: #6F79AA !important;
+    }
+  </style>
 </head>
 <body style="background-color: #d3d3d3">
   @include('includes.navbar')
@@ -71,7 +69,7 @@
 
   <div class="row" style="width: 75%; margin: 0rem auto 0rem auto">
 
-    <div class="col-12" style="margin-top: -3rem">
+    <div class="col-12" style="margin-top: -1rem">
       <h1><b>Personnel File Management</b></h1>
     </div>
 
@@ -79,8 +77,7 @@
       <a class="link-buttons" href="{{ route('add_police_form') }}" style="font-size: medium; width: 15rem">Add Police Personnel&nbsp;&nbsp;<i class="fas fa-user-plus"></i> </a>
     </div>
 
-    <div class="col-12" >
-       
+    <div class="col-12" > 
       <div class="col-12" style="padding: 1rem; background-color: white; border-radius: 0.5rem">
         <div class="tab" >
           <button class="tablinks" id="defaultOpen" onclick="openCity(event, 'active')">Active Personnels</button>
@@ -116,9 +113,9 @@
                   <td style="text-align: center"> 
                     @if($pol->per_image != 'no image')
                       <img src="{{ asset('images/police/' . $pol->per_image) }}" alt="{{ $pol->per_firstname }}" class="img-thumbnail" style="max-width: 100px; max-height: 100px;">
-                      @else
+                    @else
                       <img src="{{ asset('images/default.png') }}" id="previewImage" alt="{{ $pol->per_firstname }}" class="img-thumbnail"  style="max-width: 30%; max-height: 30%;">      
-                      @endif
+                    @endif
                   </td>
                   <td style="text-align: center">{{ $pol->per_firstname }} {{ $pol->per_middlename }} {{ $pol->per_lastname }}</td>
                   <td style="text-align: center">{{ $pol->per_rank }}</td>
@@ -137,24 +134,23 @@
                     <form action="{{ route('change_status_pol', $pol->id) }}" method="post">
                       @csrf
                       <select class="form-control" name="per_status" style="border-radius: 0.3125rem; width: 8rem; padding: 0.4rem; font-size: medium; margin-bottom: 0.5rem" required>
-                          <option value="">Select status:</option>
-                          <option value="active">ACTIVE</option>
-                          <option value="inactive">INACTIVE</option> 
-                          <option value="schooling">SCHOOLING</option> 
+                        <option value="">Select status:</option>
+                        <option value="active">ACTIVE</option>
+                        <option value="inactive">INACTIVE</option> 
+                        <option value="schooling">SCHOOLING</option> 
                       </select>
                       <button type="submit" class="form-buttons" > Change status </button>
                     </form>
                   </td>
                   <td style="text-align: center;">
-                  <div class="d-inline-block" style="width: 150px;"> <!-- Adjust the width as needed -->
-                    <a href="{{ route('view_police', [$pol->id]) }}" class="icon btn btn-primary" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-folder" style="color: white"></i>&nbsp;&nbsp;View Folders</a>
-                    <a href="{{ route('view_police_file', [$pol->id]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View File</span></a>
-                    <a href="{{ route('edit_police_file', [$pol->id]) }}" class="icon btn btn-success" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-edit" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">Edit File</span></a>
-                  </div>
-                </td>
+                    <div class="d-inline-block" style="width: 150px;"> <!-- Adjust the width as needed -->
+                      <a href="{{ route('view_police', [$pol->id]) }}" class="icon btn btn-primary" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-folder" style="color: white"></i>&nbsp;&nbsp;View Folders</a>
+                      <a href="{{ route('view_police_file', [$pol->id]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View File</span></a>
+                      <a href="{{ route('edit_police_file', [$pol->id]) }}" class="icon btn btn-success" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-edit" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">Edit File</span></a>
+                    </div>
+                  </td>
                 </tr>
-              @endforeach 
-              </form>
+              @endforeach  
             </tbody>
           </table>
         </div>
@@ -163,7 +159,7 @@
           <table id="tbl2" class="display" >
             <thead>
               <tr style="text-align: center">
-              <th>Image</th>
+                <th>Image</th>
                 <th style="min-width: 10rem">Name</th>
                 <th>Rank</th>
                 <th>Unit/Station</th> 
@@ -177,9 +173,9 @@
               @foreach ($in_police as $inp) 
                 <tr>
                   <td style="text-align: center"> 
-                      @if($pol->per_image != 'no image')
-                        <img src="{{ asset('images/police/' . $pol->per_image) }}" alt="{{ $pol->per_firstname }}" class="img-thumbnail" style="max-width: 100px; max-height: 100px;">
-                      @else
+                    @if($pol->per_image != 'no image')
+                      <img src="{{ asset('images/police/' . $pol->per_image) }}" alt="{{ $pol->per_firstname }}" class="img-thumbnail" style="max-width: 100px; max-height: 100px;">
+                    @else
                       <img src="{{ asset('images/default.png') }}" id="previewImage" alt="{{ $pol->per_firstname }}" class="img-thumbnail"  style="max-width: 60%; max-height: 60%;">      
                       @endif
                   </td>
@@ -200,23 +196,23 @@
                     <form action="{{ route('change_status_pol', $inp->id) }}" method="post">
                       @csrf
                       <select required class="form-control" name="per_status" style="border-radius: 0.3125rem; width: 8rem; padding: 0.4rem; font-size: medium; margin-bottom: 0.5rem" required>
-                          <option value="">Select status:</option>
-                          <option value="active">ACTIVE</option>
-                          <option value="inactive">INACTIVE</option> 
-                          <option value="schooling">SCHOOLING</option> 
+                        <option value="">Select status:</option>
+                        <option value="active">ACTIVE</option>
+                        <option value="inactive">INACTIVE</option> 
+                        <option value="schooling">SCHOOLING</option> 
                       </select>
                       <button type="submit" class="form-buttons" > Change status </button>
                     </form>
                   </td>
                   <td style="text-align: center">
-                  <div class="d-inline-block" style="width: 150px;"> <!-- Adjust the width as needed -->
-                    <a href="{{ route('view_police', [$pol->id]) }}" class="icon btn btn-primary" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-folder" style="color: white"></i>&nbsp;&nbsp;View Folders</a>
-                    <a href="{{ route('view_police_file', [$pol->id]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View File</span></a>
-                    <a href="{{ route('edit_police_file', [$pol->id]) }}" class="icon btn btn-success" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-edit" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">Edit File</span></a>
-                  </div> 
+                    <div class="d-inline-block" style="width: 150px;"> <!-- Adjust the width as needed -->
+                      <a href="{{ route('view_police', [$pol->id]) }}" class="icon btn btn-primary" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-folder" style="color: white"></i>&nbsp;&nbsp;View Folders</a>
+                      <a href="{{ route('view_police_file', [$pol->id]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View File</span></a>
+                      <a href="{{ route('edit_police_file', [$pol->id]) }}" class="icon btn btn-success" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-edit" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">Edit File</span></a>
+                    </div> 
+                  </td>
                 </tr>
-              @endforeach 
-              </form>
+              @endforeach  
             </tbody>
           </table>
         </div>
@@ -239,11 +235,11 @@
               @foreach ($sch_police as $sch) 
                 <tr>
                   <td style="text-align: center"> 
-                      @if($pol->per_image != 'no image')
+                    @if($pol->per_image != 'no image')
                       <img src="{{ asset('images/police/' . $pol->per_image) }}" alt="{{ $pol->per_firstname }}" class="img-thumbnail" style="max-width: 100px; max-height: 100px;">
-                      @else
+                    @else
                       <img src="{{ asset('images/default.png') }}" id="previewImage" alt="{{ $pol->per_firstname }}" class="img-thumbnail" style="max-width: 60%; max-height: 60%;">      
-                      @endif
+                    @endif
                   </td>
                   <td style="text-align: center">{{ $sch->per_firstname }} {{ $sch->per_middlename }} {{ $sch->per_lastname }}</td>
                   <td style="text-align: center">{{ $sch->per_rank }}</td>
@@ -264,81 +260,66 @@
                     <form action="{{ route('change_status_pol', $sch->id) }}" method="post">
                       @csrf
                       <select required class="form-control" name="per_status" style="border-radius: 0.3125rem; width: 8rem; padding: 0.4rem; font-size: medium; margin-bottom: 0.5rem" required>
-                          <option value="">Select status:</option>
-                          <option value="active">ACTIVE</option>
-                          <option value="inactive">INACTIVE</option> 
-                          <option value="schooling">SCHOOLING</option> 
+                        <option value="">Select status:</option>
+                        <option value="active">ACTIVE</option>
+                        <option value="inactive">INACTIVE</option> 
+                        <option value="schooling">SCHOOLING</option> 
                       </select>
                       <button type="submit" class="form-buttons" > Change status </button>
                     </form>
                   </td>
                   <td style="text-align: center">
-                  <div class="d-inline-block" style="width: 150px;"> <!-- Adjust the width as needed -->
-                    <a href="{{ route('view_police', [$pol->id]) }}" class="icon btn btn-primary" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-folder" style="color: white"></i>&nbsp;&nbsp;View Folders</a>
-                    <a href="{{ route('view_police_file', [$pol->id]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View Data</span></a>
-                    <a href="{{ route('edit_police_file', [$pol->id]) }}" class="icon btn btn-success" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-edit" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">Edit File</span></a>
-                  </div>
-
-                </td>
+                    <div class="d-inline-block" style="width: 150px;"> <!-- Adjust the width as needed -->
+                      <a href="{{ route('view_police', [$pol->id]) }}" class="icon btn btn-primary" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-folder" style="color: white"></i>&nbsp;&nbsp;View Folders</a>
+                      <a href="{{ route('view_police_file', [$pol->id]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View Data</span></a>
+                      <a href="{{ route('edit_police_file', [$pol->id]) }}" class="icon btn btn-success" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-edit" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">Edit File</span></a>
+                    </div> 
+                 </td>
                 </tr>
-              @endforeach 
-              </form>
+              @endforeach  
             </tbody>
           </table>
         </div>
-      </div>
-
-
-                              </td>
-              </tr>
-         
-            </form>
-          </tbody>
-        </table>
-
       </div> 
-      <br> <br>
     </div>
   </div>  
-  @include('includes.footer')
+@include('includes.footer')
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.js"></script>
 
-  <script>
-    $(document).ready(function() {
-      $('#harvTbl').DataTable({
-        "order": [[0, "desc"]]
-      });
-
-      $('#tbl2').DataTable({
-        "order": [[0, "desc"]]
-      });
-
-      $('#tbl3').DataTable({
-        "order": [[0, "desc"]]
-      });
+<script>
+  $(document).ready(function() {
+    $('#harvTbl').DataTable({
+      "order": [[0, "desc"]]
     });
 
-    document.addEventListener("DOMContentLoaded", function() { 
-      document.getElementById("defaultOpen").click();
+    $('#tbl2').DataTable({
+      "order": [[0, "desc"]]
     });
 
-    function openCity(evt, cityName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-          tabcontent[i].style.display = "none";
-      }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-          tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-      document.getElementById(cityName).style.display = "block";
-      evt.currentTarget.className += " active";
+    $('#tbl3').DataTable({
+      "order": [[0, "desc"]]
+    });
+  });
+
+  document.addEventListener("DOMContentLoaded", function() { 
+    document.getElementById("defaultOpen").click();
+  });
+
+  function openCity(evt, cityName) {
+    var i, tabcontent, tablinks;
+    tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
     }
-  </script>
-  <br> <br>
-
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+  }
+</script> 
 </body>
 </html>

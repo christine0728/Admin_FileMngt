@@ -95,25 +95,30 @@
     p{
       color:white;
     }
+
+    .g-recaptcha {
+      max-height: 100px; /* Adjust this value as needed */
+      overflow: hidden;
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="login-container">
       <div class="login-left" style="background-color: #1D0A68">
-        <b> <p style="font-size: 20px">Admin Department</p></b>
-        <b> <p style="font-size: 30px">Admin File Management System</p></b>
+        <b><p style="font-size: 20px">Admin Department</p></b>
+        <b><p style="font-size: 30px">Admin File Management System</p></b>
         <b><p style="margin-bottom: 0;font-size: 20px">Philippine National Police<br><b style="font-size:12px">Urdaneta City Police Station</b></p></b>
       </div>
       <div class="login-form" style="background-color:#D9D9D9">
         <center><img src="{{ asset('images/pnp - logo.png') }}" alt="Login Image" height="100px" width="100px"></center><br>
 
         <form action="{{ route('logging_in') }}" method="post">
-            @if(session('error'))
-              <div class="alert alert-warning">
-              {{ session('error') }}
-              </div>
-            @endif
+          @if(session('error'))
+            <div class="alert alert-warning">
+            {{ session('error') }}
+            </div>
+          @endif
           @csrf
           <div class="mb-3">
             <label for="email" class="form-label"><i class="fa fa-envelope"></i> Username</label>
@@ -127,25 +132,23 @@
           <div class="mb-3">
             <label for="password" class="form-label"><i class="fa fa-lock"></i> Password</label>
             <div class="input-group">
-                <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
-                <button class="btn btn-outline-secondary" type="button" id="password-toggle-btn"><i class="fa fa-eye"></i></button>
-            </div>
+              <input type="password" class="form-control" id="password" name="password" placeholder="Enter your password" required>
+              <button class="btn btn-outline-secondary" type="button" id="password-toggle-btn"><i class="fa fa-eye"></i></button>
+            </div>  
             <div class="error-message">
-                @error('password')
-                    {{ $message }}
-                @enderror
+              @error('password')
+                {{ $message }}
+              @enderror
             </div>
         </div>
-
-
-          {{-- {!! NoCaptcha::renderJs() !!}
-          {!! NoCaptcha::display() !!} --}}
+ 
+          {!! NoCaptcha::renderJs() !!}
+          {!! NoCaptcha::display() !!}
 
           @error('g-recaptcha-response')
               <p class="text-danger">{{ $message }}</p>
           @enderror
-
-          <br>
+ 
           <button type="submit" class="btn btn-primary w-100" style="background-color:#1D0A68"> Login&nbsp;<i class="fa fa-arrow-right"></i></button>
         </form>
 

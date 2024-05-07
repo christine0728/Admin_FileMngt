@@ -54,7 +54,8 @@
                             {{-- <a class=" " href="{{ route('view_police_file', $police->id) }}">View Police Personal File</a></p>   --}}
                             {{-- <a class="btn btn-info" href="{{ route('view_police_file', [$police->id]) }}" style="margin-top: 0.5rem">View Data&nbsp;&nbsp;<i class="fa fa-edit"></i></a> --}}
 
-                            <a href="{{ route('view_police_file', [$police->id]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 8rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View Data</span></a>
+                            <a href="{{ route('view_police_file', [$police->id]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 12rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View Personal File</span></a>
+                        </p>
                     </div> 
 
                     <div class="col-12" style="padding: 1rem 1.5rem 1rem 1.5rem">

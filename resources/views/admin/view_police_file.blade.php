@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version=20">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version=22">
     <script src="https://kit.fontawesome.com/7528702e77.js" crossorigin="anonymous"></script>
     <link rel="icon" href="{{ url('images/favicon.ico') }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
@@ -86,9 +86,11 @@
             </div>
             
             <div class="col-4" style="padding: 0%;">  
-                <a class="edit-btn" href="{{ route('edit_police_file', [$police->id]) }}" style="float: right;">Edit File&nbsp;&nbsp;<i class="fa fa-edit"></i></a> 
+                <a class="edit-btn" href="{{ route('edit_police_file', [$police->id]) }}" style="margin-left: 1rem">Edit File&nbsp;&nbsp;<i class="fa fa-edit"></i></a> 
 
                 {{-- <a class="view-btn" href="{{ route('view_police_file', [$police->id]) }}" target="_blank" style="float: right; margin-right: 0.5rem">View File&nbsp;&nbsp;<i class="fa-regular fa-eye"></i></a> --}}
+
+                <a class="link-buttons" href="{{ route('personnelfile_pdf', [$police->id]) }}" style="background-color: #48145B; margin-right: 0rem" target="_blank">Download as PDF&nbsp;<i class="fa-regular fa-circle-down "></i> </a>
             </div> 
         </div>
 
