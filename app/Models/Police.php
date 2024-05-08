@@ -12,6 +12,7 @@ class Police extends Model
     protected $table = 'police';
 
     protected $fillable = [
+        'author_id',
         'per_image',
         'per_lastname',
         'per_firstname',

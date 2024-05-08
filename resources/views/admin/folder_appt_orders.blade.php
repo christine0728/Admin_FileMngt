@@ -92,7 +92,7 @@
               <input type="hidden" name="pol_fullname" value="{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}"> 
               <div class="col-6" style="margin-top: -1rem"> 
                 <label for="image"><b>Update File in PDS folder:</b></label>
-                <input type="file" class="form-control" id="file" name="file" accept="application/pdf" multiple> 
+                <input type="file" class="form-control" id="file" name="file[]" accept="application/pdf" multiple> 
               </div>   
 
               <div class="col-12" style="margin-top: -1rem; margin-bottom: 1.5rem">

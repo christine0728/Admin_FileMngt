@@ -6,8 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Models\Personnel;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Police;
+use App\Rules\UniqueFirstname;
+use App\Rules\UniqueFullname;
+use App\Rules\UniqueLastname;
+use App\Rules\UniqueMiddlename;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PoliceController extends Controller
 {
@@ -42,11 +47,12 @@ class PoliceController extends Controller
         } else {
             $per_filename = 'no image';
         }
-        $validator = Validator::make($request->all(), [
-            'per_lastname' => 'required|regex:/^[a-zA-Z -]+$/',
+
+        $validator = Validator::make($request->all(), [ 
             'per_sex' => 'required',
-            'per_firstname' => 'required|regex:/^[a-zA-Z -]+$/',
-            'per_middlename' => 'required|regex:/^[a-zA-Z -]+$/',
+            'per_lastname' => ['required', 'regex:/^[a-zA-Z -]+$/'],
+            'per_firstname' => ['required', 'regex:/^[a-zA-Z -]+$/'],
+            'per_middlename' => ['required', 'regex:/^[a-zA-Z -]+$/'],
             'per_rank' => 'required|regex:/^[a-zA-Z0-9\s-]+$/',
             'per_unit_station' => 'required|regex:/^[a-zA-Z0-9\s\/-]+$/', 
             'per_street' => 'required|regex:/^[a-zA-Z\s#-]*(\d{1,5})?[a-zA-Z\s#-]*$/',
@@ -124,9 +130,26 @@ class PoliceController extends Controller
             'per_spouse_kin_occupation.required' => 'The Spouse or Kin Occupation field is required.',
             'per_spouse_kin_occupation.regex' => 'The Spouse or Kin Occupation field must only contain letters and spaces.',
         ]);
+
+        $fullname = $request->input('per_firstname') . " " . $request->input('per_middlename') . " " . $request->input('per_lastname');
+
+        // dd($fullname);
+
+        $existingRecord = Police::whereRaw("CONCAT(per_firstname, ' ', per_middlename, ' ', per_lastname) = ?", [$fullname])->exists();
+
+        if ($existingRecord) {
+            return back()->withInput()->withErrors([
+                'per_firstname' => 'The full name has already been entered.', 
+                'per_lastname' => 'The full name has already been entered.', 
+                'per_middlename' => 'The full name has already been entered.', 
+            ]);
+        }
+
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
-        }
+        } 
+
+
         // $rules = [
         //     'per_lastname' => 'required|regex:/^[a-zA-Z -]+$/',
         //     'per_firstname' => 'required|regex:/^[a-zA-Z -]+$/',
@@ -199,7 +222,10 @@ class PoliceController extends Controller
         //     'created_at' => $now,
         // ]);
 
+        $aid = Auth::guard('admin')->user()->id;
+
         $user = Police::create([ 
+            'author_id' => $aid,
             'per_image' => $per_filename,
             'per_lastname' => $request->input('per_lastname'),
             'per_firstname' => $request->input('per_firstname'),
@@ -266,20 +292,17 @@ class PoliceController extends Controller
             $per_filename = $per_image;
         }
         $validator = Validator::make($request->all(), [
-            'per_lastname' => 'required|regex:/^[a-zA-Z -]+$/',
+            'per_lastname' => ['required|regex:/^[a-zA-Z -]+$/', new UniqueFullname],
             'per_sex' => 'required',
-            'per_firstname' => 'required|regex:/^[a-zA-Z -]+$/',
-            'per_middlename' => 'required|regex:/^[a-zA-Z -]+$/',
+            'per_firstname' => ['required|regex:/^[a-zA-Z -]+$/', new UniqueFullname],
+            'per_middlename' => ['required|regex:/^[a-zA-Z -]+$/', new UniqueFullname],
             'per_rank' => 'required|regex:/^[a-zA-Z0-9\s-]+$/',
-            'per_unit_station' => 'required|regex:/^[a-zA-Z0-9\s-]+$/',
-
-            
+            'per_unit_station' => 'required|regex:/^[a-zA-Z0-9\s-]+$/', 
             'per_street' => 'required|regex:/^[a-zA-Z\s#-]*(\d{1,5})?[a-zA-Z\s#-]*$/',
             'per_house_no' => [
                 'required',
                 'regex:/^(?=(?:\D*\d){0,5}\D*$)[0-9#\s]{1,}$/',
-            ],
-
+            ], 
             'per_city' => 'required|regex:/^[a-zA-Z ]+$/',
             'per_province' => 'required|regex:/^[a-zA-Z ]+$/',
             'per_place_birth' => 'required',

@@ -81,9 +81,18 @@ class HomeController extends Controller
 
     public function police_file_mngt()
     {
-        $police = Police::where('per_status', '=', 'active')->orderByDesc('id')->get();
-        $in_police = Police::where('per_status', '=', 'inactive')->orderByDesc('id')->get();
-        $sch_police = Police::where('per_status', '=', 'schooling')->orderByDesc('id')->get();
+        $police = Police::join('admins', 'admins.id', '=', 'police.author_id')
+        ->select('police.id as pid', 'police.*')
+        ->where('police.per_status', '=', 'active')->orderByDesc('police.id')->get();
+
+        $in_police = Police::join('admins', 'admins.id', '=', 'police.author_id') 
+        ->select('police.id as pid', 'police.*')
+        ->where('police.per_status', '=', 'inactive')->orderByDesc('police.id')->get();
+
+        $sch_police = Police::join('admins', 'admins.id', '=', 'police.author_id')
+        ->select('police.id as pid', 'police.*')
+        ->where('police.per_status', '=', 'schooling')->orderByDesc('police.id')->get();
+        
         return view('admin.police_file_mngt', ['police' => $police, 'in_police' => $in_police, 'sch_police' => $sch_police]);
     }
 

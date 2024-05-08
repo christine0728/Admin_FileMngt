@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\File;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
@@ -28,7 +29,13 @@ class FileController extends Controller
                 $file = $filename . '-' . 'pds-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_pds/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid, 
+                    'author_id' => $aid, 
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -41,7 +48,8 @@ class FileController extends Controller
             return redirect()->back();
         }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -87,7 +95,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'pds-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_pds/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -108,7 +119,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -138,7 +150,13 @@ class FileController extends Controller
                 $file = $filename . '-' . 'psa-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_psa/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid, 
+                    'author_id' => $aid, 
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -159,7 +177,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -205,7 +224,13 @@ class FileController extends Controller
                 $file = $filename . '-' . 'psa-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_psa/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid, 
+                    'author_id' => $aid, 
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -226,7 +251,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -254,7 +280,11 @@ class FileController extends Controller
                 $file = $filename . '-' . 'appt_orders-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_appt_orders/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                dd('here');
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -275,7 +305,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -321,7 +352,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'appt_orders-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_appt_orders/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -342,9 +376,7 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
+        // $aid = Auth::guard('admin')->user()->id; 
         //     'complete_filename' => $file,
         //     'folder' => 'appointment_orders', 
         //     'created_at' => $formatted_now,
@@ -370,7 +402,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'promotion_orders-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_promotion_orders/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -391,7 +426,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -437,7 +473,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'promotion_orders-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_promotion_orders/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -458,7 +497,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -486,7 +526,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'susdem_orders-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_susdem_orders/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -507,7 +550,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+  
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -553,7 +597,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'susdem_orders-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_susdem_orders/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -574,7 +621,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -602,7 +650,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'attested_appts-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_attested_appts/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -623,7 +674,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -669,7 +721,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'attested_appts-updates-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_attested_appts/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -690,7 +745,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -718,7 +774,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'cert_eli-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_cert_eli/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -739,7 +798,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -785,7 +845,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'cert_eli-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_cert_eli/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -806,7 +869,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -834,7 +898,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'scholastic_rec-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_scholastic_rec/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -855,7 +922,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -901,7 +969,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'scholastic_rec-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_scholastic_rec/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -922,7 +993,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -950,7 +1022,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'trainings-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_trainings/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -971,7 +1046,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1017,7 +1093,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'trainings-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_trainings/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1038,7 +1117,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1066,7 +1146,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'rca_longpay-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_rca_longpay/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1087,7 +1170,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+  
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1133,7 +1217,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'rca_longpay-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_rca_longpay/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1154,7 +1241,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1182,7 +1270,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'assign_des-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_assign_des/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1203,7 +1294,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1249,7 +1341,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'assign_des-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_assign_des/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1270,7 +1365,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1298,7 +1394,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'cases_offenses-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_cases_offenses/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1319,7 +1418,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1365,7 +1465,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'cases_offenses-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_cases_offenses/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1386,7 +1489,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1414,7 +1518,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'firearms_rec-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_firearms_rec/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1435,7 +1542,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1481,7 +1589,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'firearms_rec-update' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_firearms_rec/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1502,7 +1613,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+   
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1530,7 +1642,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'leave_orders-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_leave_orders/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1551,7 +1666,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1597,7 +1713,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'leave_orders-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_leave_orders/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1618,7 +1737,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1646,7 +1766,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'awards-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_awards/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1667,7 +1790,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1713,7 +1837,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'awards-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_awards/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1734,7 +1861,7 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id; 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1762,7 +1889,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'saln-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_saln/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1783,7 +1913,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1829,7 +1960,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'saln-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_saln/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1850,7 +1984,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1878,7 +2013,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'others-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_others/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1899,7 +2037,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
@@ -1945,7 +2084,10 @@ class FileController extends Controller
                 $file = $filename . '-' . 'others-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_others/', $file);  
 
-                $files = File::create([ 
+                $aid = Auth::guard('admin')->user()->id;
+
+                $files = File::create([
+                    'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
@@ -1966,7 +2108,8 @@ class FileController extends Controller
         //     return redirect()->back();
         // }
 
-        // $files = File::create([ 
+        // $aid = Auth::guard('admin')->user()->id;
+ 
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,

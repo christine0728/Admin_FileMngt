@@ -122,7 +122,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">1. LAST NAME:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_lastname" value="{{ old('per_lastname') }}"  oninput="toUpper(this)">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_lastname" value="{{ old('per_lastname') }}"  put="toUpper(this)">
                                     @if ($errors->has('per_lastname')) 
                                         <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_lastname') }}</span>
                                     @endif 
@@ -145,7 +145,7 @@
                                         <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_middlename') }}</span>
                                     @endif 
                                 </div> 
-                            </div> 
+                            </div>  
                         </div>
 
                         <div class="row">

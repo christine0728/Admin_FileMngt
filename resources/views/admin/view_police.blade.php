@@ -36,7 +36,7 @@
 
     <div class="row" style="width: 75%; margin: 0rem auto 0rem auto">
         <div class="col-12" style="margin-top: -3rem">
-            <h1>{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}</h1>
+            <h1><b>{{ $police->per_firstname }} {{ $police->per_middlename }} {{ $police->per_lastname }}</b></h1>
         </div>
 
         <div class="col-12" style="margin-top: 0rem; background-color: white; border-radius: 0.5rem; margin-bottom: 5rem">

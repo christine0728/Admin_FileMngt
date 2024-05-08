@@ -131,7 +131,7 @@
                     </center> 
                   </td> 
                   <td>
-                    <form action="{{ route('change_status_pol', $pol->id) }}" method="post">
+                    <form action="{{ route('change_status_pol', $pol->pid) }}" method="post">
                       @csrf
                       <select class="form-control" name="per_status" style="border-radius: 0.3125rem; width: 8rem; padding: 0.4rem; font-size: medium; margin-bottom: 0.5rem" required>
                         <option value="">Select status:</option>
@@ -144,9 +144,9 @@
                   </td>
                   <td style="text-align: center;">
                     <div class="d-inline-block" style="width: 150px;"> <!-- Adjust the width as needed -->
-                      <a href="{{ route('view_police', [$pol->id]) }}" class="icon btn btn-primary" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-folder" style="color: white"></i>&nbsp;&nbsp;View Folders</a>
-                      <a href="{{ route('view_police_file', [$pol->id]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View File</span></a>
-                      <a href="{{ route('edit_police_file', [$pol->id]) }}" class="icon btn btn-success" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-edit" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">Edit File</span></a>
+                      <a href="{{ route('view_police', [$pol->pid]) }}" class="icon btn btn-primary" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-folder" style="color: white"></i>&nbsp;&nbsp;View Folders</a>
+                      <a href="{{ route('view_police_file', [$pol->pid]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View File</span></a>
+                      <a href="{{ route('edit_police_file', [$pol->pid]) }}" class="icon btn btn-success" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-edit" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">Edit File</span></a>
                     </div>
                   </td>
                 </tr>
@@ -193,7 +193,7 @@
                     </center> 
                   </td> 
                   <td>
-                    <form action="{{ route('change_status_pol', $inp->id) }}" method="post">
+                    <form action="{{ route('change_status_pol', $inp->pid) }}" method="post">
                       @csrf
                       <select required class="form-control" name="per_status" style="border-radius: 0.3125rem; width: 8rem; padding: 0.4rem; font-size: medium; margin-bottom: 0.5rem" required>
                         <option value="">Select status:</option>
@@ -206,9 +206,9 @@
                   </td>
                   <td style="text-align: center">
                     <div class="d-inline-block" style="width: 150px;"> <!-- Adjust the width as needed -->
-                      <a href="{{ route('view_police', [$pol->id]) }}" class="icon btn btn-primary" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-folder" style="color: white"></i>&nbsp;&nbsp;View Folders</a>
-                      <a href="{{ route('view_police_file', [$pol->id]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View File</span></a>
-                      <a href="{{ route('edit_police_file', [$pol->id]) }}" class="icon btn btn-success" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-edit" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">Edit File</span></a>
+                      <a href="{{ route('view_police', [$pol->pid]) }}" class="icon btn btn-primary" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-folder" style="color: white"></i>&nbsp;&nbsp;View Folders</a>
+                      <a href="{{ route('view_police_file', [$pol->pid]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View File</span></a>
+                      <a href="{{ route('edit_police_file', [$pol->pid]) }}" class="icon btn btn-success" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-edit" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">Edit File</span></a>
                     </div> 
                   </td>
                 </tr>
@@ -257,7 +257,7 @@
                     </center> 
                   </td> 
                   <td>
-                    <form action="{{ route('change_status_pol', $sch->id) }}" method="post">
+                    <form action="{{ route('change_status_pol', $sch->pid) }}" method="post">
                       @csrf
                       <select required class="form-control" name="per_status" style="border-radius: 0.3125rem; width: 8rem; padding: 0.4rem; font-size: medium; margin-bottom: 0.5rem" required>
                         <option value="">Select status:</option>
@@ -270,9 +270,9 @@
                   </td>
                   <td style="text-align: center">
                     <div class="d-inline-block" style="width: 150px;"> <!-- Adjust the width as needed -->
-                      <a href="{{ route('view_police', [$pol->id]) }}" class="icon btn btn-primary" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-folder" style="color: white"></i>&nbsp;&nbsp;View Folders</a>
-                      <a href="{{ route('view_police_file', [$pol->id]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View Data</span></a>
-                      <a href="{{ route('edit_police_file', [$pol->id]) }}" class="icon btn btn-success" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-edit" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">Edit File</span></a>
+                      <a href="{{ route('view_police', [$pol->pid]) }}" class="icon btn btn-primary" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-folder" style="color: white"></i>&nbsp;&nbsp;View Folders</a>
+                      <a href="{{ route('view_police_file', [$pol->pid]) }}" class="icon btn btn-info" style="font-size: 15px; margin-left: 0.5rem; margin-right: 0.5rem; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-eye" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">View Data</span></a>
+                      <a href="{{ route('edit_police_file', [$pol->pid]) }}" class="icon btn btn-success" style="font-size: 15px; width: 7.5rem; margin-bottom: 0.5rem"><i class="fas fa-edit" style="color: white"></i>&nbsp;&nbsp;<span style="color: white">Edit File</span></a>
                     </div> 
                  </td>
                 </tr>
