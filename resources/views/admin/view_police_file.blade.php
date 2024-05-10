@@ -112,19 +112,19 @@
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">1. LAST NAME:</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_lastname" value="{{ $police->per_lastname }}"> 
+                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_lastname" value="{{ $police->per_lastname }}" readonly> 
                                         </div> 
                                     </div> 
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">FIRST NAME:</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_firstname" value="{{ $police->per_firstname }}"> 
+                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_firstname" value="{{ $police->per_firstname }}" readonly> 
                                         </div> 
                                     </div> 
                                     <div class="col-4">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">MIDDLE NAME:</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_middlename" value="{{ $police->per_middlename }}"> 
+                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_middlename" value="{{ $police->per_middlename }}" readonly> 
                                         </div> 
                                     </div> 
                                 </div>
@@ -133,14 +133,14 @@
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">2. RANK:</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_rank" value="{{ $police->per_rank }}"> 
+                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_rank" value="{{ $police->per_rank }}" readonly> 
                                         </div> 
                                     </div>
         
                                     <div class="col-6">
                                         <div class="form-group">
                                             <label for="exampleInputEmail1">3. UNIT/STATION - NSU / PRO / NHQ</label>
-                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_unit_station" value="{{ $police->per_unit_station }}"> 
+                                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_unit_station" value="{{ $police->per_unit_station }}" readonly> 
                                         </div> 
                                     </div>
                                 </div>
@@ -152,28 +152,28 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">4. HOUSE NO. </label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_house_no" value="{{ $police->per_house_no }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_house_no" value="{{ $police->per_house_no }}" readonly> 
                                 </div> 
                             </div> 
 
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">STREET:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_street" value="{{ $police->per_street }}}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_street" value="{{ $police->per_street }}" readonly> 
                                 </div> 
                             </div> 
 
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">CITY:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_city" value="{{ $police->per_city }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_city" value="{{ $police->per_city }}" readonly> 
                                 </div> 
                             </div> 
 
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">PROVINCE:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_province" value="{{ $police->per_province }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_province" value="{{ $police->per_province }}" readonly> 
                                 </div> 
                             </div> 
                         </div>
@@ -182,14 +182,14 @@
                             <div class="col-8">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">5. PLACE OF BIRTH:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_place_birth" value="{{ $police->per_place_birth }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_place_birth" value="{{ $police->per_place_birth }}" readonly> 
                                 </div> 
                             </div>
 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">6. DATE OF BIRTH:</label>
-                                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_date_birth" value="{{ $police->per_date_birth }}"> 
+                                    <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_date_birth" value="{{ $police->per_date_birth }}" readonly> 
                                 </div> 
                             </div>
                         </div>
@@ -198,19 +198,19 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">7. SEX:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_sex" value="{{ $police->per_sex }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_sex" value="{{ $police->per_sex }}" readonly> 
                                 </div> 
                             </div> 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">8. CIVIL STATUS:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_civil_status" value="{{ $police->per_civil_status }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_civil_status" value="{{ $police->per_civil_status }}" readonly> 
                                 </div> 
                             </div> 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">9. RELIGION:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_religion" value="{{ $police->per_religion }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_religion" value="{{ $police->per_religion }}" readonly> 
                                 </div> 
                             </div> 
                         </div>
@@ -219,26 +219,26 @@
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">10. COLOR OF HAIR:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_color_hair" value="{{ $police->per_color_hair }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_color_hair" value="{{ $police->per_color_hair }}" readonly> 
                                 </div> 
                             </div> 
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">11. COLOR OF EYES:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_color_eyes" value="{{ $police->per_color_eyes }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_color_eyes" value="{{ $police->per_color_eyes }}" readonly> 
                                 </div> 
                             </div> 
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">12. HEIGHT (cm):</label>
-                                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_height" value="{{ $police->per_height }}"> 
+                                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_height" value="{{ $police->per_height }}" readonly> 
                                 </div> 
                             </div>
 
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">13. WEIGHT (kg):</label>
-                                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_weight" value="{{ $police->per_weight }}"> 
+                                    <input type="number" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_weight" value="{{ $police->per_weight }}" readonly> 
                                 </div> 
                             </div>
                         </div>
@@ -247,19 +247,19 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">14. BLOOD TYPE:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_bloodtype" value="{{ $police->per_bloodtype }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_bloodtype" value="{{ $police->per_bloodtype }}" readonly> 
                                 </div> 
                             </div> 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">15. BUILD:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_build" value="{{ $police->per_build }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_build" value="{{ $police->per_build }}" readonly> 
                                 </div> 
                             </div> 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">16. COMPLEXION:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_complexion" value="{{ $police->per_complexion }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_complexion" value="{{ $police->per_complexion }}" readonly> 
                                 </div> 
                             </div> 
                         </div>
@@ -268,19 +268,19 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">17. LANGUAGES:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_languages" value="{{ $police->per_languages }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_languages" value="{{ $police->per_languages }}" readonly> 
                                 </div> 
                             </div> 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">18. IDENTIFYING MARKS:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_identifying_marks" value="{{ $police->per_identifying_marks }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_identifying_marks" value="{{ $police->per_identifying_marks }}" readonly> 
                                 </div> 
                             </div> 
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">19. ETHNIC GROUP:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_ethnicgroup" value="{{ $police->per_ethnicgroup }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_ethnicgroup" value="{{ $police->per_ethnicgroup }}" readonly> 
                                 </div> 
                             </div> 
                         </div>
@@ -289,20 +289,20 @@
                             <div class="col-9">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">20. NAME OF SPOUSE OR NEAREST KIN/ADDRESS:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_name_spouse_near_kin" value="{{ $police->per_name_spouse_near_kin }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_name_spouse_near_kin" value="{{ $police->per_name_spouse_near_kin }}" readonly> 
                                 </div> 
                             </div> 
                             <div class="col-3">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">21. OCCUPATION:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_spouse_kin_occupation" value="{{ $police->per_spouse_kin_occupation }}"> 
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_spouse_kin_occupation" value="{{ $police->per_spouse_kin_occupation }}" readonly> 
                                 </div> 
                             </div>  
                         </div>
                     </div>  
   
                     <div class="col-12 form-navigation">
-                        <a class="link-buttons" href="{{ url()->previous() }}" style="float: left;"><i class="fa-solid fa-arrow-left icons"></i>&nbsp;&nbsp;Back</a> 
+                        <a class="link-buttons" href="#"  onclick="window.history.back();" style="float: left;"><i class="fa-solid fa-arrow-left icons"></i>&nbsp;&nbsp;Back</a> 
                         {{-- <a class="link-buttons" href=" " style="float: right;">Next</a>  --}}
 
                        {{-- <button type="button" class="next form-buttons" style="float: right; width: 5rem">Next <i class="fa-solid fa-arrow-right icons"></i></button>  --}}

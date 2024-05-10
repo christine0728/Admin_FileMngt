@@ -11,23 +11,19 @@ use Illuminate\Support\Facades\Storage;
 
 class FileController extends Controller
 {
-    public function add_file_pds(Request $request)
+    public function add_file_folder_a(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
         $formatted_now = $now->format('Y-m-d, g:i a');
         $filename_time = $now->format('Y-m-d_gia');
-
-        // dd($now);
-
-        // $filename = $request->input('pol_fullname');
-         
+  
         if ($request->hasFile('file')) {
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'pds-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_pds/', $file);  
+                $file = $filename . '-' . 'folder_a-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_a/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -39,7 +35,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'pds', 
+                    'folder' => 'folder_a', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -47,26 +43,16 @@ class FileController extends Controller
         }else {
             return redirect()->back();
         }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'pds', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
-
+  
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_pds($fid)
+    public function view_folder_a($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_pds\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_a\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -77,7 +63,7 @@ class FileController extends Controller
         abort(404);
     }
 
-    public function update_file_pds(Request $request)
+    public function update_file_folder_a(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -92,8 +78,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'pds-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_pds/', $file);  
+                $file = $filename . '-' . 'folder_a-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_a/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -102,37 +88,19 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'pds', 
+                    'folder' => 'folder_a', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
             }   
         }else {
             return redirect()->back();
-        }
-
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'pds-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_pds/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'pds', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
+        } 
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
-    public function add_file_psa(Request $request)
+    public function add_file_folder_b(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -147,8 +115,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'psa-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_psa/', $file);  
+                $file = $filename . '-' . 'folder_b-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_b/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -160,7 +128,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'psa', 
+                    'folder' => 'folder_b', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -171,8 +139,8 @@ class FileController extends Controller
 
         // if ($request->hasFile('file')) {
         //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'psa-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_psa/', $file);  
+        //     $file = $filename . '-' . 'folder_b-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_folder_b/', $file);  
         // }else {
         //     return redirect()->back();
         // }
@@ -182,7 +150,7 @@ class FileController extends Controller
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
-        //     'folder' => 'psa', 
+        //     'folder' => 'folder_b', 
         //     'created_at' => $formatted_now,
         //     'updated_at' => $formatted_now,
         // ]);
@@ -190,12 +158,12 @@ class FileController extends Controller
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_psa($fid)
+    public function view_folder_b($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_psa\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_b\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -206,7 +174,7 @@ class FileController extends Controller
         abort(404);
     }
 
-    public function update_file_psa(Request $request)
+    public function update_file_folder_b(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -221,8 +189,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'psa-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_psa/', $file);  
+                $file = $filename . '-' . 'folder_b-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_b/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -234,7 +202,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'psa', 
+                    'folder' => 'folder_b', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -264,7 +232,7 @@ class FileController extends Controller
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
-    public function add_file_appt_orders(Request $request)
+    public function add_file_folder_c(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -277,53 +245,35 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'appt_orders-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_appt_orders/', $file);  
+                $file = $filename . '-' . 'folder_c-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_c/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
-                dd('here');
+                // dd('here');
                 $files = File::create([
                     'author_id' => $aid,  
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'appointment_orders', 
+                    'folder' => 'folder_c', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
             }   
         }else {
             return redirect()->back();
-        }
-
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'appt_orders-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_appt_orders/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'appointment_orders', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
+        } 
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_appt_orders($fid)
+    public function view_folder_c($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_appt_orders\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_c\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -334,7 +284,7 @@ class FileController extends Controller
         abort(404);
     }
 
-    public function update_file_appt_orders(Request $request)
+    public function update_file_folder_c(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -349,7 +299,7 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'appt_orders-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $file = $filename . '-' . 'folder_c-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
                 $uploadedFile->move('files/files_appt_orders/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
@@ -359,7 +309,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'appointment_orders', 
+                    'folder' => 'folder_c', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -386,7 +336,7 @@ class FileController extends Controller
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
-    public function add_file_promotion_orders(Request $request)
+    public function add_file_folder_d(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -399,8 +349,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'promotion_orders-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_promotion_orders/', $file);  
+                $file = $filename . '-' . 'folder_d-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_d/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -409,7 +359,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'promotion_orders', 
+                    'folder' => 'folder_d', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -420,8 +370,8 @@ class FileController extends Controller
 
         // if ($request->hasFile('file')) {
         //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'promotion_orders-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_promotion_orders/', $file);  
+        //     $file = $filename . '-' . 'folder_d-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_folder_d/', $file);  
         // }else {
         //     return redirect()->back();
         // }
@@ -431,7 +381,7 @@ class FileController extends Controller
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
-        //     'folder' => 'promotion_orders', 
+        //     'folder' => 'folder_d', 
         //     'created_at' => $formatted_now,
         //     'updated_at' => $formatted_now,
         // ]);
@@ -439,12 +389,12 @@ class FileController extends Controller
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_promotion_orders($fid)
+    public function view_folder_d($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_promotion_orders\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_d\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -455,7 +405,7 @@ class FileController extends Controller
         abort(404);
     }
 
-    public function update_file_promotion_orders(Request $request)
+    public function update_file_folder_d(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -470,8 +420,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'promotion_orders-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_promotion_orders/', $file);  
+                $file = $filename . '-' . 'folder_d-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_d/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -480,7 +430,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'promotion_orders', 
+                    'folder' => 'folder_d', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -510,7 +460,7 @@ class FileController extends Controller
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
     
-    public function add_file_susdem_orders(Request $request)
+    public function add_file_folder_e(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -523,8 +473,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'susdem_orders-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_susdem_orders/', $file);  
+                $file = $filename . '-' . 'folder_e-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_e/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -533,7 +483,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'susdem_orders', 
+                    'folder' => 'folder_e', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -544,8 +494,8 @@ class FileController extends Controller
 
         // if ($request->hasFile('file')) {
         //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'susdem_orders-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_susdem_orders/', $file);  
+        //     $file = $filename . '-' . 'folder_e-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_folder_e/', $file);  
         // }else {
         //     return redirect()->back();
         // }
@@ -555,7 +505,7 @@ class FileController extends Controller
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
-        //     'folder' => 'susdem_orders', 
+        //     'folder' => 'folder_e', 
         //     'created_at' => $formatted_now,
         //     'updated_at' => $formatted_now,
         // ]);
@@ -563,12 +513,12 @@ class FileController extends Controller
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_susdem_orders($fid)
+    public function view_folder_e($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_susdem_orders\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_e\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -579,7 +529,7 @@ class FileController extends Controller
         abort(404);
     }
 
-    public function update_file_susdem_orders(Request $request)
+    public function update_file_folder_e(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -594,8 +544,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'susdem_orders-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_susdem_orders/', $file);  
+                $file = $filename . '-' . 'folder_e-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_e/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -604,7 +554,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'susdem_orders', 
+                    'folder' => 'folder_e', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -634,7 +584,7 @@ class FileController extends Controller
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
-    public function add_file_attested_appts(Request $request)
+    public function add_file_folder_f(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -647,8 +597,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'attested_appts-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_attested_appts/', $file);  
+                $file = $filename . '-' . 'folder_f-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_f/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -657,7 +607,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'attested_appts', 
+                    'folder' => 'folder_f', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -668,8 +618,8 @@ class FileController extends Controller
 
         // if ($request->hasFile('file')) {
         //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'attested_appts-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_attested_appts/', $file);  
+        //     $file = $filename . '-' . 'folder_f-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_folder_f/', $file);  
         // }else {
         //     return redirect()->back();
         // }
@@ -679,7 +629,7 @@ class FileController extends Controller
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
-        //     'folder' => 'attested_appts', 
+        //     'folder' => 'folder_f', 
         //     'created_at' => $formatted_now,
         //     'updated_at' => $formatted_now,
         // ]);
@@ -687,12 +637,12 @@ class FileController extends Controller
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_attested_appts($fid)
+    public function view_folder_f($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_attested_appts\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_f\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -703,7 +653,7 @@ class FileController extends Controller
         abort(404);
     }
 
-    public function update_file_attested_appts(Request $request)
+    public function update_file_folder_f(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -718,8 +668,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'attested_appts-updates-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_attested_appts/', $file);  
+                $file = $filename . '-' . 'folder_f-updates-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_f/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -728,7 +678,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'attested_appts', 
+                    'folder' => 'folder_f', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -758,7 +708,7 @@ class FileController extends Controller
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
-    public function add_file_cert_eli(Request $request)
+    public function add_file_folder_g(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -771,8 +721,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'cert_eli-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_cert_eli/', $file);  
+                $file = $filename . '-' . 'folder_g-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_g/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -781,7 +731,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'cert_eligibility', 
+                    'folder' => 'folder_g', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -790,33 +740,15 @@ class FileController extends Controller
             return redirect()->back();
         }
 
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'cert_eli-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_cert_eli/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'cert_eligibility', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
-
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_cert_eli($fid)
+    public function view_folder_g($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_cert_eli\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_g\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -827,7 +759,7 @@ class FileController extends Controller
         abort(404);
     }
 
-    public function update_file_cert_eli(Request $request)
+    public function update_file_folder_g(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -842,8 +774,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'cert_eli-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_cert_eli/', $file);  
+                $file = $filename . '-' . 'folder_g-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_g/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -852,37 +784,19 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'cert_eligibility', 
+                    'folder' => 'folder_g', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
             }   
         }else {
             return redirect()->back();
-        }
-
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'cert_eli-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_cert_eli/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'cert_eligibility', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
+        } 
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
-    public function add_file_scholastic_rec(Request $request)
+    public function add_file_folder_h(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -895,8 +809,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'scholastic_rec-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_scholastic_rec/', $file);  
+                $file = $filename . '-' . 'folder_h-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_h/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -905,7 +819,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'scholastic_records', 
+                    'folder' => 'folder_h', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -914,33 +828,15 @@ class FileController extends Controller
             return redirect()->back();
         }
 
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'scholastic_rec-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_scholastic_rec/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'scholastic_records', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
-
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_scholastic_rec($fid)
+    public function view_folder_h($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_scholastic_rec\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_h\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -951,7 +847,7 @@ class FileController extends Controller
         abort(404);
     }
 
-    public function update_file_scholastic_rec(Request $request)
+    public function update_file_folder_h(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -966,8 +862,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'scholastic_rec-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_scholastic_rec/', $file);  
+                $file = $filename . '-' . 'folder_h-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_h/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -976,7 +872,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'scholastic_records', 
+                    'folder' => 'folder_h', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -1006,7 +902,7 @@ class FileController extends Controller
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
-    public function add_file_trainings(Request $request)
+    public function add_file_folder_i(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -1019,8 +915,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'trainings-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_trainings/', $file);  
+                $file = $filename . '-' . 'folder_i-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_i/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -1029,42 +925,24 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'trainings', 
+                    'folder' => 'folder_i', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
             }   
         }else {
             return redirect()->back();
-        }
-
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'trainings-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_trainings/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'trainings', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
+        } 
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_trainings($fid)
+    public function view_folder_i($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_trainings\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_i\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -1075,7 +953,7 @@ class FileController extends Controller
         abort(404);
     }
 
-    public function update_file_trainings(Request $request)
+    public function update_file_folder_i(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -1090,8 +968,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'trainings-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_trainings/', $file);  
+                $file = $filename . '-' . 'folder_i-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_i/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -1100,37 +978,19 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'trainings', 
+                    'folder' => 'folder_i', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
             }   
         }else {
             return redirect()->back();
-        }
-
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'trainings-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_trainings/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'trainings', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
+        } 
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
-    public function add_file_rca_longpay(Request $request)
+    public function add_file_folder_j(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');  
@@ -1143,8 +1003,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'rca_longpay-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_rca_longpay/', $file);  
+                $file = $filename . '-' . 'folder_j-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_j/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -1153,7 +1013,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'rca_longpay_orders', 
+                    'folder' => 'folder_j', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -1162,33 +1022,15 @@ class FileController extends Controller
             return redirect()->back();
         }
 
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'rca_longpay-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_rca_longpay/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
-  
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'rca_longpay_orders', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
-
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_rca_longpay($fid)
+    public function view_folder_j($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_rca_longpay\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_j\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -1199,7 +1041,7 @@ class FileController extends Controller
         abort(404);
     }
 
-    public function update_file_rca_longpay(Request $request)
+    public function update_file_folder_j(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -1214,8 +1056,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'rca_longpay-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_rca_longpay/', $file);  
+                $file = $filename . '-' . 'folder_j-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_j/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -1224,7 +1066,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'rca_longpay_orders', 
+                    'folder' => 'folder_j', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -1233,28 +1075,10 @@ class FileController extends Controller
             return redirect()->back();
         }
 
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'rca_longpay_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_rca_longpay/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'rca_longpay_orders', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
-
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
-    public function add_file_assign_des(Request $request)
+    public function add_file_folder_k(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -1267,8 +1091,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'assign_des-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_assign_des/', $file);  
+                $file = $filename . '-' . 'folder_k-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_k/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -1277,42 +1101,24 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'assign_des_orders', 
+                    'folder' => 'folder_k', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
             }   
         }else {
             return redirect()->back();
-        }
-
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'assign_des-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_assign_des/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'assign_des_orders', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
+        } 
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_assign_des($fid)
+    public function view_folder_k($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_assign_des\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_k\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -1323,7 +1129,7 @@ class FileController extends Controller
         abort(404);
     } 
 
-    public function update_file_assign_des(Request $request)
+    public function update_file_folder_k(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -1338,8 +1144,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'assign_des-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_assign_des/', $file);  
+                $file = $filename . '-' . 'folder_k-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_k/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -1348,37 +1154,19 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'assign_des_orders', 
+                    'folder' => 'folder_k', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
             }   
         }else {
             return redirect()->back();
-        }
-
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'assign_des-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_assign_des/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'assign_des_orders', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
+        } 
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
-    public function add_file_cases_offenses(Request $request)
+    public function add_file_folder_l(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -1391,8 +1179,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'cases_offenses-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_cases_offenses/', $file);  
+                $file = $filename . '-' . 'folder_l-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_l/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -1401,7 +1189,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'cases_offenses', 
+                    'folder' => 'folder_l', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -1410,33 +1198,15 @@ class FileController extends Controller
             return redirect()->back();
         }
 
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'cases_offenses-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_cases_offenses/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'cases_offenses', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
-
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_cases_offenses($fid)
+    public function view_folder_l($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_cases_offenses\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_l\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -1447,7 +1217,7 @@ class FileController extends Controller
         abort(404);
     } 
 
-    public function update_file_cases_offenses(Request $request)
+    public function update_file_folder_l(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -1462,8 +1232,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'cases_offenses-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_cases_offenses/', $file);  
+                $file = $filename . '-' . 'folder_l-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_l/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -1472,37 +1242,19 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'cases_offenses', 
+                    'folder' => 'folder_l', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
             }   
         }else {
             return redirect()->back();
-        }
-
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'cases_offenses-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_cases_offenses/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'cases_offenses', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
+        } 
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
-    public function add_file_firearms_rec(Request $request)
+    public function add_file_folder_m(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -1515,8 +1267,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'firearms_rec-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_firearms_rec/', $file);  
+                $file = $filename . '-' . 'folder_m-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_m/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -1525,42 +1277,24 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'firearms_rec', 
+                    'folder' => 'folder_m', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
             }   
         }else {
             return redirect()->back();
-        }
-
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'firearms_rec-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_firearms_rec/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'firearms_records', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
+        } 
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_firearms_rec($fid)
+    public function view_folder_m($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_firearms_rec\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_m\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -1571,7 +1305,7 @@ class FileController extends Controller
         abort(404);
     } 
 
-    public function update_file_firearms_rec(Request $request)
+    public function update_file_folder_m(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -1586,8 +1320,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'firearms_rec-update' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_firearms_rec/', $file);  
+                $file = $filename . '-' . 'folder_m-update' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_m/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -1596,37 +1330,19 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'firearms_rec', 
+                    'folder' => 'folder_m', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
             }   
         }else {
             return redirect()->back();
-        }
-
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'firearms_rec-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_firearms_rec/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
-   
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'firearms_records', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
+        } 
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
-    public function add_file_leave_orders(Request $request)
+    public function add_file_folder_n(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -1639,8 +1355,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'leave_orders-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_leave_orders/', $file);  
+                $file = $filename . '-' . 'folder_n-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_n/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -1649,42 +1365,24 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'leave_orders', 
+                    'folder' => 'folder_n', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
             }   
         }else {
             return redirect()->back();
-        }
-
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'leave_orders-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_leave_orders/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'leave_orders', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
+        } 
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_leave_orders($fid)
+    public function view_folder_n($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_leave_orders\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_n\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -1695,7 +1393,7 @@ class FileController extends Controller
         abort(404);
     } 
 
-    public function update_file_leave_orders(Request $request)
+    public function update_file_folder_n(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -1710,8 +1408,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'leave_orders-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_leave_orders/', $file);  
+                $file = $filename . '-' . 'folder_n-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_n/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -1720,37 +1418,19 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'leave_orders', 
+                    'folder' => 'folder_n', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
             }   
         }else {
             return redirect()->back();
-        }
-
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'leave_orders-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_leave_orders/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'leave_orders', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
+        } 
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
     
-    public function add_file_awards(Request $request)
+    public function add_file_folder_o(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -1763,8 +1443,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'awards-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_awards/', $file);  
+                $file = $filename . '-' . 'folder_o-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_o/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -1773,7 +1453,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'awards', 
+                    'folder' => 'folder_o', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -1784,8 +1464,8 @@ class FileController extends Controller
 
         // if ($request->hasFile('file')) {
         //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'awards-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_awards/', $file);  
+        //     $file = $filename . '-' . 'folder_o-' . $filename_time . '.' . $filee->getClientOriginalExtension();
+        //     $filee->move('files/files_folder_o/', $file);  
         // }else {
         //     return redirect()->back();
         // }
@@ -1795,7 +1475,7 @@ class FileController extends Controller
         //     'police_id' => $request->input('pid'),
         //     'filename' => $filename,
         //     'complete_filename' => $file,
-        //     'folder' => 'awards', 
+        //     'folder' => 'folder_o', 
         //     'created_at' => $formatted_now,
         //     'updated_at' => $formatted_now,
         // ]);
@@ -1803,12 +1483,12 @@ class FileController extends Controller
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_awards($fid)
+    public function view_folder_o($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_awards\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_o\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -1819,7 +1499,7 @@ class FileController extends Controller
         abort(404);
     } 
 
-    public function update_file_awards(Request $request)
+    public function update_file_folder_o(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -1834,8 +1514,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'awards-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_awards/', $file);  
+                $file = $filename . '-' . 'folder_o-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_o/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -1844,36 +1524,19 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'awards', 
+                    'folder' => 'folder_o', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
             }   
         }else {
             return redirect()->back();
-        }
-
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'awards-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_awards/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id; 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'awards', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
+        } 
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
-    public function add_file_saln(Request $request)
+    public function add_file_folder_p(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -1886,8 +1549,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'saln-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_saln/', $file);  
+                $file = $filename . '-' . 'folder_p-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_p/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -1896,42 +1559,24 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'saln', 
+                    'folder' => 'folder_p', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
             }   
         }else {
             return redirect()->back();
-        }
-
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'saln-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_saln/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'saln', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
+        } 
 
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_saln($fid)
+    public function view_folder_p($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_saln\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_p\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -1942,7 +1587,7 @@ class FileController extends Controller
         abort(404);
     }
 
-    public function update_file_saln(Request $request)
+    public function update_file_folder_p(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -1957,8 +1602,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'saln-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_saln/', $file);  
+                $file = $filename . '-' . 'folder_p-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_p/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -1967,7 +1612,7 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'saln', 
+                    'folder' => 'folder_p', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
@@ -1997,7 +1642,7 @@ class FileController extends Controller
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }
 
-    public function add_file_others(Request $request)
+    public function add_file_folder_q(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -2010,8 +1655,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'others-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_others/', $file);  
+                $file = $filename . '-' . 'folder_q-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_q/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -2020,42 +1665,24 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'others', 
+                    'folder' => 'folder_q', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
             }   
         }else {
             return redirect()->back();
-        }
-
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'others-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_others/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'others', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
-
+        } 
+        
         return redirect()->back()->with('message', 'The file has been added successfully!');
     }
 
-    public function view_others($fid)
+    public function view_folder_q($fid)
     {
         $file = File::find($fid);
 
         if ($file) {
-            $filePath = public_path('files\\files_others\\' . $file->complete_filename);
+            $filePath = public_path('files\\files_folder_q\\' . $file->complete_filename);
             // dd($filePath);
             if (file_exists($filePath)) {
                 return response()->file($filePath, [
@@ -2066,7 +1693,7 @@ class FileController extends Controller
         abort(404);
     }
 
-    public function update_file_others(Request $request)
+    public function update_file_folder_q(Request $request)
     {
         $now = Carbon::now();
         $now->setTimezone('Asia/Manila');
@@ -2081,8 +1708,8 @@ class FileController extends Controller
             foreach ($request->file('file') as $uploadedFile){
                 $filename = pathinfo($uploadedFile->getClientOriginalName(), PATHINFO_FILENAME);
                 $filee = $request->file('file'); 
-                $file = $filename . '-' . 'others-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
-                $uploadedFile->move('files/files_others/', $file);  
+                $file = $filename . '-' . 'folder_q-update-' . $filename_time . '.' . $uploadedFile->getClientOriginalExtension();
+                $uploadedFile->move('files/files_folder_q/', $file);  
 
                 $aid = Auth::guard('admin')->user()->id;
 
@@ -2091,32 +1718,14 @@ class FileController extends Controller
                     'police_id' => $request->input('pid'),
                     'filename' => $filename,
                     'complete_filename' => $file,
-                    'folder' => 'others', 
+                    'folder' => 'folder_q', 
                     'created_at' => $formatted_now,
                     'updated_at' => $formatted_now,
                 ]);
             }   
         }else {
             return redirect()->back();
-        }
-
-        // if ($request->hasFile('file')) {
-        //     $filee = $request->file('file'); 
-        //     $file = $filename . '-' . 'others-update-' . $filename_time . '.' . $filee->getClientOriginalExtension();
-        //     $filee->move('files/files_others/', $file);  
-        // }else {
-        //     return redirect()->back();
-        // }
-
-        // $aid = Auth::guard('admin')->user()->id;
- 
-        //     'police_id' => $request->input('pid'),
-        //     'filename' => $filename,
-        //     'complete_filename' => $file,
-        //     'folder' => 'others', 
-        //     'created_at' => $formatted_now,
-        //     'updated_at' => $formatted_now,
-        // ]);
+        } 
 
         return redirect()->back()->with('message', 'The file has been uploaded successfully!');
     }

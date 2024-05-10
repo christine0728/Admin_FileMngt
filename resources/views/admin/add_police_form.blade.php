@@ -103,7 +103,7 @@
 </head>
 <body style="background-color: #d3d3d3">
     <div class="col-12" >
-        <a class="back-btn" href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left" ></i>&nbsp;&nbsp;Back</a>
+        <a class="back-btn" href="#"  onclick="window.history.back();"><i class="fa-solid fa-arrow-left" ></i>&nbsp;&nbsp;Back</a>
     </div>
     <div class="container">
         <div class="header" style="background-color: #1D0A68; padding: 1rem;">
@@ -122,7 +122,7 @@
                             <div class="col-4">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">1. LAST NAME:</label>
-                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_lastname" value="{{ old('per_lastname') }}"  put="toUpper(this)">
+                                    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="per_lastname" value="{{ old('per_lastname') }}" oninput="toUpper(this)" >
                                     @if ($errors->has('per_lastname')) 
                                         <span class="text-red text-sm" style="color:red; font-size: small; float: left">{{ $errors->first('per_lastname') }}</span>
                                     @endif 

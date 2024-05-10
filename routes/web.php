@@ -38,90 +38,90 @@ Route::prefix('admin')->group(function(){
     Route::post('/update_police_file/{pid}', [PoliceController::class, 'update_police_file'])->name('update_police_file');
     Route::get('/personnelfile_pdf/{pid}', [HomeController::class, 'personnelfile_pdf'])->name('personnelfile_pdf');
 
-    Route::get('/pds/{pid}', [HomeController::class, 'pds_folder'])->name('pds_folder');
-    Route::post('/add_file_pds', [FileController::class, 'add_file_pds'])->name('add_file_pds');
-    Route::get('/view_pds/{fid}', [FileController::class, 'view_pds'])->name('view_pds');
-    Route::post('/update_file_pds', [FileController::class, 'update_file_pds'])->name('update_file_pds');
+    Route::get('/folder_a/{pid}', [HomeController::class, 'folder_a'])->name('folder_a');
+    Route::post('/add_file_folder_a', [FileController::class, 'add_file_folder_a'])->name('add_file_folder_a');
+    Route::get('/view_folder_a/{fid}', [FileController::class, 'view_folder_a'])->name('view_folder_a');
+    Route::post('/update_file_folder_a', [FileController::class, 'update_file_folder_a'])->name('update_file_folder_a');
 
-    Route::get('/psa/{pid}', [HomeController::class, 'psa_folder'])->name('psa_folder');
-    Route::post('/add_file_psa', [FileController::class, 'add_file_psa'])->name('add_file_psa');
-    Route::get('/view_psa/{fid}', [FileController::class, 'view_psa'])->name('view_psa');
-    Route::post('/update_file_psa', [FileController::class, 'update_file_psa'])->name('update_file_psa');
+    Route::get('/folder_b/{pid}', [HomeController::class, 'folder_b'])->name('folder_b');
+    Route::post('/add_file_folder_b', [FileController::class, 'add_file_folder_b'])->name('add_file_folder_b');
+    Route::get('/view_folder_b/{fid}', [FileController::class, 'view_folder_b'])->name('view_folder_b');
+    Route::post('/update_file_folder_b', [FileController::class, 'update_file_folder_b'])->name('update_file_folder_b');
 
-    Route::get('/appt_orders/{pid}', [HomeController::class, 'appt_orders_folder'])->name('appt_orders_folder');
-    Route::post('/add_file_appt_orders', [FileController::class, 'add_file_appt_orders'])->name('add_file_appt_orders');
-    Route::get('/view_appt_orders/{fid}', [FileController::class, 'view_appt_orders'])->name('view_appt_orders');
-    Route::post('/update_file_appt_orders', [FileController::class, 'update_file_appt_orders'])->name('update_file_appt_orders');
+    Route::get('/folder_c/{pid}', [HomeController::class, 'folder_c'])->name('folder_c');
+    Route::post('/add_file_folder_c', [FileController::class, 'add_file_folder_c'])->name('add_file_folder_c');
+    Route::get('/view_folder_c/{fid}', [FileController::class, 'view_folder_c'])->name('view_folder_c');
+    Route::post('/update_file_folder_c', [FileController::class, 'update_file_folder_c'])->name('update_file_folder_c');
 
-    Route::get('/promotion_orders/{pid}', [HomeController::class, 'promotion_orders_folder'])->name('promotion_orders_folder');
-    Route::post('/add_file_promotion_orders', [FileController::class, 'add_file_promotion_orders'])->name('add_file_promotion_orders');
-    Route::get('/view_promotion_orders/{fid}', [FileController::class, 'view_promotion_orders'])->name('view_promotion_orders');
-    Route::post('/update_file_promotion_orders', [FileController::class, 'update_file_promotion_orders'])->name('update_file_promotion_orders');
+    Route::get('/folder_d/{pid}', [HomeController::class, 'folder_d'])->name('folder_d');
+    Route::post('/add_file_folder_d', [FileController::class, 'add_file_folder_d'])->name('add_file_folder_d');
+    Route::get('/view_folder_d/{fid}', [FileController::class, 'view_folder_d'])->name('view_folder_d');
+    Route::post('/update_file_folder_d', [FileController::class, 'update_file_folder_d'])->name('update_file_folder_d');
 
-    Route::get('/sus_dem_orders/{pid}', [HomeController::class, 'sus_dem_orders_folder'])->name('sus_dem_orders_folder');
-    Route::post('/add_file_susdem_orders', [FileController::class, 'add_file_susdem_orders'])->name('add_file_susdem_orders');
-    Route::get('/view_susdem_orders/{fid}', [FileController::class, 'view_susdem_orders'])->name('view_susdem_orders');
-    Route::post('/update_file_susdem_orders', [FileController::class, 'update_file_susdem_orders'])->name('update_file_susdem_orders');
+    Route::get('/folder_e/{pid}', [HomeController::class, 'folder_e'])->name('folder_e');
+    Route::post('/add_file_folder_e', [FileController::class, 'add_file_folder_e'])->name('add_file_folder_e');
+    Route::get('/view_folder_e/{fid}', [FileController::class, 'view_folder_e'])->name('view_folder_e');
+    Route::post('/update_file_folder_e', [FileController::class, 'update_file_folder_e'])->name('update_file_folder_e');
 
-    Route::get('/attested_appts/{pid}', [HomeController::class, 'attested_orders_folder'])->name('attested_orders_folder');
-    Route::post('/add_file_attested_appts', [FileController::class, 'add_file_attested_appts'])->name('add_file_attested_appts');
-    Route::get('/view_attested_appts/{fid}', [FileController::class, 'view_attested_appts'])->name('view_attested_appts');
-    Route::post('/update_file_attested_appts', [FileController::class, 'update_file_attested_appts'])->name('update_file_attested_appts');
+    Route::get('/folder_f/{pid}', [HomeController::class, 'folder_f'])->name('folder_f');
+    Route::post('/add_file_folder_f', [FileController::class, 'add_file_folder_f'])->name('add_file_folder_f');
+    Route::get('/view_folder_f/{fid}', [FileController::class, 'view_folder_f'])->name('view_folder_f');
+    Route::post('/update_file_folder_f', [FileController::class, 'update_file_folder_f'])->name('update_file_folder_f');
 
-    Route::get('/cert_eli_orders/{pid}', [HomeController::class, 'cert_eli_orders_folder'])->name('cert_eli_orders_folder');
-    Route::post('/add_file_cert_eli', [FileController::class, 'add_file_cert_eli'])->name('add_file_cert_eli');
-    Route::get('/view_cert_eli/{fid}', [FileController::class, 'view_cert_eli'])->name('view_cert_eli');
-    Route::post('/update_file_cert_eli', [FileController::class, 'update_file_cert_eli'])->name('update_file_cert_eli');
+    Route::get('/folder_g/{pid}', [HomeController::class, 'folder_g'])->name('folder_g');
+    Route::post('/add_file_folder_g', [FileController::class, 'add_file_folder_g'])->name('add_file_folder_g');
+    Route::get('/view_folder_g/{fid}', [FileController::class, 'view_folder_g'])->name('view_folder_g');
+    Route::post('/update_file_folder_g', [FileController::class, 'update_file_folder_g'])->name('update_file_folder_g');
 
-    Route::get('/scholastic_rec/{pid}', [HomeController::class, 'scholastic_rec_folder'])->name('scholastic_rec_folder');
-    Route::post('/add_file_scholastic_rec', [FileController::class, 'add_file_scholastic_rec'])->name('add_file_scholastic_rec');
-    Route::get('/view_scholastic_rec/{fid}', [FileController::class, 'view_scholastic_rec'])->name('view_scholastic_rec');
-    Route::post('/update_file_scholastic_rec', [FileController::class, 'update_file_scholastic_rec'])->name('update_file_scholastic_rec');
+    Route::get('/folder_h/{pid}', [HomeController::class, 'folder_h'])->name('folder_h');
+    Route::post('/add_file_folder_h', [FileController::class, 'add_file_folder_h'])->name('add_file_folder_h');
+    Route::get('/view_folder_h/{fid}', [FileController::class, 'view_folder_h'])->name('view_folder_h');
+    Route::post('/update_file_folder_h', [FileController::class, 'update_file_folder_h'])->name('update_file_folder_h');
 
-    Route::get('/trainings/{pid}', [HomeController::class, 'trainings_folder'])->name('trainings_folder');
-    Route::post('/add_file_trainings', [FileController::class, 'add_file_trainings'])->name('add_file_trainings');
-    Route::get('/view_trainings/{fid}', [FileController::class, 'view_trainings'])->name('view_trainings');
-    Route::post('/update_file_trainings', [FileController::class, 'update_file_trainings'])->name('update_file_trainings');
+    Route::get('/folder_i/{pid}', [HomeController::class, 'folder_i'])->name('folder_i');
+    Route::post('/add_file_folder_i', [FileController::class, 'add_file_folder_i'])->name('add_file_folder_i');
+    Route::get('/view_folder_i/{fid}', [FileController::class, 'view_folder_i'])->name('view_folder_i');
+    Route::post('/update_file_folder_i', [FileController::class, 'update_file_folder_i'])->name('update_file_folder_i');
 
-    Route::get('/rca_longpay_orders/{pid}', [HomeController::class, 'rca_longpay_folder'])->name('rca_longpay_folder');
-    Route::post('/add_file_rca_longpay', [FileController::class, 'add_file_rca_longpay'])->name('add_file_rca_longpay');
-    Route::get('/view_rca_longpay/{fid}', [FileController::class, 'view_rca_longpay'])->name('view_rca_longpay');
-    Route::post('/update_file_rca_longpay', [FileController::class, 'update_file_rca_longpay'])->name('update_file_rca_longpay');
+    Route::get('/folder_j/{pid}', [HomeController::class, 'folder_j'])->name('folder_j');
+    Route::post('/add_file_folder_j', [FileController::class, 'add_file_folder_j'])->name('add_file_folder_j');
+    Route::get('/view_folder_j/{fid}', [FileController::class, 'view_folder_j'])->name('view_folder_j');
+    Route::post('/update_file_folder_j', [FileController::class, 'update_file_folder_j'])->name('update_file_folder_j');
 
-    Route::get('/assign_des_orders/{pid}', [HomeController::class, 'assign_des_orders_folder'])->name('assign_des_orders_folder');
-    Route::post('/add_file_assign_des', [FileController::class, 'add_file_assign_des'])->name('add_file_assign_des');
-    Route::get('/view_assign_des/{fid}', [FileController::class, 'view_assign_des'])->name('view_assign_des');
-    Route::post('/update_file_assign_des', [FileController::class, 'update_file_assign_des'])->name('update_file_assign_des');
+    Route::get('/folder_k/{pid}', [HomeController::class, 'folder_k'])->name('folder_k');
+    Route::post('/add_file_folder_k', [FileController::class, 'add_file_folder_k'])->name('add_file_folder_k');
+    Route::get('/view_folder_k/{fid}', [FileController::class, 'view_folder_k'])->name('view_folder_k');
+    Route::post('/update_file_folder_k', [FileController::class, 'update_file_folder_k'])->name('update_file_folder_k');
 
-    Route::get('/cases_offenses/{pid}', [HomeController::class, 'cases_offenses_folder'])->name('cases_offenses_folder');
-    Route::post('/add_file_cases_offenses', [FileController::class, 'add_file_cases_offenses'])->name('add_file_cases_offenses');
-    Route::get('/view_cases_offenses/{fid}', [FileController::class, 'view_cases_offenses'])->name('view_cases_offenses');
-    Route::post('/update_file_cases_offenses', [FileController::class, 'update_file_cases_offenses'])->name('update_file_cases_offenses');
+    Route::get('/folder_l/{pid}', [HomeController::class, 'folder_l'])->name('folder_l');
+    Route::post('/add_file_folder_l', [FileController::class, 'add_file_folder_l'])->name('add_file_folder_l');
+    Route::get('/view_folder_l/{fid}', [FileController::class, 'view_folder_l'])->name('view_folder_l');
+    Route::post('/update_file_folder_l', [FileController::class, 'update_file_folder_l'])->name('update_file_folder_l');
 
-    Route::get('/firearms_records/{pid}', [HomeController::class, 'firearms_records_folder'])->name('firearms_records_folder');
-    Route::post('/add_file_firearms_rec', [FileController::class, 'add_file_firearms_rec'])->name('add_file_firearms_rec');
-    Route::get('/view_firearms_rec/{fid}', [FileController::class, 'view_firearms_rec'])->name('view_firearms_rec');
-    Route::post('/update_file_firearms_rec', [FileController::class, 'update_file_firearms_rec'])->name('update_file_firearms_rec');
+    Route::get('/folder_m/{pid}', [HomeController::class, 'folder_m'])->name('folder_m');
+    Route::post('/add_file_folder_m', [FileController::class, 'add_file_folder_m'])->name('add_file_folder_m');
+    Route::get('/view_folder_m/{fid}', [FileController::class, 'view_folder_m'])->name('view_folder_m');
+    Route::post('/update_file_folder_m', [FileController::class, 'update_file_folder_m'])->name('update_file_folder_m');
 
-    Route::get('/leave_orders/{pid}', [HomeController::class, 'leave_orders_folder'])->name('leave_orders_folder');
-    Route::post('/add_file_leave_orders', [FileController::class, 'add_file_leave_orders'])->name('add_file_leave_orders');
-    Route::get('/view_leave_orders/{fid}', [FileController::class, 'view_leave_orders'])->name('view_leave_orders');
-    Route::post('/update_file_leave_orders', [FileController::class, 'update_file_leave_orders'])->name('update_file_leave_orders');
+    Route::get('/folder_n/{pid}', [HomeController::class, 'folder_n'])->name('folder_n');
+    Route::post('/add_file_folder_n', [FileController::class, 'add_file_folder_n'])->name('add_file_folder_n');
+    Route::get('/view_folder_n/{fid}', [FileController::class, 'view_folder_n'])->name('view_folder_n');
+    Route::post('/update_file_folder_n', [FileController::class, 'update_file_folder_n'])->name('update_file_folder_n');
 
-    Route::get('/awards/{pid}', [HomeController::class, 'awards_folder'])->name('awards_folder');
-    Route::post('/add_file_awards', [FileController::class, 'add_file_awards'])->name('add_file_awards');
-    Route::get('/view_awards/{fid}', [FileController::class, 'view_awards'])->name('view_awards');
-    Route::post('/update_file_awards', [FileController::class, 'update_file_awards'])->name('update_file_awards');
+    Route::get('/folder_o/{pid}', [HomeController::class, 'folder_o'])->name('folder_o');
+    Route::post('/add_file_folder_o', [FileController::class, 'add_file_folder_o'])->name('add_file_folder_o');
+    Route::get('/view_folder_o/{fid}', [FileController::class, 'view_folder_o'])->name('view_folder_o');
+    Route::post('/update_file_folder_o', [FileController::class, 'update_file_folder_o'])->name('update_file_folder_o');
 
-    Route::get('/saln/{pid}', [HomeController::class, 'saln_folder'])->name('saln_folder');
-    Route::post('/add_file_saln', [FileController::class, 'add_file_saln'])->name('add_file_saln');
-    Route::get('/view_saln/{fid}', [FileController::class, 'view_saln'])->name('view_saln');
-    Route::post('/update_file_saln', [FileController::class, 'update_file_saln'])->name('update_file_saln');
+    Route::get('/folder_p/{pid}', [HomeController::class, 'folder_p'])->name('folder_p');
+    Route::post('/add_file_folder_p', [FileController::class, 'add_file_folder_p'])->name('add_file_folder_p');
+    Route::get('/view_folder_p/{fid}', [FileController::class, 'view_folder_p'])->name('view_folder_p');
+    Route::post('/update_file_folder_p', [FileController::class, 'update_file_folder_p'])->name('update_file_folder_p');
 
-    Route::get('/others/{pid}', [HomeController::class, 'others_folder'])->name('others_folder');
-    Route::post('/add_file_others', [FileController::class, 'add_file_others'])->name('add_file_others');
-    Route::get('/view_others/{fid}', [FileController::class, 'view_others'])->name('view_others');
-    Route::post('/update_file_others', [FileController::class, 'update_file_others'])->name('update_file_others');
+    Route::get('/folder_q/{pid}', [HomeController::class, 'folder_q'])->name('folder_q');
+    Route::post('/add_file_folder_q', [FileController::class, 'add_file_folder_q'])->name('add_file_folder_q');
+    Route::get('/view_folder_q/{fid}', [FileController::class, 'view_folder_q'])->name('view_folder_q');
+    Route::post('/update_file_folder_q', [FileController::class, 'update_file_folder_q'])->name('update_file_folder_q');
 
     Route::get('/add_police_form', [PoliceController::class, 'add_police_form'])->name('add_police_form');
     Route::post('/adding_police', [PoliceController::class, 'adding_police'])->name('adding_police');

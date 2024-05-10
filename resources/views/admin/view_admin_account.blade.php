@@ -22,7 +22,7 @@
   @include('includes.navbar')
 
   <div class="col-12" style="margin-top: 4rem">
-    <a class="back-btn" href="{{ url()->previous() }}"><i class="fa-solid fa-arrow-left" ></i>&nbsp;&nbsp;Back</a>
+    <a class="back-btn" href="#"  onclick="window.history.back();"><i class="fa-solid fa-arrow-left" ></i>&nbsp;&nbsp;Back</a>
   </div>
 
   <div class="row" style="width: 75%; margin: 0rem auto 0rem auto">

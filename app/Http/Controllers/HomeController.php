@@ -127,225 +127,225 @@ class HomeController extends Controller
         
     }
 
-    public function pds_folder($pid)
+    public function folder_a($pid)
     { 
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'pds')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'pds')
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_a')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_a')
             ->orderByDesc('created_at')
             ->get();
         $police = Police::where('id', '=', $pid)->first();
 
         $fid = $file->id ?? 0;
 
-        return view('admin.folder_pds', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_a', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
-    public function psa_folder($pid)
+    public function folder_b($pid)
     { 
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'psa')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'psa')
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_b')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_b')
             ->orderByDesc('created_at')
             ->get();
         $police = Police::where('id', '=', $pid)->first();
 
         $fid = $file->id ?? 0;
 
-        return view('admin.folder_psa', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_b', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
-    public function appt_orders_folder($pid)
+    public function folder_c($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'appointment_orders')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'appointment_orders')            
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_c')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_c')            
             ->orderByDesc('created_at')
             ->get();
 
         $fid = $file->id ?? 0;
 
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_appt_orders', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_c', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
-    public function promotion_orders_folder($pid)
+    public function folder_d($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'promotion_orders')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'promotion_orders')
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_d')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_d')
         ->orderByDesc('created_at')
         ->get();
 
         $fid = $file->id ?? 0;
 
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_promotion_orders', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_d', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
-    public function sus_dem_orders_folder($pid)
+    public function folder_e($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'susdem_orders')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'susdem_orders')        
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_e')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_e')        
         ->orderByDesc('created_at')
         ->get();
 
         $fid = $file->id ?? 0;
 
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_sus_dem_orders', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_e', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
-    public function attested_orders_folder($pid)
+    public function folder_f($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'attested_appts')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'attested_appts')        
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_f')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_f')        
         ->orderByDesc('created_at')
         ->get();
 
         $fid = $file->id ?? 0;
 
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_attested_orders', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_f', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
-    public function cert_eli_orders_folder($pid)
+    public function folder_g($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'cert_eligibility')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'cert_eligibility')
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_g')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_g')
         ->orderByDesc('created_at')
         ->get();
 
         $fid = $file->id ?? 0;
 
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_cert_eli_orders', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_g', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
-    public function scholastic_rec_folder($pid)
+    public function folder_h($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'scholastic_records')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'scholastic_records')        
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_h')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_h')        
         ->orderByDesc('created_at')
         ->get();
 
         $fid = $file->id ?? 0;
 
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_scholastic_rec', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_h', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
-    public function trainings_folder($pid)
+    public function folder_i($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'trainings')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'trainings')
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_i')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_i')
         ->orderByDesc('created_at')
         ->get();
 
         $fid = $file->id ?? 0;
 
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_trainings', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_i', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
-    public function rca_longpay_folder($pid)
+    public function folder_j($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'rca_longpay_orders')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'rca_longpay_orders')
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_j')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_j')
         ->orderByDesc('created_at')
         ->get();
 
         $fid = $file->id ?? 0;
 
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_rca_longpay_orders', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_j', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
-    public function assign_des_orders_folder($pid)
+    public function folder_k($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'assign_des_orders')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'assign_des_orders')
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_k')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_k')
         ->orderByDesc('created_at')
         ->get();
 
         $fid = $file->id ?? 0;
 
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_assign_des_orders', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_k', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
-    public function cases_offenses_folder($pid)
+    public function folder_l($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'cases_offenses')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'cases_offenses')
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_l')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_l')
         ->orderByDesc('created_at')
         ->get();
 
         $fid = $file->id ?? 0;
 
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_cases_offenses', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_l', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
-    public function firearms_records_folder($pid)
+    public function folder_m($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'firearms_records')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'firearms_records')
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_m')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_m')
         ->orderByDesc('created_at')
         ->get();
 
         $fid = $file->id ?? 0;
 
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_firearms_records', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_m', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
-    public function leave_orders_folder($pid)
+    public function folder_n($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'leave_orders')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'leave_orders')
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_n')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_n')
         ->orderByDesc('created_at')
         ->get();
 
         $fid = $file->id ?? 0;
 
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_leave_orders', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_n', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
-    public function awards_folder($pid)
+    public function folder_o($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'awards')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'awards')
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_o')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_o')
         ->orderByDesc('created_at')
         ->get();
 
         $fid = $file->id ?? 0;
 
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_awards', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_o', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
-    public function saln_folder($pid)
+    public function folder_p($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'saln')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'saln')
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_p')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_p')
         ->orderByDesc('created_at')
         ->get();
 
         $fid = $file->id ?? 0;
 
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_saln', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_p', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
-    public function others_folder($pid)
+    public function folder_q($pid)
     {
-        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'others')->first();
-        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'others')
+        $file = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_q')->first();
+        $files = File::where('police_id', '=', $pid)->where('folder', '=', 'folder_q')
         ->orderByDesc('created_at')
         ->get();
 
         $fid = $file->id ?? 0;
 
         $police = Police::where('id', '=', $pid)->first();
-        return view('admin.folder_others', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
+        return view('admin.folder_q', ['police' => $police, 'file'=>$file, 'files'=>$files, 'fid'=>$fid]);
     }
 
     public function admin_acc_mngt()
